@@ -1,5 +1,73 @@
 const DATA = {
-  "date": "2026-10-07",
+  "check": {
+    "date": "2026-10-08",
+    "timezone": "Asia/Hong_Kong",
+    "checked_at_hong_kong": "2026-10-08T10:15:00+08:00",
+    "status": "partial_review_refresh",
+    "live_verification": {
+      "Philips_SCD861": "4.6/5; 26 shared reviews",
+      "Philips_SCD863": "4.6/5; 26 shared reviews",
+      "Philips_SCD871": "4.6/5; 26 shared reviews; all 26 visible reviewer/date/star records matched yesterday",
+      "Amazon_SCD871": "5.0/5; 6 Reviews on live product page; review bodies and histogram not available",
+      "bol_SCD861": "Nog geen reviews",
+      "bol_SCD871": "Nog geen reviews"
+    },
+    "rating_count_changes_since_baseline": {
+      "Philips": 0,
+      "Amazon": 0,
+      "bol": 0
+    },
+    "discrepancies": [
+      "Web extraction reported 27 Philips SCD871 reviews; live browser showed 26 on all three SKU pages and all 26 reviews were loaded. No 27th review could be verified. Prefer the observed live pool; flag this unresolved source discrepancy."
+    ],
+    "review_access": {
+      "Philips.de": {
+        "readable_today": 26,
+        "matched_existing": 26,
+        "new_records_confirmed": 0,
+        "last_text_check": "2026-10-08"
+      },
+      "Amazon.de": {
+        "readable_today": 0,
+        "cached_reviews": 6,
+        "last_text_check": "2026-10-07",
+        "new_records_confirmed": null
+      },
+      "bol.com": {
+        "readable_today": 0,
+        "new_records_confirmed": 0,
+        "last_text_check": "2026-10-08"
+      }
+    },
+    "overall": {
+      "rating_count": 32,
+      "displayed_mean_estimate": 4.675,
+      "estimate_method": "(26 x 4.6 + 6 x 5.0) / 32, using rounded platform means; shared Philips pool counted once",
+      "coded_review_mean": 4.6875,
+      "coded_review_count": 32,
+      "cached_amazon_reviews": 6
+    },
+    "coverage_gaps": [
+      "Amazon SCD861/26 and SCD863/26 listings not verified",
+      "bol SCD863/26 listing not verified",
+      "Shared Philips pool is not separate SKU experience evidence"
+    ],
+    "theme_note": "No new review text confirmed. Philips theme mentions have no confirmed additions. Amazon theme counts and English excerpts retain the 7 October evidence and have not been revalidated today. No claim about unobserved edits/replacements.",
+    "collection_window_hong_kong": "2026-10-08 10:09-10:15",
+    "source_urls": {
+      "philips": [
+        "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
+        "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
+        "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium"
+      ],
+      "amazon": "https://www.amazon.de/dp/B0HBRDDJWG",
+      "bol": [
+        "9300000318462240",
+        "9300000318462235"
+      ]
+    }
+  },
+  "date": "2026-10-08",
   "timezone": "Asia/Hong_Kong",
   "reviews": [
     {
@@ -942,6 +1010,151 @@ const DATA = {
           "5": 0
         },
         "records": []
+      }
+    },
+    "2026-10-08": {
+      "Philips.de": {
+        "complete": true,
+        "scope": "shared-scd871-pool",
+        "histogram": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 10,
+          "5": 16
+        },
+        "records": [
+          {
+            "id": "philips-scd871-hhome-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Stef4n-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Naninour88-2026-09-26",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Blitz279-2026-09-26",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-bambaer-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Angix33-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Christoffel94-2026-10-03",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Anonymous (Babyfoon)-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Bilge21-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Anoniem-A-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Maola-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-jacresp-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Serlis-2026-09-28",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-MG08-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Miirree1-2026-09-23",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Sunesune-2026-09-21",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Jack..E-2026-10-01",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Sandri81-2026-09-29",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Animalischer Tester-2026-09-27",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Adde_97-2026-10-04",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Oggie58-2026-10-03",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Fölunge2026-2026-10-03",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Hopperiks-2026-10-01",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Nicksje123-2026-09-29",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Frassesmorsa-2026-09-24",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Kattmjao-2026-09-21",
+            "stars": 4
+          }
+        ],
+        "checked_at": "2026-10-08T10:15:00+08:00",
+        "match_method": "Same reviewer, date, reviewed SKU and stars as yesterday; all 26 visible records read",
+        "source_discrepancy": "Web extraction reported 27 Philips SCD871 reviews; live browser showed 26 on all three SKU pages and all 26 reviews were loaded. No 27th review could be verified. Prefer the observed live pool; flag this unresolved source discrepancy."
+      },
+      "Amazon.de": {
+        "complete": false,
+        "scope": "B0HBRDDJWG",
+        "histogram": null,
+        "records": null,
+        "rating_count": 6,
+        "displayed_average": 5,
+        "checked_at": "2026-10-08T10:15:00+08:00",
+        "note": "Live count and mean verified; current individual stars/IDs not accessible. Do not count cached IDs as re-read."
+      },
+      "bol.com": {
+        "complete": true,
+        "scope": "9300000318462240+9300000318462235",
+        "histogram": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        },
+        "records": [],
+        "checked_at": "2026-10-08T10:15:00+08:00"
       }
     }
   }
