@@ -69,59 +69,82 @@ function renderChanges(changes,selected){
   'The total above includes only platforms with comparable total counts on both dates. The tables preserve each platform’s available evidence; incomplete coverage does not hide verified changes elsewhere.':
   'Added counts are first observed between these snapshots, regardless of the review’s written date. A dash means unavailable, not zero.';
 }
-// Retrospective volume by review date, not historical page totals or first-seen dates.
-function reviewTrend(data,platform,range='30'){
- const seen=new Set();
- const reviews=data.reviews.filter(r=>{
-  if(platform!=='all'&&r.platform!==platform)return false;
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(r.date)||r.date>data.date||![1,2,3,4,5].includes(r.stars))return false;
-  const id=r.key||[r.platform,r.reviewer,r.date,r.stars].join('|');
-  if(seen.has(id))return false;seen.add(id);return true;
- });
+// Daily snapshot history: no review-posting dates are used to reconstruct past totals.
+function ratingTrend(data,platform,range='week'){
+ const daysBack={week:7,month:30,year:365}[range]||7;
  const end=new Date(data.date+'T12:00:00Z');
- const first=range==='all'?reviews.reduce((date,r)=>r.date<date?r.date:date,data.date):
-  new Date(end.getTime()-(Number(range)-1)*86400000).toISOString().slice(0,10);
- const days=[];
- for(let d=new Date(first+'T12:00:00Z');d<=end;d.setUTCDate(d.getUTCDate()+1))days.push({date:d.toISOString().slice(0,10),total:0,stars:{1:0,2:0,3:0,4:0,5:0}});
- const byDate=new Map(days.map(d=>[d.date,d]));
- for(const r of reviews){const day=byDate.get(r.date);if(day){day.total++;day.stars[r.stars]++;}}
- return {days,total:days.reduce((n,d)=>n+d.total,0)};
+ const windowStart=new Date(end.getTime()-(daysBack-1)*86400000).toISOString().slice(0,10);
+ const history=data.ratingHistory||{},dates=Object.keys(history).filter(d=>d<=data.date).sort();
+ const start=dates.length&&dates[0]>windowStart?dates[0]:windowStart;
+ const platforms=platform==='all'?['Philips.de','Amazon.de']:[platform],stars=[5,4,3,2,1];
+ const scopes=Object.fromEntries(platforms.map(p=>[p,history[data.date]?.[p]?.scope]));
+ const points=[];
+ for(let cursor=new Date(start+'T12:00:00Z');cursor<=end;cursor.setUTCDate(cursor.getUTCDate()+1)){
+  const date=cursor.toISOString().slice(0,10),histogram={1:0,2:0,3:0,4:0,5:0},cached=[];
+  let available=true;
+  for(const p of platforms){
+   const entry=history[date]?.[p],reference=entry?.cached_star_breakdown;
+   const valid=h=>h&&stars.every(s=>Number.isInteger(h[s])&&h[s]>=0);
+   let histogramSource=entry?.complete&&valid(entry.histogram)?entry.histogram:null;
+   if(!entry?.scope||entry.scope!==scopes[p]){available=false;continue;}
+   if(!histogramSource&&reference?.scope===entry.scope&&valid(reference.histogram)){
+    histogramSource=reference.histogram;cached.push(p+' stars last verified '+reference.last_verified_date);
+   }
+   if(!histogramSource){available=false;continue;}
+   for(const s of stars)histogram[s]+=histogramSource[s];
+  }
+  const total=available?stars.reduce((n,s)=>n+histogram[s],0):null;
+  points.push({date,stars:available?histogram:null,total,average:total?Math.round(stars.reduce((n,s)=>n+s*histogram[s],0)*100/total)/100:null,cached});
+ }
+ return {points,platforms,firstRecorded:dates[0]||null,windowStart,daysBack};
+}
+const hiddenTrendStars=new Set();
+function trendLineChart(points,series,{title,average=false}){
+ const width=480,height=average?170:200,left=34,right=18,top=24,bottom=34;
+ const plotHeight=height-top-bottom,plotWidth=width-left-right;
+ const maxValue=average?5:Math.max(1,...points.flatMap(p=>series.map(s=>s.value(p)??0)));
+ const tickStep=average?1:Math.max(1,Math.ceil(maxValue/4));
+ const maximum=average?5:Math.ceil(maxValue/tickStep)*tickStep;
+ const minimum=average?1:0;
+ const x=i=>left+plotWidth*(points.length===1?.5:i/(points.length-1));
+ const y=n=>top+plotHeight-(n-minimum)/(maximum-minimum)*plotHeight;
+ const id=average?'average-line':'stars-line';
+ let svg='<svg viewBox="0 0 '+width+' '+height+'" role="img" aria-labelledby="'+id+'-title"><title id="'+id+'-title">'+esc(title)+'</title>';
+ for(let n=minimum;n<=maximum;n+=tickStep){svg+='<line class="trend-grid" x1="'+left+'" x2="'+(width-right)+'" y1="'+y(n)+'" y2="'+y(n)+'"/><text class="trend-axis" x="'+(left-8)+'" y="'+(y(n)+4)+'" text-anchor="end">'+n+'</text>';}
+ svg+='<text class="trend-axis" x="'+left+'" y="12">'+(average?'Average / 5':'Rating count')+'</text>';
+ const labelEvery=Math.max(1,Math.ceil((points.length-1)/5));
+ points.forEach((p,i)=>{
+  if(i%labelEvery===0||i===points.length-1&&i%labelEvery>labelEvery/2){
+   const label=new Date(p.date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'});
+   svg+='<text class="trend-axis" x="'+x(i)+'" y="'+(height-12)+'" text-anchor="'+(i===0?'start':i===points.length-1?'end':'middle')+'">'+esc(label)+'</text>';
+  }
+ });
+ for(const s of series){
+  points.forEach((p,i)=>{
+   const value=s.value(p),prev=i?points[i-1]:null,previousValue=prev?s.value(prev):null;
+   if(value===null)return;
+   if(previousValue!==null)svg+='<line x1="'+x(i-1)+'" y1="'+y(previousValue)+'" x2="'+x(i)+'" y2="'+y(value)+'" stroke="'+s.colour+'" stroke-width="2.2"'+(p.cached.length||prev.cached.length?' stroke-dasharray="5 4"':s.dash?' stroke-dasharray="'+s.dash+'"':'')+'/>';
+   const detail=fmtDate(p.date)+' · '+s.label+': '+(average?value.toFixed(2)+'/5':value)+(p.cached.length?' · cached: '+p.cached.join('; '):' · verified');
+   svg+='<circle tabindex="0" class="line-point" cx="'+x(i)+'" cy="'+y(value)+'" r="'+(s.radius||3.5)+'" fill="'+(p.cached.length?'white':s.colour)+'" stroke="'+s.colour+'" stroke-width="1.7" aria-label="'+esc(detail)+'"><title>'+esc(detail)+'</title></circle>';
+   if(average&&points.length<=7)svg+='<text class="trend-total" x="'+x(i)+'" y="'+(y(value)-9)+'" text-anchor="'+(i===0?'start':i===points.length-1?'end':'middle')+'">'+value.toFixed(2)+(p.cached.length?'*':'')+'</text>';
+  });
+ }
+ if(!series.some(s=>points.some(p=>s.value(p)!==null)))svg+='<text class="trend-axis" x="'+width/2+'" y="'+height/2+'" text-anchor="middle">No comparable ratings available</text>';
+ return svg+'</svg>';
 }
 function renderTrend(){
- const platform=$('platform').value,range=$('trend-range').value||'30';
- const trend=reviewTrend(DATA,platform,range),stars=[5,4,3,2,1];
- const colours={5:'#24745e',4:'#75aa94',3:'#ddb458',2:'#c48057',1:'#9c5364'};
- $('trend-base').textContent=trend.total+' captured written reviews · by review date';
- $('trend-legend').innerHTML=stars.map(s=>'<span><i style="background:'+colours[s]+'"></i>'+s+' ★</span>').join('');
- $('trend-note').textContent='Counts use the posting dates shown on currently captured reviews, not the day we found them or historical platform totals. Empty days mean no captured reviews; inaccessible reviews are excluded.';
- if(platform==='bol.com'){
-  $('review-trend').innerHTML='<div class="trend-empty">No readable written reviews to plot.<small>Current bol coverage is incomplete; this does not establish zero reviews on every date.</small></div>';
-  $('trend-table-body').innerHTML='';$('trend-table').hidden=true;return;
- }
+ const platform=$('platform').value,range=$('trend-range').value||'week';
+ const trend=ratingTrend(DATA,platform,range),stars=[5,4,3,2,1];
+ const colours={5:'#24745e',4:'#639bcc',3:'#cf9e2f',2:'#cc7750',1:'#a45270'};
+ $('trend-base').textContent='Daily snapshots · '+trend.platforms.join(' + ')+' · last '+trend.daysBack+' days';
+ $('average-trend').innerHTML=trendLineChart(trend.points,[{label:'Average rating',colour:'#24745e',value:p=>p.average}],{title:'Average rating over time',average:true});
+ $('trend-legend').innerHTML=stars.map(s=>'<button type="button" data-trend-star="'+s+'" aria-pressed="'+!hiddenTrendStars.has(s)+'" aria-label="Show '+s+'-star rating trend"><i style="background:'+colours[s]+'"></i>'+s+' ★</button>').join('');
+ $('review-trend').innerHTML=trendLineChart(trend.points,stars.filter(s=>!hiddenTrendStars.has(s)).map(s=>({label:s+'-star ratings',colour:colours[s],value:p=>p.stars?.[s]??null,radius:2+s*.4,dash:s<=3?s+' 3':null})),{title:'Number of ratings over time, split by one to five stars'});
+ const zeros=stars.filter(s=>trend.points.some(p=>p.stars)&&trend.points.every(p=>!p.stars||p.stars[s]===0));
+ $('trend-zero-note').textContent=zeros.length?zeros.join(', ')+'-star counts remain zero in the available snapshots; these lines overlap at zero. Select a star in the legend to hide or show its line.':'Select a star in the legend to hide or show its line.';
+ $('trend-note').textContent='History starts '+(trend.firstRecorded?fmtDate(trend.firstRecorded):'when the first snapshot is captured')+'. Only recorded dates are plotted; missing snapshots leave gaps. '+(platform==='all'?'Combined trends use Philips + Amazon; bol is excluded from this comparison. ':'')+'Hollow points and dashed segments use cached stars, with the verification date in the point tooltip. Averages are calculated from individual star counts.';
  $('trend-table').hidden=false;
- const width=Math.max(440,trend.days.length*12+50),height=245,left=30,right=12,top=26,bottom=35;
- const plotHeight=height-top-bottom,plotWidth=width-left-right;
- const peak=Math.max(1,...trend.days.map(d=>d.total));
- const tickStep=peak<=4?1:Math.ceil(peak/4),max=Math.ceil(peak/tickStep)*tickStep;
- const step=plotWidth/trend.days.length,barWidth=Math.min(30,step*.7);
- const labelEvery=Math.max(1,Math.ceil(trend.days.length/7));
- const label=date=>new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'});
- const description=trend.total+' captured reviews grouped by displayed posting date, split into 1 to 5 stars. Exact counts are in the table below.';
- let svg='<svg viewBox="0 0 '+width+' '+height+'" style="min-width:'+width+'px" role="img" aria-labelledby="trend-chart-title trend-chart-description"><title id="trend-chart-title">Daily review volume by star rating</title><desc id="trend-chart-description">'+esc(description)+'</desc>';
- for(let n=0;n<=max;n+=tickStep){const y=top+plotHeight-n/max*plotHeight;svg+='<line x1="'+left+'" x2="'+(width-right)+'" y1="'+y+'" y2="'+y+'" class="trend-grid"/><text x="'+(left-7)+'" y="'+(y+4)+'" text-anchor="end" class="trend-axis">'+n+'</text>';}
- svg+='<text x="'+left+'" y="13" class="trend-axis">Reviews</text>';
- trend.days.forEach((day,i)=>{
-  const x=left+i*step+(step-barWidth)/2,centre=left+(i+.5)*step;
-  const details=fmtDate(day.date)+': '+day.total+' captured reviews. '+stars.map(s=>s+' star: '+day.stars[s]).join('; ')+'.';
-  svg+='<g class="trend-day" tabindex="0" role="img" aria-label="'+esc(details)+'"><title>'+esc(details)+'</title><rect x="'+(left+i*step)+'" y="'+top+'" width="'+step+'" height="'+plotHeight+'" fill="transparent"/>';
-  let stack=0;
-  for(const s of stars){const n=day.stars[s];if(!n)continue;const h=n/max*plotHeight,y=top+plotHeight-(stack+n)/max*plotHeight;svg+='<rect x="'+x+'" y="'+y+'" width="'+barWidth+'" height="'+h+'" fill="'+colours[s]+'"/>';stack+=n;}
-  if(day.total)svg+='<text x="'+centre+'" y="'+(top+plotHeight-stack/max*plotHeight-5)+'" text-anchor="middle" class="trend-total">'+day.total+'</text>';
-  svg+='</g>';
-  if(i%labelEvery===0||i===trend.days.length-1&&i%labelEvery>1)svg+='<text x="'+centre+'" y="'+(height-13)+'" text-anchor="middle" class="trend-axis">'+esc(label(day.date))+'</text>';
- });
- $('review-trend').innerHTML=svg+'</svg>';
- $('trend-table-body').innerHTML=trend.days.map(day=>'<tr><td>'+fmtDate(day.date)+'</td>'+stars.map(s=>'<td>'+day.stars[s]+'</td>').join('')+'<td>'+day.total+'</td></tr>').join('');
+ $('trend-table-body').innerHTML=trend.points.map(p=>'<tr><td>'+fmtDate(p.date)+'</td><td>'+(p.average===null?'—':p.average.toFixed(2))+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??'—')+'</td><td>'+(p.cached.length?esc(p.cached.join('; ')):p.total===null?'Unavailable':'Verified')+'</td></tr>').join('');
 }
 
 function mentionNote(t){
@@ -168,6 +191,7 @@ $('coverage-body').innerHTML=['SCD861/26','SCD863/26','SCD871/26'].map(sku=>`<tr
 $('sources').innerHTML=[['Amazon · SCD871',DATA.sources.amazon],...['SCD861/26','SCD863/26','SCD871/26'].map(s=>[`Philips · ${s}`,philips(s)]),['bol · SCD861',DATA.sources.bol861],['bol · SCD871',DATA.sources.bol871]].map(([label,url])=>`<a href="${url}" target="_blank" rel="noopener">${label} ↗</a>`).join('');
 $('platform').addEventListener('change',render);
 $('trend-range').addEventListener('change',renderTrend);
+$('trend-legend').addEventListener('click',event=>{const b=event.target.closest('button[data-trend-star]');if(!b)return;const star=Number(b.dataset.trendStar);hiddenTrendStars.has(star)?hiddenTrendStars.delete(star):hiddenTrendStars.add(star);renderTrend();});
 $('themes').addEventListener('click',e=>{const b=e.target.closest('button[data-theme]');if(!b)return;const rows=filtered().filter(r=>r[b.dataset.sentiment].includes(b.dataset.theme));const theme=DATA.themes.find(t=>t.key===b.dataset.theme);$('dialog-title').textContent=theme.label;$('dialog-description').textContent=`${rows.length} of ${filtered().length} selected reviews mention this theme. Each review is counted once. All listed excerpts were re-read on 9 October 2026.`;$('dialog-reviews').innerHTML=rows.sort((a,b)=>b.date.localeCompare(a.date)).map(r=>`<div class="evidence-row"><div><strong>${esc(r.reviewer)} · ${r.stars}★</strong><small>${fmtDate(r.date)} · ${r.platform} · ${r.reviewed_sku}</small><small>${esc(r.incentive)}</small>${(DATA.excerpts?.[r.key]||DATA.excerpts?.[r.reviewer])?.[b.dataset.theme]?`<blockquote class="evidence-quote">“${esc((DATA.excerpts[r.key]||DATA.excerpts[r.reviewer])[b.dataset.theme])}”</blockquote><span class="excerpt-label">English translation · short excerpt</span>`:`<p class="quote-unavailable">Quotation unavailable for this review.</p><span class="excerpt-label">Theme recorded in the earlier review snapshot.</span>`}</div><a href="${source(r)}" target="_blank" rel="noopener">Original source ↗</a></div>`).join('');$('evidence').showModal()});
 $('close-dialog').addEventListener('click',()=>$('evidence').close());
 $('evidence').addEventListener('click',e=>{if(e.target===$('evidence')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close()}});
