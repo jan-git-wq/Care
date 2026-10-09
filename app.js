@@ -11,13 +11,56 @@ function dailyChanges(data,platform){
  const yesterday=day.toISOString().slice(0,10);
  const platforms=platform==='all'?['Philips.de','Amazon.de','bol.com']:[platform];
  const current=data.ratingHistory?.[data.date],previous=data.ratingHistory?.[yesterday];
- const comparable=platforms.every(p=>current?.[p]?.complete&&previous?.[p]?.complete&&current[p].scope===previous[p].scope);
- const identifiable=comparable&&platforms.every(p=>Array.isArray(current[p].records)&&Array.isArray(previous[p].records));
- return {yesterday,comparable,rows:[5,4,3,2,1].map(star=>({star,
-  today:platforms.every(p=>current?.[p]?.complete)?platforms.reduce((sum,p)=>sum+current[p].histogram[star],0):null,
-  yesterday:platforms.every(p=>previous?.[p]?.complete)?platforms.reduce((sum,p)=>sum+previous[p].histogram[star],0):null,
-  added:identifiable?platforms.reduce((sum,p)=>{const known=new Set(previous[p].records.map(r=>r.id));return sum+current[p].records.filter(r=>r.stars===star&&!known.has(r.id)).length},0):null
- }))};
+ const stars=[5,4,3,2,1];
+ const hasHistogram=p=>p?.complete&&stars.every(s=>Number.isInteger(p.histogram?.[s]));
+ const count=p=>Number.isInteger(p?.rating_count)?p.rating_count:hasHistogram(p)?stars.reduce((n,s)=>n+p.histogram[s],0):null;
+ const groups=platforms.map(name=>{
+  const now=current?.[name],before=previous?.[name];
+  const sameScope=Boolean(now?.scope&&now.scope===before?.scope);
+  const comparable=sameScope&&hasHistogram(now)&&hasHistogram(before);
+  const identifiable=comparable&&Array.isArray(now.records)&&Array.isArray(before.records);
+  const known=new Set((before?.records||[]).map(r=>r.id));
+  const todayCount=count(now),yesterdayCount=count(before);
+  return {name,comparable,identifiable,todayCount,yesterdayCount,
+   net:sameScope&&todayCount!==null&&yesterdayCount!==null?todayCount-yesterdayCount:null,
+   rows:stars.map(star=>({star,today:hasHistogram(now)?now.histogram[star]:null,
+    yesterday:hasHistogram(before)?before.histogram[star]:null,
+    added:identifiable?new Set(now.records.filter(r=>r.stars===star&&!known.has(r.id)).map(r=>r.id)).size:null,
+    net:comparable?now.histogram[star]-before.histogram[star]:null}))};
+ });
+ const counted=groups.filter(g=>g.net!==null);
+ const total=counted.length?{names:counted.map(g=>g.name),today:counted.reduce((n,g)=>n+g.todayCount,0),
+  yesterday:counted.reduce((n,g)=>n+g.yesterdayCount,0),net:counted.reduce((n,g)=>n+g.net,0),complete:counted.length===groups.length}:null;
+ const sum=(field,star)=>groups.every(g=>g.rows[star][field]!==null)?groups.reduce((n,g)=>n+g.rows[star][field],0):null;
+ return {yesterday,groups,total,comparable:groups.every(g=>g.comparable),
+  rows:stars.map((star,i)=>({star,today:sum('today',i),yesterday:sum('yesterday',i),added:sum('added',i),net:sum('net',i)}))};
+}
+function renderChanges(changes,selected){
+ const signed=n=>n>0?'+'+n:String(n);
+ const value=n=>n===null?'&mdash;':n;
+ const total=changes.total;
+ $('change-dates').textContent=fmtDate(DATA.date)+' vs '+fmtDate(changes.yesterday)+' · Hong Kong dates';
+ $('change-summary').innerHTML=total?
+  '<div class="change-total"><strong>'+signed(total.net)+'<small> net ratings</small></strong><div>'+total.yesterday+' yesterday &rarr; '+total.today+' today<small>'+esc(total.names.join(' + '))+(total.complete?'':' · partial coverage')+'</small></div></div>':
+  '<p class="footnote">A comparable total is unavailable for this selection.</p>';
+ $('daily-changes').innerHTML=changes.groups.map(g=>{
+  const usesNet=!g.identifiable&&g.comparable;
+  const deltaField=usesNet?'net':'added';
+  const heading=usesNet?'Net change':'Added';
+  const notes=g.identifiable?'Added = newly observed review IDs since yesterday. Existing rating edits and removals are excluded.':
+   usesNet?'Only aggregate counts are comparable. Net changes may include additions, edits or removals; actual additions are unavailable.':
+   g.todayCount===null?'Current coverage is incomplete. A missing count is unavailable, not zero.':
+   g.yesterdayCount!==null?"The total count is comparable, but yesterday's star counts or review IDs are missing. The per-star daily additions are unavailable.":
+   'No compatible snapshot is available for yesterday. Daily additions are unavailable.';
+  return '<section class="platform-comparison"><div class="comparison-heading"><h3>'+esc(g.name)+'</h3><strong>'+(g.net===null?'Net change unavailable':signed(g.net)+' net')+'</strong></div>'+
+   '<p class="comparison-count">'+value(g.yesterdayCount)+' yesterday &rarr; '+value(g.todayCount)+' today</p>'+
+   '<div class="table-scroll daily-table"><table aria-label="'+esc(g.name)+' rating counts compared with yesterday"><thead><tr><th>Star</th><th>Yesterday</th><th>Today</th><th>'+heading+'</th></tr></thead><tbody>'+
+   g.rows.map(r=>'<tr><td>'+r.star+' &#9733;</td><td>'+value(r.yesterday)+'</td><td>'+value(r.today)+'</td><td>'+(r[deltaField]===null?'<span class="unavailable">Unavailable</span>':'<b class="change-number">'+signed(r[deltaField])+'</b>')+'</td></tr>').join('')+
+   '</tbody></table></div><p class="footnote">'+notes+'</p></section>';
+ }).join('');
+ $('change-note').textContent=selected==='all'&&!total?.complete?
+  'The total above includes only platforms with comparable total counts on both dates. The tables preserve each platform’s available evidence; incomplete coverage does not hide verified changes elsewhere.':
+  'Added counts are first observed between these snapshots, regardless of the review’s written date. A dash means unavailable, not zero.';
 }
 function mentionNote(t){
  const x=DATA.check.new_mentions[t.sentiment+': '+t.key]||{},sel=$('platform').value;
@@ -39,9 +82,7 @@ function render(){
  const metrics=[['Combined rating',displayMean,total?'':n?' / 5':'',total?'Full scope incomplete; verified Philips + Amazon: '+observedMean+'/5 from '+n+' ratings':'Current displayed platform score'],['Written reviews analysed',n,'',total?'30 Philips + 10 Amazon; all re-read today':n?'Review text checked '+fmtDate(DATA.date):'SCD861: zero; SCD871: unavailable'],['Ratings of 4-5 stars',n?Math.round(high/n*100)+'%':'Unavailable','',n?'Verified individual review stars':'Incomplete platform coverage'],['Promotion / Vine',n?Math.round(incentivized/n*100)+'%':'Unavailable','',n?incentivized+' of '+n+' reviews labelled':'No readable reviews']];
  $('overview').innerHTML=metrics.map(([l,v,s,note])=>`<article class="metric"><div class="metric-label">${l==='Combined rating'&&!total?'Platform rating':l}</div><div class="metric-value">${v==='Unavailable'?'<span class="unavailable-value">Unavailable</span>':v}<small>${s}</small></div><div class="metric-note">${note}</div></article>`).join('');
  const changes=dailyChanges(DATA,$('platform').value);
- $('change-dates').textContent=`${fmtDate(DATA.date)} vs ${fmtDate(changes.yesterday)} · Hong Kong dates`;
- $('daily-changes').innerHTML=changes.rows.map(r=>`<tr><td>${r.star} ★</td><td>${r.yesterday??'—'}</td><td>${r.today??'—'}</td><td>${r.added===null?'<span class="unavailable">Not available</span>':'+'+r.added}</td></tr>`).join('');
- $('change-note').textContent=changes.comparable?'Added counts use new review identities compared with yesterday. Existing rating edits and removals are excluded.':'Daily additions unavailable for incomplete coverage: Amazon had no readable identity snapshot on 8 Oct; bol SCD871 is blocked today. Philips has a complete comparison. A dash means unavailable, not zero. Amazon has four more ratings in total than yesterday (net count change), and four newly observed IDs since 7 Oct.';
+ renderChanges(changes,selected);
  $('theme-base').textContent=`${n} coded reviews; ${freshness}`;
  for(const sentiment of ['positive','negative']){
   let themes=DATA.themes.filter(t=>t.sentiment===sentiment).map(t=>({...t,rows:rows.filter(r=>r[sentiment].includes(t.key))})).filter(t=>t.rows.length).sort((a,b)=>b.rows.length-a.rows.length);
