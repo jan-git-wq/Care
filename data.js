@@ -37,7 +37,9 @@ const DATA = {
       "verified_pool_mean": 4.725,
       "coded_review_count": 40,
       "cached_reviews": 0,
-      "reason": "Full-scope combined rating unavailable: bol SCD871 could not be checked. Verified Philips + Amazon pool: 40 reviews, 29 five-star and 11 four-star; exact arithmetic mean 4.725."
+      "reason": "Combined score displayed from the verified Philips + Amazon pool: 40 reviews, 29 five-star and 11 four-star; exact arithmetic mean 4.725. Full-scope combined rating remains unavailable because bol SCD871 could not be checked.",
+      "displayed_verified_mean": 4.73,
+      "display_scope": "40 verified Philips + Amazon ratings; bol excluded because current coverage is incomplete"
     },
     "new_review_ids": [
       "philips-scd871-Mamma#2-2026-10-08",
@@ -129,7 +131,8 @@ const DATA = {
         "new_records_confirmed": 4,
         "last_text_check": "2026-10-09",
         "comparison_date": "2026-10-07",
-        "yesterday_additions": null
+        "yesterday_additions": null,
+        "saved_yesterday_star_reference": "2026-10-07"
       },
       "bol.com": {
         "readable_today": 0,
@@ -1574,7 +1577,19 @@ const DATA = {
         "rating_count": 6,
         "displayed_average": 5,
         "checked_at": "2026-10-08T10:15:00+08:00",
-        "note": "Live count and mean verified; current individual stars/IDs not accessible. Do not count cached IDs as re-read."
+        "note": "Live count and mean verified; current individual stars/IDs not accessible. Do not count cached IDs as re-read.",
+        "cached_star_breakdown": {
+          "last_verified_date": "2026-10-07",
+          "scope": "B0HBRDDJWG",
+          "histogram": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 6
+          },
+          "provenance": "Six cached Amazon review texts/stars retained in the 8 October report; only displayed score and total count rechecked on 8 October. See rr-check-2026-10-08.json review_access and rr-snapshots/2026-10-08-coding.json."
+        }
       },
       "bol.com": {
         "complete": true,

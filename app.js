@@ -21,12 +21,17 @@ function dailyChanges(data,platform){
   const identifiable=comparable&&Array.isArray(now.records)&&Array.isArray(before.records);
   const known=new Set((before?.records||[]).map(r=>r.id));
   const todayCount=count(now),yesterdayCount=count(before);
+  const saved=before?.cached_star_breakdown;
+  const reference=!hasHistogram(before)&&sameScope&&saved?.scope===now.scope&&stars.every(s=>Number.isInteger(saved.histogram?.[s]))?saved:null;
   return {name,comparable,identifiable,todayCount,yesterdayCount,
+   referenceDate:reference?.last_verified_date||null,
    net:sameScope&&todayCount!==null&&yesterdayCount!==null?todayCount-yesterdayCount:null,
    rows:stars.map(star=>({star,today:hasHistogram(now)?now.histogram[star]:null,
     yesterday:hasHistogram(before)?before.histogram[star]:null,
     added:identifiable?new Set(now.records.filter(r=>r.stars===star&&!known.has(r.id)).map(r=>r.id)).size:null,
-    net:comparable?now.histogram[star]-before.histogram[star]:null}))};
+    net:comparable?now.histogram[star]-before.histogram[star]:null,
+    savedYesterday:reference?reference.histogram[star]:null,
+    changeFromSaved:reference&&hasHistogram(now)?now.histogram[star]-reference.histogram[star]:null}))};
  });
  const counted=groups.filter(g=>g.net!==null);
  const total=counted.length?{names:counted.map(g=>g.name),today:counted.reduce((n,g)=>n+g.todayCount,0),
@@ -45,17 +50,19 @@ function renderChanges(changes,selected){
   '<p class="footnote">A comparable total is unavailable for this selection.</p>';
  $('daily-changes').innerHTML=changes.groups.map(g=>{
   const usesNet=!g.identifiable&&g.comparable;
-  const deltaField=usesNet?'net':'added';
-  const heading=usesNet?'Net change':'Added';
+  const deltaField=g.referenceDate?'changeFromSaved':usesNet?'net':'added';
+  const shortReference=g.referenceDate?new Date(g.referenceDate+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}):null;
+  const heading=g.referenceDate?'Change vs '+shortReference:usesNet?'Net change':'Added';
   const notes=g.identifiable?'Added = newly observed review IDs since yesterday. Existing rating edits and removals are excluded.':
+   g.referenceDate?'Yesterday’s saved star breakdown was last verified on '+fmtDate(g.referenceDate)+'. The total of '+g.yesterdayCount+' was verified yesterday. Star changes compare with that saved breakdown, not confirmed one-day additions.':
    usesNet?'Only aggregate counts are comparable. Net changes may include additions, edits or removals; actual additions are unavailable.':
    g.todayCount===null?'Current coverage is incomplete. A missing count is unavailable, not zero.':
    g.yesterdayCount!==null?"The total count is comparable, but yesterday's star counts or review IDs are missing. The per-star daily additions are unavailable.":
    'No compatible snapshot is available for yesterday. Daily additions are unavailable.';
   return '<section class="platform-comparison"><div class="comparison-heading"><h3>'+esc(g.name)+'</h3><strong>'+(g.net===null?'Net change unavailable':signed(g.net)+' net')+'</strong></div>'+
    '<p class="comparison-count">'+value(g.yesterdayCount)+' yesterday &rarr; '+value(g.todayCount)+' today</p>'+
-   '<div class="table-scroll daily-table"><table aria-label="'+esc(g.name)+' rating counts compared with yesterday"><thead><tr><th>Star</th><th>Yesterday</th><th>Today</th><th>'+heading+'</th></tr></thead><tbody>'+
-   g.rows.map(r=>'<tr><td>'+r.star+' &#9733;</td><td>'+value(r.yesterday)+'</td><td>'+value(r.today)+'</td><td>'+(r[deltaField]===null?'<span class="unavailable">Unavailable</span>':'<b class="change-number">'+signed(r[deltaField])+'</b>')+'</td></tr>').join('')+
+   '<div class="table-scroll daily-table"><table aria-label="'+esc(g.name)+' rating counts compared with yesterday"><thead><tr><th>Star</th><th>'+(g.referenceDate?'Saved yesterday*':'Yesterday')+'</th><th>Today</th><th>'+heading+'</th></tr></thead><tbody>'+
+   g.rows.map(r=>'<tr><td>'+r.star+' &#9733;</td><td>'+value(r.yesterday??r.savedYesterday)+'</td><td>'+value(r.today)+'</td><td>'+(r[deltaField]===null?'<span class="unavailable">Unavailable</span>':'<b class="change-number">'+signed(r[deltaField])+'</b>')+'</td></tr>').join('')+
    '</tbody></table></div><p class="footnote">'+notes+'</p></section>';
  }).join('');
  $('change-note').textContent=selected==='all'&&!total?.complete?
@@ -131,10 +138,10 @@ function render(){
  const selected=$('platform').value;
  const cached=false;
  const freshness='Review text verified '+fmtDate(DATA.date);
- const displayMean=total?'Unavailable':DATA.check.platforms[selected]?.rating?.toFixed(1)||'Unavailable';
  const high=rows.filter(r=>r.stars>=4).length,incentivized=rows.filter(r=>r.incentive).length;
  const observedMean=(Math.round(DATA.reviews.reduce((sum,r)=>sum+r.stars,0)*100/DATA.reviews.length)/100).toFixed(2);
- const metrics=[['Combined rating',displayMean,total?'':n?' / 5':'',total?'Full scope incomplete; verified Philips + Amazon: '+observedMean+'/5 from '+n+' ratings':'Current displayed platform score'],['Written reviews analysed',n,'',total?'30 Philips + 10 Amazon; all re-read today':n?'Review text checked '+fmtDate(DATA.date):'SCD861: zero; SCD871: unavailable'],['Ratings of 4-5 stars',n?Math.round(high/n*100)+'%':'Unavailable','',n?'Verified individual review stars':'Incomplete platform coverage'],['Promotion / Vine',n?Math.round(incentivized/n*100)+'%':'Unavailable','',n?incentivized+' of '+n+' reviews labelled':'No readable reviews']];
+ const displayMean=total?observedMean:DATA.check.platforms[selected]?.rating?.toFixed(1)||'Unavailable';
+ const metrics=[['Combined rating',displayMean,n?' / 5':'',total?n+' verified Philips + Amazon ratings; bol excluded (incomplete coverage)':'Current displayed platform score'],['Written reviews analysed',n,'',total?'30 Philips + 10 Amazon; all re-read today':n?'Review text checked '+fmtDate(DATA.date):'SCD861: zero; SCD871: unavailable'],['Ratings of 4-5 stars',n?Math.round(high/n*100)+'%':'Unavailable','',n?'Verified individual review stars':'Incomplete platform coverage'],['Promotion / Vine',n?Math.round(incentivized/n*100)+'%':'Unavailable','',n?incentivized+' of '+n+' reviews labelled':'No readable reviews']];
  $('overview').innerHTML=metrics.map(([l,v,s,note])=>`<article class="metric"><div class="metric-label">${l==='Combined rating'&&!total?'Platform rating':l}</div><div class="metric-value">${v==='Unavailable'?'<span class="unavailable-value">Unavailable</span>':v}<small>${s}</small></div><div class="metric-note">${note}</div></article>`).join('');
  const changes=dailyChanges(DATA,$('platform').value);
  renderChanges(changes,selected);
