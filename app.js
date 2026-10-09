@@ -35,7 +35,7 @@ function render(){
  const freshness='Review text verified '+fmtDate(DATA.date);
  const displayMean=total?'Unavailable':DATA.check.platforms[selected]?.rating?.toFixed(1)||'Unavailable';
  const high=rows.filter(r=>r.stars>=4).length,incentivized=rows.filter(r=>r.incentive).length;
- const observedMean=(Math.round(DATA.check.overall.verified_pool_mean*100)/100).toFixed(2);
+ const observedMean=(Math.round(DATA.reviews.reduce((sum,r)=>sum+r.stars,0)*100/DATA.reviews.length)/100).toFixed(2);
  const metrics=[['Combined rating',displayMean,total?'':n?' / 5':'',total?'Full scope incomplete; verified Philips + Amazon: '+observedMean+'/5 from '+n+' ratings':'Current displayed platform score'],['Written reviews analysed',n,'',total?'30 Philips + 10 Amazon; all re-read today':n?'Review text checked '+fmtDate(DATA.date):'SCD861: zero; SCD871: unavailable'],['Ratings of 4-5 stars',n?Math.round(high/n*100)+'%':'Unavailable','',n?'Verified individual review stars':'Incomplete platform coverage'],['Promotion / Vine',n?Math.round(incentivized/n*100)+'%':'Unavailable','',n?incentivized+' of '+n+' reviews labelled':'No readable reviews']];
  $('overview').innerHTML=metrics.map(([l,v,s,note])=>`<article class="metric"><div class="metric-label">${l==='Combined rating'&&!total?'Platform rating':l}</div><div class="metric-value">${v==='Unavailable'?'<span class="unavailable-value">Unavailable</span>':v}<small>${s}</small></div><div class="metric-note">${note}</div></article>`).join('');
  const changes=dailyChanges(DATA,$('platform').value);
@@ -52,8 +52,8 @@ function render(){
    return `<article class="theme ${sentiment}"><button data-theme="${esc(t.key)}" data-sentiment="${sentiment}" aria-label="See ${count} reviews mentioning ${esc(t.label)}"><div class="theme-title"><span>${esc(t.label)}</span><span class="theme-count">${count}<small> / ${n} ↗</small></span></div><div class="bar"><i style="width:${count/n*100}%"></i></div><div class="breakdown">${p} Philips · ${a} Amazon · ${Math.round(count/n*100)}% of selected reviews<br>${mentionNote(t)}</div></button>${qr?`<div class="quote"><blockquote>“${esc(q.text)}”</blockquote><div class="translation">English: ${esc(q.english)}</div><div class="attribution">${esc(qr.reviewer)} · ${qr.stars}★ · ${fmtDate(qr.date)} · ${qr.reviewed_sku}<br>${esc(qr.incentive)} · <a href="${source(qr)}" target="_blank" rel="noopener">${qr.platform} source ↗</a></div></div>`:`<div class="quote"><div class="translation">See the coded review list and original source.</div></div>`}</article>`;
   }).join(''):'<div class="empty">No written reviews available for theme analysis.</div>';
  }
- $('distribution-base').textContent=`${n} coded ratings; ${freshness}`;
- $('distribution').innerHTML=[5,4,3,2,1].map(stars=>{const count=rows.filter(r=>r.stars===stars).length;return `<div class="rating-row"><span>${stars} ★</span><div class="bar"><i style="width:${n?count/n*100:0}%"></i></div><strong>${count}</strong></div>`}).join('');
+ $('distribution-base').textContent=selected==='bol.com'?'Incomplete coverage; star counts unavailable':`${n} coded ratings; ${freshness}`;
+ $('distribution').innerHTML=[5,4,3,2,1].map(stars=>{const count=rows.filter(r=>r.stars===stars).length;return `<div class="rating-row"><span>${stars} ★</span><div class="bar"><i style="width:${n?count/n*100:0}%"></i></div><strong>${selected==='bol.com'?'Unavailable':count}</strong></div>`}).join('');
 }
 $('platform-cards').innerHTML=['Amazon.de','Philips.de','bol.com'].map(name=>{
 const p=DATA.check.platforms[name],rating=p.rating?.toFixed(1)||'Unavailable',url=name==='Amazon.de'?DATA.sources.amazon:name==='Philips.de'?philips('SCD871/26'):DATA.sources.bol861;
