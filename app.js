@@ -62,6 +62,61 @@ function renderChanges(changes,selected){
   'The total above includes only platforms with comparable total counts on both dates. The tables preserve each platform’s available evidence; incomplete coverage does not hide verified changes elsewhere.':
   'Added counts are first observed between these snapshots, regardless of the review’s written date. A dash means unavailable, not zero.';
 }
+// Retrospective volume by review date, not historical page totals or first-seen dates.
+function reviewTrend(data,platform,range='30'){
+ const seen=new Set();
+ const reviews=data.reviews.filter(r=>{
+  if(platform!=='all'&&r.platform!==platform)return false;
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(r.date)||r.date>data.date||![1,2,3,4,5].includes(r.stars))return false;
+  const id=r.key||[r.platform,r.reviewer,r.date,r.stars].join('|');
+  if(seen.has(id))return false;seen.add(id);return true;
+ });
+ const end=new Date(data.date+'T12:00:00Z');
+ const first=range==='all'?reviews.reduce((date,r)=>r.date<date?r.date:date,data.date):
+  new Date(end.getTime()-(Number(range)-1)*86400000).toISOString().slice(0,10);
+ const days=[];
+ for(let d=new Date(first+'T12:00:00Z');d<=end;d.setUTCDate(d.getUTCDate()+1))days.push({date:d.toISOString().slice(0,10),total:0,stars:{1:0,2:0,3:0,4:0,5:0}});
+ const byDate=new Map(days.map(d=>[d.date,d]));
+ for(const r of reviews){const day=byDate.get(r.date);if(day){day.total++;day.stars[r.stars]++;}}
+ return {days,total:days.reduce((n,d)=>n+d.total,0)};
+}
+function renderTrend(){
+ const platform=$('platform').value,range=$('trend-range').value||'30';
+ const trend=reviewTrend(DATA,platform,range),stars=[5,4,3,2,1];
+ const colours={5:'#24745e',4:'#75aa94',3:'#ddb458',2:'#c48057',1:'#9c5364'};
+ $('trend-base').textContent=trend.total+' captured written reviews · by review date';
+ $('trend-legend').innerHTML=stars.map(s=>'<span><i style="background:'+colours[s]+'"></i>'+s+' ★</span>').join('');
+ $('trend-note').textContent='Counts use the posting dates shown on currently captured reviews, not the day we found them or historical platform totals. Empty days mean no captured reviews; inaccessible reviews are excluded.';
+ if(platform==='bol.com'){
+  $('review-trend').innerHTML='<div class="trend-empty">No readable written reviews to plot.<small>Current bol coverage is incomplete; this does not establish zero reviews on every date.</small></div>';
+  $('trend-table-body').innerHTML='';$('trend-table').hidden=true;return;
+ }
+ $('trend-table').hidden=false;
+ const width=Math.max(440,trend.days.length*12+50),height=245,left=30,right=12,top=26,bottom=35;
+ const plotHeight=height-top-bottom,plotWidth=width-left-right;
+ const peak=Math.max(1,...trend.days.map(d=>d.total));
+ const tickStep=peak<=4?1:Math.ceil(peak/4),max=Math.ceil(peak/tickStep)*tickStep;
+ const step=plotWidth/trend.days.length,barWidth=Math.min(30,step*.7);
+ const labelEvery=Math.max(1,Math.ceil(trend.days.length/7));
+ const label=date=>new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'});
+ const description=trend.total+' captured reviews grouped by displayed posting date, split into 1 to 5 stars. Exact counts are in the table below.';
+ let svg='<svg viewBox="0 0 '+width+' '+height+'" style="min-width:'+width+'px" role="img" aria-labelledby="trend-chart-title trend-chart-description"><title id="trend-chart-title">Daily review volume by star rating</title><desc id="trend-chart-description">'+esc(description)+'</desc>';
+ for(let n=0;n<=max;n+=tickStep){const y=top+plotHeight-n/max*plotHeight;svg+='<line x1="'+left+'" x2="'+(width-right)+'" y1="'+y+'" y2="'+y+'" class="trend-grid"/><text x="'+(left-7)+'" y="'+(y+4)+'" text-anchor="end" class="trend-axis">'+n+'</text>';}
+ svg+='<text x="'+left+'" y="13" class="trend-axis">Reviews</text>';
+ trend.days.forEach((day,i)=>{
+  const x=left+i*step+(step-barWidth)/2,centre=left+(i+.5)*step;
+  const details=fmtDate(day.date)+': '+day.total+' captured reviews. '+stars.map(s=>s+' star: '+day.stars[s]).join('; ')+'.';
+  svg+='<g class="trend-day" tabindex="0" role="img" aria-label="'+esc(details)+'"><title>'+esc(details)+'</title><rect x="'+(left+i*step)+'" y="'+top+'" width="'+step+'" height="'+plotHeight+'" fill="transparent"/>';
+  let stack=0;
+  for(const s of stars){const n=day.stars[s];if(!n)continue;const h=n/max*plotHeight,y=top+plotHeight-(stack+n)/max*plotHeight;svg+='<rect x="'+x+'" y="'+y+'" width="'+barWidth+'" height="'+h+'" fill="'+colours[s]+'"/>';stack+=n;}
+  if(day.total)svg+='<text x="'+centre+'" y="'+(top+plotHeight-stack/max*plotHeight-5)+'" text-anchor="middle" class="trend-total">'+day.total+'</text>';
+  svg+='</g>';
+  if(i%labelEvery===0||i===trend.days.length-1&&i%labelEvery>1)svg+='<text x="'+centre+'" y="'+(height-13)+'" text-anchor="middle" class="trend-axis">'+esc(label(day.date))+'</text>';
+ });
+ $('review-trend').innerHTML=svg+'</svg>';
+ $('trend-table-body').innerHTML=trend.days.map(day=>'<tr><td>'+fmtDate(day.date)+'</td>'+stars.map(s=>'<td>'+day.stars[s]+'</td>').join('')+'<td>'+day.total+'</td></tr>').join('');
+}
+
 function mentionNote(t){
  const x=DATA.check.new_mentions[t.sentiment+': '+t.key]||{},sel=$('platform').value;
  const notes=[];
@@ -83,6 +138,7 @@ function render(){
  $('overview').innerHTML=metrics.map(([l,v,s,note])=>`<article class="metric"><div class="metric-label">${l==='Combined rating'&&!total?'Platform rating':l}</div><div class="metric-value">${v==='Unavailable'?'<span class="unavailable-value">Unavailable</span>':v}<small>${s}</small></div><div class="metric-note">${note}</div></article>`).join('');
  const changes=dailyChanges(DATA,$('platform').value);
  renderChanges(changes,selected);
+ renderTrend();
  $('theme-base').textContent=`${n} coded reviews; ${freshness}`;
  for(const sentiment of ['positive','negative']){
   let themes=DATA.themes.filter(t=>t.sentiment===sentiment).map(t=>({...t,rows:rows.filter(r=>r[sentiment].includes(t.key))})).filter(t=>t.rows.length).sort((a,b)=>b.rows.length-a.rows.length);
@@ -104,6 +160,7 @@ return '<article class="platform-card"><div class="platform-top"><h3>'+name+'</h
 $('coverage-body').innerHTML=['SCD861/26','SCD863/26','SCD871/26'].map(sku=>`<tr><td>${sku}<small>Non-connected video monitor</small></td><td>${sku==='SCD871/26'?`<a href="${DATA.sources.amazon}" target="_blank" rel="noopener">4.9 / 5</a><small>10 ratings · listing SKU confirmed; review SKU may be unknown</small>`:'<span class="unverified">Not verified</span>'}</td><td><a href="${philips(sku)}" target="_blank" rel="noopener">4.7 / 5</a><small>30 reviews · same shared pool${sku==='SCD871/26'?' · reviewed SKU':''}</small></td><td>${sku==='SCD863/26'?'<span class="unverified">Not verified</span>':`<a href="${sku==='SCD861/26'?DATA.sources.bol861:DATA.sources.bol871}" target="_blank" rel="noopener">${sku==='SCD861/26'?'No reviews yet':'Unavailable today'}</a><small>${sku==='SCD861/26'?'Checked 9 Oct':'Cached zero: 9 Oct 10:26'}</small>`}</td></tr>`).join('');
 $('sources').innerHTML=[['Amazon · SCD871',DATA.sources.amazon],...['SCD861/26','SCD863/26','SCD871/26'].map(s=>[`Philips · ${s}`,philips(s)]),['bol · SCD861',DATA.sources.bol861],['bol · SCD871',DATA.sources.bol871]].map(([label,url])=>`<a href="${url}" target="_blank" rel="noopener">${label} ↗</a>`).join('');
 $('platform').addEventListener('change',render);
+$('trend-range').addEventListener('change',renderTrend);
 $('themes').addEventListener('click',e=>{const b=e.target.closest('button[data-theme]');if(!b)return;const rows=filtered().filter(r=>r[b.dataset.sentiment].includes(b.dataset.theme));const theme=DATA.themes.find(t=>t.key===b.dataset.theme);$('dialog-title').textContent=theme.label;$('dialog-description').textContent=`${rows.length} of ${filtered().length} selected reviews mention this theme. Each review is counted once. All listed excerpts were re-read on 9 October 2026.`;$('dialog-reviews').innerHTML=rows.sort((a,b)=>b.date.localeCompare(a.date)).map(r=>`<div class="evidence-row"><div><strong>${esc(r.reviewer)} · ${r.stars}★</strong><small>${fmtDate(r.date)} · ${r.platform} · ${r.reviewed_sku}</small><small>${esc(r.incentive)}</small>${(DATA.excerpts?.[r.key]||DATA.excerpts?.[r.reviewer])?.[b.dataset.theme]?`<blockquote class="evidence-quote">“${esc((DATA.excerpts[r.key]||DATA.excerpts[r.reviewer])[b.dataset.theme])}”</blockquote><span class="excerpt-label">English translation · short excerpt</span>`:`<p class="quote-unavailable">Quotation unavailable for this review.</p><span class="excerpt-label">Theme recorded in the earlier review snapshot.</span>`}</div><a href="${source(r)}" target="_blank" rel="noopener">Original source ↗</a></div>`).join('');$('evidence').showModal()});
 $('close-dialog').addEventListener('click',()=>$('evidence').close());
 $('evidence').addEventListener('click',e=>{if(e.target===$('evidence')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close()}});
