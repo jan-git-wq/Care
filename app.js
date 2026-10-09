@@ -40,34 +40,48 @@ function dailyChanges(data,platform){
  return {yesterday,groups,total,comparable:groups.every(g=>g.comparable),
   rows:stars.map((star,i)=>({star,today:sum('today',i),yesterday:sum('yesterday',i),added:sum('added',i),net:sum('net',i)}))};
 }
+function combinedChanges(changes){
+ const eligible=changes.groups.filter(g=>g.net!==null);
+ const groups=eligible.length?eligible:changes.groups;
+ const aggregate=(pick)=>{const values=groups.map(pick);return values.length&&values.every(v=>v!==null&&v!==undefined)?values.reduce((a,b)=>a+b,0):null;};
+ const cached=groups.filter(g=>g.referenceDate);
+ const identifiable=groups.length>0&&groups.every(g=>g.identifiable);
+ return {names:groups.map(g=>g.name),cached,identifiable,
+  excluded:changes.groups.filter(g=>!groups.includes(g)).map(g=>g.name),
+  rows:[5,4,3,2,1].map((star,i)=>{
+   const yesterday=aggregate(g=>g.rows[i].yesterday??g.rows[i].savedYesterday);
+   const today=aggregate(g=>g.rows[i].today);
+   const comparable=groups.every(g=>g.comparable||g.referenceDate);
+   return {star,yesterday,today,delta:identifiable?aggregate(g=>g.rows[i].added):comparable&&today!==null&&yesterday!==null?today-yesterday:null};
+  })};
+}
 function renderChanges(changes,selected){
- const signed=n=>n>0?'+'+n:String(n);
- const value=n=>n===null?'&mdash;':n;
- const total=changes.total;
+ const signed=n=>n>0?'+'+n:String(n),value=n=>n===null?'&mdash;':n,total=changes.total;
  $('change-dates').textContent=fmtDate(DATA.date)+' vs '+fmtDate(changes.yesterday)+' · Hong Kong dates';
  $('change-summary').innerHTML=total?
   '<div class="change-total"><strong>'+signed(total.net)+'<small> net ratings</small></strong><div>'+total.yesterday+' yesterday &rarr; '+total.today+' today<small>'+esc(total.names.join(' + '))+(total.complete?'':' · partial coverage')+'</small></div></div>':
   '<p class="footnote">A comparable total is unavailable for this selection.</p>';
- $('daily-changes').innerHTML=changes.groups.map(g=>{
-  const usesNet=!g.identifiable&&g.comparable;
-  const deltaField=g.referenceDate?'changeFromSaved':usesNet?'net':'added';
-  const shortReference=g.referenceDate?new Date(g.referenceDate+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}):null;
-  const heading=g.referenceDate?'Change vs '+shortReference:usesNet?'Net change':'Added';
-  const notes=g.identifiable?'Added = newly observed review IDs since yesterday. Existing rating edits and removals are excluded.':
-   g.referenceDate?'Yesterday’s saved star breakdown was last verified on '+fmtDate(g.referenceDate)+'. The total of '+g.yesterdayCount+' was verified yesterday. Star changes compare with that saved breakdown, not confirmed one-day additions.':
-   usesNet?'Only aggregate counts are comparable. Net changes may include additions, edits or removals; actual additions are unavailable.':
-   g.todayCount===null?'Current coverage is incomplete. A missing count is unavailable, not zero.':
-   g.yesterdayCount!==null?"The total count is comparable, but yesterday's star counts or review IDs are missing. The per-star daily additions are unavailable.":
-   'No compatible snapshot is available for yesterday. Daily additions are unavailable.';
-  return '<section class="platform-comparison"><div class="comparison-heading"><h3>'+esc(g.name)+'</h3><strong>'+(g.net===null?'Net change unavailable':signed(g.net)+' net')+'</strong></div>'+
-   '<p class="comparison-count">'+value(g.yesterdayCount)+' yesterday &rarr; '+value(g.todayCount)+' today</p>'+
-   '<div class="table-scroll daily-table"><table aria-label="'+esc(g.name)+' rating counts compared with yesterday"><thead><tr><th>Star</th><th>'+(g.referenceDate?'Saved yesterday*':'Yesterday')+'</th><th>Today</th><th>'+heading+'</th></tr></thead><tbody>'+
-   g.rows.map(r=>'<tr><td>'+r.star+' &#9733;</td><td>'+value(r.yesterday??r.savedYesterday)+'</td><td>'+value(r.today)+'</td><td>'+(r[deltaField]===null?'<span class="unavailable">Unavailable</span>':'<b class="change-number">'+signed(r[deltaField])+'</b>')+'</td></tr>').join('')+
-   '</tbody></table></div><p class="footnote">'+notes+'</p></section>';
- }).join('');
- $('change-note').textContent=selected==='all'&&!total?.complete?
-  'The total above includes only platforms with comparable total counts on both dates. The tables preserve each platform’s available evidence; incomplete coverage does not hide verified changes elsewhere.':
-  'Added counts are first observed between these snapshots, regardless of the review’s written date. A dash means unavailable, not zero.';
+ let rows,heading,yesterdayHeading='Yesterday',note;
+ if(selected==='all'){
+  const combined=combinedChanges(changes);
+  rows=combined.rows;heading=combined.identifiable?'Added':combined.cached.length?'Change*':'Net change';
+  if(combined.cached.length)yesterdayHeading='Yesterday*';
+  note=(combined.excluded.length?'Includes '+combined.names.join(' + ')+'. '+combined.excluded.join(', ')+' excluded: incomplete comparable coverage. ':'')+
+   (combined.cached.length?'* Saved baseline includes '+combined.cached.map(g=>g.name+' stars last verified '+fmtDate(g.referenceDate)).join('; ')+'. Star changes compare with that saved baseline; they are not confirmed one-day additions.':
+    combined.identifiable?'Added counts use new review IDs since yesterday; edits and removals are excluded.':'Net changes can include additions, edits or removals. Actual additions are unavailable without matching review IDs.');
+ }else{
+  const g=changes.groups[0],usesNet=!g.identifiable&&g.comparable;
+  heading=g.referenceDate?'Change*':usesNet?'Net change':'Added';
+  yesterdayHeading=g.referenceDate?'Yesterday*':'Yesterday';
+  rows=g.rows.map(r=>({star:r.star,yesterday:r.yesterday??r.savedYesterday,today:r.today,delta:g.referenceDate?r.changeFromSaved:usesNet?r.net:r.added}));
+  note=g.identifiable?'Added = newly observed review IDs since yesterday. Existing rating edits and removals are excluded.':
+   g.referenceDate?'* Saved stars last verified '+fmtDate(g.referenceDate)+'. Yesterday’s total of '+g.yesterdayCount+' was verified. Star changes compare with the saved baseline, not confirmed one-day additions.':
+   usesNet?'Net changes may include additions, edits or removals; actual additions are unavailable.':
+   'Some star counts or review IDs are unavailable. A dash means unavailable, not zero.';
+ }
+ $('daily-changes').innerHTML='<div class="table-scroll daily-table"><table aria-label="'+(selected==='all'?'Combined':esc(selected))+' rating counts compared with yesterday"><thead><tr><th>Star</th><th>'+yesterdayHeading+'</th><th>Today</th><th>'+heading+'</th></tr></thead><tbody>'+
+  rows.map(r=>'<tr><td>'+r.star+' &#9733;</td><td>'+value(r.yesterday)+'</td><td>'+value(r.today)+'</td><td>'+(r.delta===null?'<span class="unavailable">Unavailable</span>':'<b class="change-number">'+signed(r.delta)+'</b>')+'</td></tr>').join('')+'</tbody></table></div>';
+ $('change-note').textContent=note;
 }
 // Daily snapshot history: no review-posting dates are used to reconstruct past totals.
 function ratingTrend(data,platform,range='week'){
@@ -100,7 +114,7 @@ function ratingTrend(data,platform,range='week'){
 }
 const hiddenTrendStars=new Set();
 function trendLineChart(points,series,{title,average=false}){
- const width=480,height=average?170:200,left=34,right=18,top=24,bottom=34;
+ const width=480,height=200,left=34,right=18,top=24,bottom=34;
  const plotHeight=height-top-bottom,plotWidth=width-left-right;
  const maxValue=average?5:Math.max(1,...points.flatMap(p=>series.map(s=>s.value(p)??0)));
  const tickStep=average?1:Math.max(1,Math.ceil(maxValue/4));
