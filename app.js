@@ -112,8 +112,31 @@ function ratingTrend(data,platform,range='week'){
  }
  return {points,platforms,firstRecorded:dates[0]||null,windowStart,daysBack};
 }
+// Single-day mode is retrospective review volume by the review's displayed posting date.
+function singleDayStarTrend(data,platform,range='week'){
+ const daysBack={week:7,month:30,year:365}[range]||7;
+ const end=new Date(data.date+'T12:00:00Z');
+ const windowStart=new Date(end.getTime()-(daysBack-1)*86400000).toISOString().slice(0,10);
+ const platforms=platform==='all'?['Philips.de','Amazon.de']:[platform],seen=new Set();
+ const reviews=data.reviews.filter(r=>{
+  if(!platforms.includes(r.platform)||!/^\d{4}-\d{2}-\d{2}$/.test(r.date)||r.date>data.date||![1,2,3,4,5].includes(r.stars))return false;
+  const key=r.key||[r.platform,r.reviewer,r.date,r.stars].join('|');
+  if(seen.has(key))return false;seen.add(key);return true;
+ });
+ const earliest=reviews.reduce((date,r)=>r.date<date?r.date:date,data.date);
+ const start=earliest>windowStart?earliest:windowStart;
+ const readable=reviews.length>0;
+ const points=[];
+ for(let cursor=new Date(start+'T12:00:00Z');cursor<=end;cursor.setUTCDate(cursor.getUTCDate()+1)){
+  points.push({date:cursor.toISOString().slice(0,10),stars:readable?{1:0,2:0,3:0,4:0,5:0}:null,total:readable?0:null,cached:[],evidence:'captured reviews by posting date'});
+ }
+ const byDate=new Map(points.map(p=>[p.date,p]));
+ for(const r of reviews){const p=byDate.get(r.date);if(p?.stars){p.stars[r.stars]++;p.total++;}}
+ return {points,platforms,daysBack};
+}
+
 const hiddenTrendStars=new Set();
-function trendLineChart(points,series,{title,average=false}){
+function trendLineChart(points,series,{title,average=false,unit='Rating count'}){
  const width=480,height=200,left=34,right=18,top=24,bottom=34;
  const plotHeight=height-top-bottom,plotWidth=width-left-right;
  const maxValue=average?5:Math.max(1,...points.flatMap(p=>series.map(s=>s.value(p)??0)));
@@ -125,7 +148,7 @@ function trendLineChart(points,series,{title,average=false}){
  const id=average?'average-line':'stars-line';
  let svg='<svg viewBox="0 0 '+width+' '+height+'" role="img" aria-labelledby="'+id+'-title"><title id="'+id+'-title">'+esc(title)+'</title>';
  for(let n=minimum;n<=maximum;n+=tickStep){svg+='<line class="trend-grid" x1="'+left+'" x2="'+(width-right)+'" y1="'+y(n)+'" y2="'+y(n)+'"/><text class="trend-axis" x="'+(left-8)+'" y="'+(y(n)+4)+'" text-anchor="end">'+n+'</text>';}
- svg+='<text class="trend-axis" x="'+left+'" y="12">'+(average?'Average / 5':'Rating count')+'</text>';
+ svg+='<text class="trend-axis" x="'+left+'" y="12">'+(average?'Average / 5':esc(unit))+'</text>';
  const labelEvery=Math.max(1,Math.ceil((points.length-1)/5));
  points.forEach((p,i)=>{
   if(i%labelEvery===0||i===points.length-1&&i%labelEvery>labelEvery/2){
@@ -138,7 +161,7 @@ function trendLineChart(points,series,{title,average=false}){
    const value=s.value(p),prev=i?points[i-1]:null,previousValue=prev?s.value(prev):null;
    if(value===null)return;
    if(previousValue!==null)svg+='<line x1="'+x(i-1)+'" y1="'+y(previousValue)+'" x2="'+x(i)+'" y2="'+y(value)+'" stroke="'+s.colour+'" stroke-width="2.2"'+(p.cached.length||prev.cached.length?' stroke-dasharray="5 4"':s.dash?' stroke-dasharray="'+s.dash+'"':'')+'/>';
-   const detail=fmtDate(p.date)+' · '+s.label+': '+(average?value.toFixed(2)+'/5':value)+(p.cached.length?' · cached: '+p.cached.join('; '):' · verified');
+   const detail=fmtDate(p.date)+' · '+s.label+': '+(average?value.toFixed(2)+'/5':value)+(p.cached.length?' · cached: '+p.cached.join('; '):p.evidence?' · '+p.evidence:' · verified');
    svg+='<circle tabindex="0" class="line-point" cx="'+x(i)+'" cy="'+y(value)+'" r="'+(s.radius||3.5)+'" fill="'+(p.cached.length?'white':s.colour)+'" stroke="'+s.colour+'" stroke-width="1.7" aria-label="'+esc(detail)+'"><title>'+esc(detail)+'</title></circle>';
    if(average&&points.length<=7)svg+='<text class="trend-total" x="'+x(i)+'" y="'+(y(value)-9)+'" text-anchor="'+(i===0?'start':i===points.length-1?'end':'middle')+'">'+value.toFixed(2)+(p.cached.length?'*':'')+'</text>';
   });
@@ -149,13 +172,18 @@ function trendLineChart(points,series,{title,average=false}){
 function renderTrend(){
  const platform=$('platform').value,range=$('trend-range').value||'week';
  const trend=ratingTrend(DATA,platform,range),stars=[5,4,3,2,1];
+ const single=$('star-trend-mode').value==='single';
+ const starTrend=single?singleDayStarTrend(DATA,platform,range):trend;
  const colours={5:'#24745e',4:'#639bcc',3:'#cf9e2f',2:'#cc7750',1:'#a45270'};
  $('trend-base').textContent='Daily snapshots · '+trend.platforms.join(' + ')+' · last '+trend.daysBack+' days';
  $('average-trend').innerHTML=trendLineChart(trend.points,[{label:'Average rating',colour:'#24745e',value:p=>p.average}],{title:'Average rating over time',average:true});
  $('trend-legend').innerHTML=stars.map(s=>'<button type="button" data-trend-star="'+s+'" aria-pressed="'+!hiddenTrendStars.has(s)+'" aria-label="Show '+s+'-star rating trend"><i style="background:'+colours[s]+'"></i>'+s+' ★</button>').join('');
- $('review-trend').innerHTML=trendLineChart(trend.points,stars.filter(s=>!hiddenTrendStars.has(s)).map(s=>({label:s+'-star ratings',colour:colours[s],value:p=>p.stars?.[s]??null,radius:2+s*.4,dash:s<=3?s+' 3':null})),{title:'Number of ratings over time, split by one to five stars'});
- const zeros=stars.filter(s=>trend.points.some(p=>p.stars)&&trend.points.every(p=>!p.stars||p.stars[s]===0));
- $('trend-zero-note').textContent=zeros.length?zeros.join(', ')+'-star counts remain zero in the available snapshots; these lines overlap at zero. Select a star in the legend to hide or show its line.':'Select a star in the legend to hide or show its line.';
+ $('review-trend').innerHTML=trendLineChart(starTrend.points,stars.filter(s=>!hiddenTrendStars.has(s)).map(s=>({label:s+'-star ratings',colour:colours[s],value:p=>p.stars?.[s]??null,radius:2+s*.4,dash:s<=3?s+' 3':null})),{title:single?'Single-day review counts by posting date and star rating':'Accumulated rating counts by snapshot date and star rating',unit:single?'Reviews on this date':'Accumulated ratings'});
+ const zeros=stars.filter(s=>starTrend.points.some(p=>p.stars)&&starTrend.points.every(p=>!p.stars||p.stars[s]===0));
+ $('trend-zero-note').textContent=zeros.length?zeros.join(', ')+'-star counts remain zero in the selected dates; these lines overlap at zero. Select a star in the legend to hide or show its line.':'Select a star in the legend to hide or show its line.';
+ $('star-mode-note').textContent=single?'Single day: captured written reviews on each displayed posting date. Not additions since yesterday’s check. A zero means no captured reviews dated that day; inaccessible reviews are excluded.':'Accumulated: total ratings at each saved snapshot, including any labelled cached baseline.';
+ $('star-day-table').hidden=!single;
+ $('star-day-body').innerHTML=single?starTrend.points.map(p=>'<tr><td>'+fmtDate(p.date)+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??'—')+'</td></tr>').join(''):'';
  $('trend-note').textContent='History starts '+(trend.firstRecorded?fmtDate(trend.firstRecorded):'when the first snapshot is captured')+'. Only recorded dates are plotted; missing snapshots leave gaps. '+(platform==='all'?'Combined trends use Philips + Amazon; bol is excluded from this comparison. ':'')+'Hollow points and dashed segments use cached stars, with the verification date in the point tooltip. Averages are calculated from individual star counts.';
  $('trend-table').hidden=false;
  $('trend-table-body').innerHTML=trend.points.map(p=>'<tr><td>'+fmtDate(p.date)+'</td><td>'+(p.average===null?'—':p.average.toFixed(2))+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??'—')+'</td><td>'+(p.cached.length?esc(p.cached.join('; ')):p.total===null?'Unavailable':'Verified')+'</td></tr>').join('');
@@ -205,6 +233,7 @@ $('coverage-body').innerHTML=['SCD861/26','SCD863/26','SCD871/26'].map(sku=>`<tr
 $('sources').innerHTML=[['Amazon · SCD871',DATA.sources.amazon],...['SCD861/26','SCD863/26','SCD871/26'].map(s=>[`Philips · ${s}`,philips(s)]),['bol · SCD861',DATA.sources.bol861],['bol · SCD871',DATA.sources.bol871]].map(([label,url])=>`<a href="${url}" target="_blank" rel="noopener">${label} ↗</a>`).join('');
 $('platform').addEventListener('change',render);
 $('trend-range').addEventListener('change',renderTrend);
+$('star-trend-mode').addEventListener('change',renderTrend);
 $('trend-legend').addEventListener('click',event=>{const b=event.target.closest('button[data-trend-star]');if(!b)return;const star=Number(b.dataset.trendStar);hiddenTrendStars.has(star)?hiddenTrendStars.delete(star):hiddenTrendStars.add(star);renderTrend();});
 $('themes').addEventListener('click',e=>{const b=e.target.closest('button[data-theme]');if(!b)return;const rows=filtered().filter(r=>r[b.dataset.sentiment].includes(b.dataset.theme));const theme=DATA.themes.find(t=>t.key===b.dataset.theme);$('dialog-title').textContent=theme.label;$('dialog-description').textContent=`${rows.length} of ${filtered().length} selected reviews mention this theme. Each review is counted once. All listed excerpts were re-read on 9 October 2026.`;$('dialog-reviews').innerHTML=rows.sort((a,b)=>b.date.localeCompare(a.date)).map(r=>`<div class="evidence-row"><div><strong>${esc(r.reviewer)} · ${r.stars}★</strong><small>${fmtDate(r.date)} · ${r.platform} · ${r.reviewed_sku}</small><small>${esc(r.incentive)}</small>${(DATA.excerpts?.[r.key]||DATA.excerpts?.[r.reviewer])?.[b.dataset.theme]?`<blockquote class="evidence-quote">“${esc((DATA.excerpts[r.key]||DATA.excerpts[r.reviewer])[b.dataset.theme])}”</blockquote><span class="excerpt-label">English translation · short excerpt</span>`:`<p class="quote-unavailable">Quotation unavailable for this review.</p><span class="excerpt-label">Theme recorded in the earlier review snapshot.</span>`}</div><a href="${source(r)}" target="_blank" rel="noopener">Original source ↗</a></div>`).join('');$('evidence').showModal()});
 $('close-dialog').addEventListener('click',()=>$('evidence').close());

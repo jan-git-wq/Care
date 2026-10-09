@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Philips Avent Video Baby Monitor · Reviews</title>
   <meta name="description" content="Consumer experience research dashboard for Philips Avent non-connected video monitors.">
-  <link rel="stylesheet" href="style.css?v=51bfd745">
+  <link rel="stylesheet" href="style.css?v=4c4e055d">
 </head>
 <body>
 <main>
@@ -17,9 +17,9 @@
     <div class="section-head trend-controls"><div><h2 id="rating-trends-title">Rating trends</h2><p id="trend-base" class="footnote"></p></div><select id="trend-range" aria-label="Rating trend period"><option value="week" selected>Week</option><option value="month">Month</option><option value="year">Year</option></select></div>
     <div class="rating-trends-grid">
       <div class="panel average-trend-panel"><div class="trend-chart-top"><h3>Average rating</h3><p class="footnote">Mean of captured individual star ratings</p></div><div id="average-trend" class="trend-scroll"></div></div>
-      <div class="panel star-trend-panel"><div class="trend-chart-top"><h3>Star rating distribution over time</h3><div id="trend-legend" class="trend-legend" aria-label="Toggle star rating lines"></div></div><div id="review-trend" class="trend-scroll"></div><p class="footnote" id="trend-zero-note"></p></div>
+      <div class="panel star-trend-panel"><div class="trend-chart-top"><div class="star-trend-controls"><h3>Star rating distribution over time</h3><select id="star-trend-mode" aria-label="Star rating trend mode"><option value="accumulated" selected>Accumulated</option><option value="single">Single day</option></select></div><div id="trend-legend" class="trend-legend" aria-label="Toggle star rating lines"></div></div><div id="review-trend" class="trend-scroll"></div><p class="footnote" id="star-mode-note" aria-live="polite"></p><p class="footnote" id="trend-zero-note"></p><details id="star-day-table" hidden><summary>View single-day counts</summary><div class="table-scroll daily-table"><table aria-label="Single-day captured review counts by posting date"><thead><tr><th>Date</th><th>5 ★</th><th>4 ★</th><th>3 ★</th><th>2 ★</th><th>1 ★</th><th>Total</th></tr></thead><tbody id="star-day-body"></tbody></table></div></details></div>
     </div>
-    <p class="footnote" id="trend-note"></p><details id="trend-table"><summary>View recorded ratings</summary><div class="table-scroll daily-table"><table aria-label="Average rating and star counts by snapshot date"><thead><tr><th>Date</th><th>Average / 5</th><th>5 ★</th><th>4 ★</th><th>3 ★</th><th>2 ★</th><th>1 ★</th><th>Total</th><th>Evidence</th></tr></thead><tbody id="trend-table-body"></tbody></table></div></details>
+    <p class="footnote" id="trend-note"></p><details id="trend-table"><summary>View accumulated snapshot history</summary><div class="table-scroll daily-table"><table aria-label="Average rating and star counts by snapshot date"><thead><tr><th>Date</th><th>Average / 5</th><th>5 ★</th><th>4 ★</th><th>3 ★</th><th>2 ★</th><th>1 ★</th><th>Total</th><th>Evidence</th></tr></thead><tbody id="trend-table-body"></tbody></table></div></details>
   </section>
   <section class="lower-grid distribution-changes">
     <div class="panel distribution-panel"><div class="section-head"><h2>Rating distribution</h2><span id="distribution-base"></span></div><div id="distribution"></div><p class="footnote">Complaints also appear within 4- and 5-star reviews.</p></div>
@@ -34,5 +34,5 @@
   <footer><span>AVENT REVIEW OBSERVATORY</span><span>Independent research view · Source ratings remain attributed to their platforms.</span></footer>
 </main>
 <dialog id="evidence"><div class="dialog-top"><span class="eyebrow">REVIEW EVIDENCE</span><button id="close-dialog" aria-label="Close review evidence">×</button></div><h2 id="dialog-title"></h2><p id="dialog-description"></p><div id="dialog-reviews"></div><p class="footnote">Each quotation is a short English translation of the relevant original wording, not a full review. Positive remarks can be qualified elsewhere in a review. Unverified wording is marked unavailable. Follow the source for full context.</p></dialog>
-<script src="data.js?v=af4f8834"></script><script src="app.js?v=44ae4c95"></script>
+<script src="data.js?v=af4f8834"></script><script src="app.js?v=9d96b0fa"></script>
 </body></html>
