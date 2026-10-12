@@ -2,7 +2,7 @@ const DATA = {
   "check": {
     "date": "2026-10-12",
     "timezone": "Asia/Hong_Kong",
-    "checked_at_hong_kong": "2026-10-12T14:13:00+08:00",
+    "checked_at_hong_kong": "2026-10-12T18:13:40+08:00",
     "status": "partial_source_refresh",
     "last_complete_date": "2026-10-09",
     "comparison_date": "2026-10-09",
@@ -13,28 +13,37 @@ const DATA = {
         "rating": 4.7,
         "rating_count": 33,
         "written_count": 33,
-        "readable_today": 10,
+        "readable_today": 33,
         "last_verified": "2026-10-12",
         "cached": false,
         "net_count_change": 3,
         "comparison_date": "2026-10-09",
-        "note": "33 shared reviews at 4.7/5 independently retrieved from SCD871 reviews on 12 Oct, 14:13 HKT; +3 versus Friday. Mammamu is newly captured. Ten texts readable in this fetch; individual stars unavailable.",
-        "last_verified_at": "2026-10-12T14:13:00+08:00"
+        "note": "33 shared reviews at 4.7/5 verified in the live browser. All 33 read and individual stars captured: 23 five-star, 10 four-star. +3 five-star reviews versus Friday.",
+        "last_verified_at": "2026-10-12T18:13:40+08:00"
       },
       "Amazon.de": {
-        "rating": 4.9,
-        "rating_count": 10,
-        "written_count": 10,
+        "rating": 4.8,
+        "rating_count": 17,
+        "written_count": null,
         "readable_today": 0,
-        "last_verified": "2026-10-09",
-        "cached": true,
-        "net_count_change": null,
-        "note": "Fresh fetch failed, including the supplied review-portal link. Last independently verified: 9 Oct, 4.9/5 and 10 ratings/texts. User observes 17 at 4.8 on 12 Oct; not independently confirmed and excluded from verified totals.",
+        "last_verified": "2026-10-12",
+        "cached": false,
+        "net_count_change": 7,
+        "note": "Live product page verified 4.8/5 and 17 global ratings (+7 since Friday). Rating summary shows 86% five-star / 14% four-star. Exact star counts and current written-review count unavailable: supplied portal and Amazon's own review link return a non-functioning-page error. Analysis retains 10 texts verified 9 Oct.",
         "user_observation": {
           "rating": 4.8,
           "count": 17,
           "observed_date": "2026-10-12",
-          "independently_verified": false
+          "independently_verified": true
+        },
+        "last_verified_at": "2026-10-12T18:13:40+08:00",
+        "comparison_date": "2026-10-09",
+        "displayed_star_percentages": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 14,
+          "5": 86
         }
       },
       "bol.com": {
@@ -49,19 +58,22 @@ const DATA = {
       }
     },
     "overall": {
-      "current_available": false,
+      "current_available": true,
       "last_verified_rating": 4.73,
       "last_verified_count": 40,
       "last_verified_date": "2026-10-09",
       "coded_review_count": 43,
-      "known_star_count": 40,
-      "unknown_star_count": 3,
-      "reason": "43 captured review texts; 40 known stars last verified 9 Oct, three unavailable stars. Current Amazon/bol data are unverified; retain last verified 4.73/5 from 40 known stars."
+      "known_star_count": 43,
+      "unknown_star_count": 0,
+      "reason": "Estimated 4.73/5 from rounded displayed scores: (33 × 4.7 + 17 × 4.8) / 50. Philips shared pool counted once; bol excluded (unverified). Written review analysis includes 33 current Philips and 10 cached Amazon texts.",
+      "rating": 4.734,
+      "rating_count": 50,
+      "estimated": true
     },
     "review_access": {
       "Philips.de": {
-        "readable_today": 10,
-        "cached_reviews": 23,
+        "readable_today": 33,
+        "cached_reviews": 0,
         "new_records_confirmed": 3,
         "last_text_check": "2026-10-12",
         "new_records_this_retry": 1
@@ -77,7 +89,7 @@ const DATA = {
         "new_records_confirmed": null
       }
     },
-    "freshness": "Partial verified refresh at 14:13 HKT: Philips 4.7/5 from 33 shared reviews (+3 since Friday); Mammamu newly captured. Amazon remains inaccessible; the user’s 17 at 4.8 is recorded separately, not treated as scraped evidence. Analysis: 43 captured texts. Star distributions and current combined rating remain unavailable.",
+    "freshness": "Live browser check: Amazon 4.8/5 from 17 ratings (+7 since Friday); Philips 4.7/5 from 33 shared reviews (+3). Combined estimate 4.73/5 across 50 ratings. Philips stars complete; Amazon exact star counts and new review text unavailable.",
     "new_review_ids": [
       "philips-scd871-Lunamoon_2-2026-10-10",
       "philips-scd871-Cooktest-2026-10-09",
@@ -137,14 +149,12 @@ const DATA = {
         "Amazon": null
       }
     },
-    "theme_note": "43 deduplicated texts: 33 Philips + 10 cached Amazon. Three Philips texts newly captured since 9 Oct; one (Mammamu) in the 14:13 retry. Ten Philips texts readable in this fetch. Three individual stars unavailable.",
+    "theme_note": "43 deduplicated texts: all 33 Philips re-read today + 10 Amazon texts cached from 9 Oct. All captured text-review stars are known. Seven additional Amazon ratings have no captured review text.",
     "new_content": "Mammamu praises picture quality and ease of use, and lists price as a drawback. Captured earlier today: Lunamoon_2 and Cooktest praise image, ease and battery; Cooktest has a qualified fixed-camera concern.",
     "coverage_gaps": [
-      "Amazon product and review pages inaccessible; cached from 9 Oct.",
-      "Philips SCD863 returned a stale page; do not treat its older count of 20 as current.",
-      "Philips star breakdown and three new review stars not readable.",
-      "Only ten Philips texts readable; full expansion blocked by local browser runtime.",
-      "bol SCD861 crawl is dated 9 Oct; bol SCD871 inaccessible.",
+      "Amazon current written-review pages return a non-functioning-page error; 10 older texts retained.",
+      "Amazon exact star counts unavailable; displayed percentages are not converted into counts.",
+      "No fresh bol check in this recovery retry.",
       "Amazon SCD861/SCD863 and bol SCD863 listings remain unverified."
     ],
     "sources_checked": {
@@ -156,7 +166,7 @@ const DATA = {
       },
       "philips871": {
         "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
-        "status": "retrieved 12 Oct 14:13 HKT",
+        "status": "Live browser verified all 33 review texts and stars",
         "rating": 4.7,
         "count": 33
       },
@@ -166,7 +176,7 @@ const DATA = {
       },
       "amazon": {
         "url": "https://www.amazon.de/dp/B0HBRDDJWG",
-        "status": "inaccessible"
+        "status": "Live browser verified: 4.8/5, 17 global ratings, percentages 86/14/0/0/0"
       },
       "bol861": {
         "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
@@ -178,19 +188,19 @@ const DATA = {
       },
       "amazonReviews": {
         "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
-        "status": "inaccessible in both web readers"
+        "status": "Amazon returned not a functioning page; same error following its own four-star review link"
       }
     },
-    "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run.",
-    "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable",
-    "last_attempt_at_hong_kong": "2026-10-12T14:13:00+08:00",
+    "local_runtime_status": "Windows restart resolved the runtime file lock. Shell and browser working.",
+    "comparison_scope": "Philips + Amazon total: 40 Friday → 50 Monday (+10 net). Exact per-star comparison available for Philips only.",
+    "last_attempt_at_hong_kong": "2026-10-12T18:13:40+08:00",
     "retry_attempt": {
-      "time": "2026-10-12T14:13:00+08:00",
-      "philips": "SCD871 #reviews independently returns 33 at 4.7; Mammamu text recovered; load-more link reopens same ten-review set.",
-      "amazon": "Exact user-supplied portal, simplified portal, recent-reviews and product URLs failed in web tools; no new rating or review data captured.",
-      "browser": "Two browser startup attempts failed with sandbox helper runtime errors.",
-      "new_texts_captured": 1,
-      "star_histograms_captured": 0
+      "time": "2026-10-12T18:13:40+08:00",
+      "philips": "All 33 texts and individual ratings captured; 23 five-star and 10 four-star.",
+      "amazon": "Product and rating popover verified 4.8/5 and 17 global ratings; both review links fail on Amazon.",
+      "browser": "Restored after Windows restart",
+      "new_texts_captured": 0,
+      "star_histograms_captured": 1
     }
   },
   "date": "2026-10-12",
@@ -217,7 +227,7 @@ const DATA = {
       "last_verified": "2026-10-09",
       "source_id": "1232210586",
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": "2026-10-09"
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Stef4n-2026-09-29",
@@ -240,7 +250,7 @@ const DATA = {
       "last_verified": "2026-10-09",
       "source_id": "1231945633",
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": "2026-10-09"
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Naninour88-2026-09-26",
@@ -260,7 +270,7 @@ const DATA = {
       "last_verified": "2026-10-09",
       "source_id": "1231328899",
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": "2026-10-09"
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Blitz279-2026-09-26",
@@ -278,7 +288,7 @@ const DATA = {
       "last_verified": "2026-10-09",
       "source_id": "1231304948",
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": "2026-10-09"
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-bambaer-2026-09-25",
@@ -297,7 +307,7 @@ const DATA = {
       "last_verified": "2026-10-09",
       "source_id": "1231134215",
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": "2026-10-09"
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Angix33-2026-09-25",
@@ -316,7 +326,7 @@ const DATA = {
       "last_verified": "2026-10-09",
       "source_id": "1231024236",
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": "2026-10-09"
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Christoffel94-2026-10-03",
@@ -333,8 +343,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1232436816",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Anonymous (Babyfoon)-2026-10-01",
@@ -352,8 +362,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1232233092",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Bilge21-2026-10-01",
@@ -371,8 +381,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1232215198",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Anoniem-A-2026-09-29",
@@ -391,8 +401,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1231827578",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Maola-2026-09-29",
@@ -406,8 +416,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1231786651",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-jacresp-2026-09-29",
@@ -424,8 +434,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1231780872",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Serlis-2026-09-28",
@@ -445,8 +455,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1231479666",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-MG08-2026-09-25",
@@ -464,8 +474,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1231031036",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Miirree1-2026-09-23",
@@ -485,8 +495,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1230643429",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Sunesune-2026-09-21",
@@ -503,8 +513,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1230337930",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Jack..E-2026-10-01",
@@ -523,8 +533,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1232221411",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Sandri81-2026-09-29",
@@ -543,8 +553,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1231926688",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Animalischer Tester-2026-09-27",
@@ -565,8 +575,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1231382535",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Adde_97-2026-10-04",
@@ -583,8 +593,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1232541973",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Oggie58-2026-10-03",
@@ -601,8 +611,8 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-09",
       "source_id": "1232477351",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Fölunge2026-2026-10-03",
@@ -621,8 +631,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1232455351",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Hopperiks-2026-10-01",
@@ -641,8 +651,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1232186852",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Nicksje123-2026-09-29",
@@ -663,8 +673,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1231792224",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Frassesmorsa-2026-09-24",
@@ -688,8 +698,8 @@ const DATA = {
       },
       "last_verified": "2026-10-09",
       "source_id": "1230848601",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Kattmjao-2026-09-21",
@@ -708,8 +718,8 @@ const DATA = {
       ],
       "last_verified": "2026-10-09",
       "source_id": "1230319484",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "R22EVOPIT6VTMX",
@@ -854,7 +864,7 @@ const DATA = {
       },
       "last_verified": "2026-10-09",
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": "2026-10-09"
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Svampbob97-2026-10-08",
@@ -877,7 +887,7 @@ const DATA = {
       },
       "last_verified": "2026-10-09",
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": "2026-10-09"
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Lampnisse-2026-10-07",
@@ -907,8 +917,8 @@ const DATA = {
       },
       "last_verified": "2026-10-09",
       "source_id": "1232847901",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "philips-scd871-Sissi95200-2026-10-04",
@@ -938,8 +948,8 @@ const DATA = {
       },
       "last_verified": "2026-10-09",
       "source_id": "1232508888",
-      "text_last_verified": "2026-10-09",
-      "stars_last_verified": "2026-10-09"
+      "text_last_verified": "2026-10-12",
+      "stars_last_verified": "2026-10-12"
     },
     {
       "key": "RJ3NW8FSMAA6P",
@@ -1043,7 +1053,7 @@ const DATA = {
       "reviewer": "Lunamoon_2",
       "date": "2026-10-10",
       "reviewed_sku": "SCD871/26",
-      "stars": null,
+      "stars": 5,
       "incentive": "Teil der Aktion",
       "positive": [
         "Satisfactory picture quality",
@@ -1057,7 +1067,7 @@ const DATA = {
         "Long parent-unit battery": "Su batería dura varios días"
       },
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": null,
+      "stars_last_verified": "2026-10-12",
       "first_seen": "2026-10-12",
       "star_status": "Not exposed in readable source; not inferred",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium"
@@ -1068,7 +1078,7 @@ const DATA = {
       "reviewer": "Cooktest",
       "date": "2026-10-09",
       "reviewed_sku": "SCD871/26",
-      "stars": null,
+      "stars": 5,
       "incentive": "Teil der Aktion",
       "positive": [
         "Satisfactory picture quality",
@@ -1087,7 +1097,7 @@ const DATA = {
         "No remote camera pan/tilt": "la caméra est fixe"
       },
       "text_last_verified": "2026-10-12",
-      "stars_last_verified": null,
+      "stars_last_verified": "2026-10-12",
       "first_seen": "2026-10-12",
       "star_status": "Not exposed in readable source; not inferred",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium",
@@ -1101,7 +1111,7 @@ const DATA = {
       "reviewer": "Mammamu",
       "date": "2026-10-09",
       "reviewed_sku": "SCD871/26",
-      "stars": null,
+      "stars": 5,
       "incentive": "Teil der Aktion",
       "positive": [
         "Satisfactory picture quality",
@@ -1117,7 +1127,7 @@ const DATA = {
       },
       "text_last_verified": "2026-10-12",
       "text_verified_at": "2026-10-12T14:13:00+08:00",
-      "stars_last_verified": null,
+      "stars_last_verified": "2026-10-12",
       "first_seen": "2026-10-12",
       "first_seen_at": "2026-10-12T14:13:00+08:00",
       "star_status": "Not exposed in readable source; not inferred",
@@ -2022,36 +2032,170 @@ const DATA = {
     },
     "2026-10-12": {
       "Philips.de": {
-        "complete": false,
+        "complete": true,
         "scope": "shared-scd871-pool",
-        "histogram": null,
-        "records": null,
+        "histogram": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 10,
+          "5": 23
+        },
+        "records": [
+          {
+            "id": "philips-scd871-hhome-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Stef4n-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Naninour88-2026-09-26",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Blitz279-2026-09-26",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-bambaer-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Angix33-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Christoffel94-2026-10-03",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Anonymous (Babyfoon)-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Bilge21-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Anoniem-A-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Maola-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-jacresp-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Serlis-2026-09-28",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-MG08-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Miirree1-2026-09-23",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Sunesune-2026-09-21",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Jack..E-2026-10-01",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Sandri81-2026-09-29",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Animalischer Tester-2026-09-27",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Adde_97-2026-10-04",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Oggie58-2026-10-03",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Fölunge2026-2026-10-03",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Hopperiks-2026-10-01",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Nicksje123-2026-09-29",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Frassesmorsa-2026-09-24",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Kattmjao-2026-09-21",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Mamma#2-2026-10-08",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Svampbob97-2026-10-08",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Lampnisse-2026-10-07",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Sissi95200-2026-10-04",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Lunamoon_2-2026-10-10",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Cooktest-2026-10-09",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Mammamu-2026-10-09",
+            "stars": 5
+          }
+        ],
         "rating_count": 33,
         "displayed_average": 4.7,
-        "checked_at_hong_kong": "2026-10-12T14:13:00+08:00",
-        "note": "SCD871 shared pool 33 verified, ten texts readable, no star histogram. Unknown stars not inferred.",
-        "observed_reviewers": [
-          "hhome",
-          "Stef4n",
-          "Naninour88",
-          "Blitz279",
-          "bambaer",
-          "Angix33",
-          "Lunamoon_2",
-          "Mammamu",
-          "Cooktest",
-          "Mamma#2"
-        ]
+        "checked_at_hong_kong": "2026-10-12T18:13:40+08:00",
+        "note": "All 33 individual reviews expanded and verified in the browser."
       },
       "Amazon.de": {
         "complete": false,
         "scope": "B0HBRDDJWG",
         "histogram": null,
         "records": null,
-        "rating_count": null,
-        "displayed_average": null,
-        "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
-        "note": "Inaccessible; last successful rating/review snapshot 9 Oct."
+        "rating_count": 17,
+        "displayed_average": 4.8,
+        "checked_at_hong_kong": "2026-10-12T18:13:40+08:00",
+        "note": "Product rating summary verified. Percentages are platform-displayed values, not exact counts. Written-review pages return an error.",
+        "displayed_star_percentages": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 14,
+          "5": 86
+        }
       },
       "bol.com": {
         "complete": false,
@@ -2253,7 +2397,7 @@ const DATA = {
     "2026-10-12": {
       "date": "2026-10-12",
       "timezone": "Asia/Hong_Kong",
-      "checked_at_hong_kong": "2026-10-12T14:13:00+08:00",
+      "checked_at_hong_kong": "2026-10-12T18:13:40+08:00",
       "status": "partial_source_refresh",
       "last_complete_date": "2026-10-09",
       "comparison_date": "2026-10-09",
@@ -2264,28 +2408,37 @@ const DATA = {
           "rating": 4.7,
           "rating_count": 33,
           "written_count": 33,
-          "readable_today": 10,
+          "readable_today": 33,
           "last_verified": "2026-10-12",
           "cached": false,
           "net_count_change": 3,
           "comparison_date": "2026-10-09",
-          "note": "33 shared reviews at 4.7/5 independently retrieved from SCD871 reviews on 12 Oct, 14:13 HKT; +3 versus Friday. Mammamu is newly captured. Ten texts readable in this fetch; individual stars unavailable.",
-          "last_verified_at": "2026-10-12T14:13:00+08:00"
+          "note": "33 shared reviews at 4.7/5 verified in the live browser. All 33 read and individual stars captured: 23 five-star, 10 four-star. +3 five-star reviews versus Friday.",
+          "last_verified_at": "2026-10-12T18:13:40+08:00"
         },
         "Amazon.de": {
-          "rating": 4.9,
-          "rating_count": 10,
-          "written_count": 10,
+          "rating": 4.8,
+          "rating_count": 17,
+          "written_count": null,
           "readable_today": 0,
-          "last_verified": "2026-10-09",
-          "cached": true,
-          "net_count_change": null,
-          "note": "Fresh fetch failed, including the supplied review-portal link. Last independently verified: 9 Oct, 4.9/5 and 10 ratings/texts. User observes 17 at 4.8 on 12 Oct; not independently confirmed and excluded from verified totals.",
+          "last_verified": "2026-10-12",
+          "cached": false,
+          "net_count_change": 7,
+          "note": "Live product page verified 4.8/5 and 17 global ratings (+7 since Friday). Rating summary shows 86% five-star / 14% four-star. Exact star counts and current written-review count unavailable: supplied portal and Amazon's own review link return a non-functioning-page error. Analysis retains 10 texts verified 9 Oct.",
           "user_observation": {
             "rating": 4.8,
             "count": 17,
             "observed_date": "2026-10-12",
-            "independently_verified": false
+            "independently_verified": true
+          },
+          "last_verified_at": "2026-10-12T18:13:40+08:00",
+          "comparison_date": "2026-10-09",
+          "displayed_star_percentages": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 14,
+            "5": 86
           }
         },
         "bol.com": {
@@ -2300,19 +2453,22 @@ const DATA = {
         }
       },
       "overall": {
-        "current_available": false,
+        "current_available": true,
         "last_verified_rating": 4.73,
         "last_verified_count": 40,
         "last_verified_date": "2026-10-09",
         "coded_review_count": 43,
-        "known_star_count": 40,
-        "unknown_star_count": 3,
-        "reason": "43 captured review texts; 40 known stars last verified 9 Oct, three unavailable stars. Current Amazon/bol data are unverified; retain last verified 4.73/5 from 40 known stars."
+        "known_star_count": 43,
+        "unknown_star_count": 0,
+        "reason": "Estimated 4.73/5 from rounded displayed scores: (33 × 4.7 + 17 × 4.8) / 50. Philips shared pool counted once; bol excluded (unverified). Written review analysis includes 33 current Philips and 10 cached Amazon texts.",
+        "rating": 4.734,
+        "rating_count": 50,
+        "estimated": true
       },
       "review_access": {
         "Philips.de": {
-          "readable_today": 10,
-          "cached_reviews": 23,
+          "readable_today": 33,
+          "cached_reviews": 0,
           "new_records_confirmed": 3,
           "last_text_check": "2026-10-12",
           "new_records_this_retry": 1
@@ -2328,7 +2484,7 @@ const DATA = {
           "new_records_confirmed": null
         }
       },
-      "freshness": "Partial verified refresh at 14:13 HKT: Philips 4.7/5 from 33 shared reviews (+3 since Friday); Mammamu newly captured. Amazon remains inaccessible; the user’s 17 at 4.8 is recorded separately, not treated as scraped evidence. Analysis: 43 captured texts. Star distributions and current combined rating remain unavailable.",
+      "freshness": "Live browser check: Amazon 4.8/5 from 17 ratings (+7 since Friday); Philips 4.7/5 from 33 shared reviews (+3). Combined estimate 4.73/5 across 50 ratings. Philips stars complete; Amazon exact star counts and new review text unavailable.",
       "new_review_ids": [
         "philips-scd871-Lunamoon_2-2026-10-10",
         "philips-scd871-Cooktest-2026-10-09",
@@ -2388,14 +2544,12 @@ const DATA = {
           "Amazon": null
         }
       },
-      "theme_note": "43 deduplicated texts: 33 Philips + 10 cached Amazon. Three Philips texts newly captured since 9 Oct; one (Mammamu) in the 14:13 retry. Ten Philips texts readable in this fetch. Three individual stars unavailable.",
+      "theme_note": "43 deduplicated texts: all 33 Philips re-read today + 10 Amazon texts cached from 9 Oct. All captured text-review stars are known. Seven additional Amazon ratings have no captured review text.",
       "new_content": "Mammamu praises picture quality and ease of use, and lists price as a drawback. Captured earlier today: Lunamoon_2 and Cooktest praise image, ease and battery; Cooktest has a qualified fixed-camera concern.",
       "coverage_gaps": [
-        "Amazon product and review pages inaccessible; cached from 9 Oct.",
-        "Philips SCD863 returned a stale page; do not treat its older count of 20 as current.",
-        "Philips star breakdown and three new review stars not readable.",
-        "Only ten Philips texts readable; full expansion blocked by local browser runtime.",
-        "bol SCD861 crawl is dated 9 Oct; bol SCD871 inaccessible.",
+        "Amazon current written-review pages return a non-functioning-page error; 10 older texts retained.",
+        "Amazon exact star counts unavailable; displayed percentages are not converted into counts.",
+        "No fresh bol check in this recovery retry.",
         "Amazon SCD861/SCD863 and bol SCD863 listings remain unverified."
       ],
       "sources_checked": {
@@ -2407,7 +2561,7 @@ const DATA = {
         },
         "philips871": {
           "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
-          "status": "retrieved 12 Oct 14:13 HKT",
+          "status": "Live browser verified all 33 review texts and stars",
           "rating": 4.7,
           "count": 33
         },
@@ -2417,7 +2571,7 @@ const DATA = {
         },
         "amazon": {
           "url": "https://www.amazon.de/dp/B0HBRDDJWG",
-          "status": "inaccessible"
+          "status": "Live browser verified: 4.8/5, 17 global ratings, percentages 86/14/0/0/0"
         },
         "bol861": {
           "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
@@ -2429,19 +2583,19 @@ const DATA = {
         },
         "amazonReviews": {
           "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
-          "status": "inaccessible in both web readers"
+          "status": "Amazon returned not a functioning page; same error following its own four-star review link"
         }
       },
-      "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run.",
-      "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable",
-      "last_attempt_at_hong_kong": "2026-10-12T14:13:00+08:00",
+      "local_runtime_status": "Windows restart resolved the runtime file lock. Shell and browser working.",
+      "comparison_scope": "Philips + Amazon total: 40 Friday → 50 Monday (+10 net). Exact per-star comparison available for Philips only.",
+      "last_attempt_at_hong_kong": "2026-10-12T18:13:40+08:00",
       "retry_attempt": {
-        "time": "2026-10-12T14:13:00+08:00",
-        "philips": "SCD871 #reviews independently returns 33 at 4.7; Mammamu text recovered; load-more link reopens same ten-review set.",
-        "amazon": "Exact user-supplied portal, simplified portal, recent-reviews and product URLs failed in web tools; no new rating or review data captured.",
-        "browser": "Two browser startup attempts failed with sandbox helper runtime errors.",
-        "new_texts_captured": 1,
-        "star_histograms_captured": 0
+        "time": "2026-10-12T18:13:40+08:00",
+        "philips": "All 33 texts and individual ratings captured; 23 five-star and 10 four-star.",
+        "amazon": "Product and rating popover verified 4.8/5 and 17 global ratings; both review links fail on Amazon.",
+        "browser": "Restored after Windows restart",
+        "new_texts_captured": 0,
+        "star_histograms_captured": 1
       }
     }
   },
@@ -2676,6 +2830,246 @@ const DATA = {
           "note": "No current verification; cached zero from 9 Oct only."
         }
       }
+    },
+    {
+      "check": {
+        "date": "2026-10-12",
+        "timezone": "Asia/Hong_Kong",
+        "checked_at_hong_kong": "2026-10-12T14:13:00+08:00",
+        "status": "partial_source_refresh",
+        "last_complete_date": "2026-10-09",
+        "comparison_date": "2026-10-09",
+        "comparison_available": true,
+        "theme_comparison_date": "2026-10-09",
+        "platforms": {
+          "Philips.de": {
+            "rating": 4.7,
+            "rating_count": 33,
+            "written_count": 33,
+            "readable_today": 10,
+            "last_verified": "2026-10-12",
+            "cached": false,
+            "net_count_change": 3,
+            "comparison_date": "2026-10-09",
+            "note": "33 shared reviews at 4.7/5 independently retrieved from SCD871 reviews on 12 Oct, 14:13 HKT; +3 versus Friday. Mammamu is newly captured. Ten texts readable in this fetch; individual stars unavailable.",
+            "last_verified_at": "2026-10-12T14:13:00+08:00"
+          },
+          "Amazon.de": {
+            "rating": 4.9,
+            "rating_count": 10,
+            "written_count": 10,
+            "readable_today": 0,
+            "last_verified": "2026-10-09",
+            "cached": true,
+            "net_count_change": null,
+            "note": "Fresh fetch failed, including the supplied review-portal link. Last independently verified: 9 Oct, 4.9/5 and 10 ratings/texts. User observes 17 at 4.8 on 12 Oct; not independently confirmed and excluded from verified totals.",
+            "user_observation": {
+              "rating": 4.8,
+              "count": 17,
+              "observed_date": "2026-10-12",
+              "independently_verified": false
+            }
+          },
+          "bol.com": {
+            "rating": null,
+            "rating_count": null,
+            "written_count": null,
+            "readable_today": 0,
+            "last_verified": null,
+            "cached": true,
+            "net_count_change": null,
+            "note": "No fresh check: SCD861 extraction crawled 9 Oct says no reviews; SCD871 inaccessible (last zero observed 9 Oct 10:26)."
+          }
+        },
+        "overall": {
+          "current_available": false,
+          "last_verified_rating": 4.73,
+          "last_verified_count": 40,
+          "last_verified_date": "2026-10-09",
+          "coded_review_count": 43,
+          "known_star_count": 40,
+          "unknown_star_count": 3,
+          "reason": "43 captured review texts; 40 known stars last verified 9 Oct, three unavailable stars. Current Amazon/bol data are unverified; retain last verified 4.73/5 from 40 known stars."
+        },
+        "review_access": {
+          "Philips.de": {
+            "readable_today": 10,
+            "cached_reviews": 23,
+            "new_records_confirmed": 3,
+            "last_text_check": "2026-10-12",
+            "new_records_this_retry": 1
+          },
+          "Amazon.de": {
+            "readable_today": 0,
+            "cached_reviews": 10,
+            "new_records_confirmed": null,
+            "last_text_check": "2026-10-09"
+          },
+          "bol.com": {
+            "readable_today": 0,
+            "new_records_confirmed": null
+          }
+        },
+        "freshness": "Partial verified refresh at 14:13 HKT: Philips 4.7/5 from 33 shared reviews (+3 since Friday); Mammamu newly captured. Amazon remains inaccessible; the user’s 17 at 4.8 is recorded separately, not treated as scraped evidence. Analysis: 43 captured texts. Star distributions and current combined rating remain unavailable.",
+        "new_review_ids": [
+          "philips-scd871-Lunamoon_2-2026-10-10",
+          "philips-scd871-Cooktest-2026-10-09",
+          "philips-scd871-Mammamu-2026-10-09"
+        ],
+        "new_mentions": {
+          "positive: Satisfactory picture quality": {
+            "Philips": 3,
+            "Amazon": null
+          },
+          "positive: Easy setup/use": {
+            "Philips": 3,
+            "Amazon": null
+          },
+          "positive: Works without Wi-Fi": {
+            "Philips": 1,
+            "Amazon": null
+          },
+          "positive: Long parent-unit battery": {
+            "Philips": 2,
+            "Amazon": null
+          },
+          "negative: Camera requires mains power": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: High price": {
+            "Philips": 1,
+            "Amazon": null
+          },
+          "negative: Missing mounting clamp": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: No remote camera pan/tilt": {
+            "Philips": 1,
+            "Amazon": null
+          },
+          "negative: Menu closes too quickly": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: Recording expectation mismatch": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: No remote smartphone monitoring": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: Limited parent-unit battery life": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: Missing motion detection": {
+            "Philips": 0,
+            "Amazon": null
+          }
+        },
+        "theme_note": "43 deduplicated texts: 33 Philips + 10 cached Amazon. Three Philips texts newly captured since 9 Oct; one (Mammamu) in the 14:13 retry. Ten Philips texts readable in this fetch. Three individual stars unavailable.",
+        "new_content": "Mammamu praises picture quality and ease of use, and lists price as a drawback. Captured earlier today: Lunamoon_2 and Cooktest praise image, ease and battery; Cooktest has a qualified fixed-camera concern.",
+        "coverage_gaps": [
+          "Amazon product and review pages inaccessible; cached from 9 Oct.",
+          "Philips SCD863 returned a stale page; do not treat its older count of 20 as current.",
+          "Philips star breakdown and three new review stars not readable.",
+          "Only ten Philips texts readable; full expansion blocked by local browser runtime.",
+          "bol SCD861 crawl is dated 9 Oct; bol SCD871 inaccessible.",
+          "Amazon SCD861/SCD863 and bol SCD863 listings remain unverified."
+        ],
+        "sources_checked": {
+          "philips861": {
+            "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
+            "status": "Earlier 12 Oct extraction showed 32; not independently revalidated at 33.",
+            "rating": 4.7,
+            "count": 32
+          },
+          "philips871": {
+            "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+            "status": "retrieved 12 Oct 14:13 HKT",
+            "rating": 4.7,
+            "count": 33
+          },
+          "philips863": {
+            "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
+            "status": "stale last-week extraction; not current"
+          },
+          "amazon": {
+            "url": "https://www.amazon.de/dp/B0HBRDDJWG",
+            "status": "inaccessible"
+          },
+          "bol861": {
+            "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
+            "status": "9 Oct crawl; not current"
+          },
+          "bol871": {
+            "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+            "status": "inaccessible"
+          },
+          "amazonReviews": {
+            "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
+            "status": "inaccessible in both web readers"
+          }
+        },
+        "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run.",
+        "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable",
+        "last_attempt_at_hong_kong": "2026-10-12T14:13:00+08:00",
+        "retry_attempt": {
+          "time": "2026-10-12T14:13:00+08:00",
+          "philips": "SCD871 #reviews independently returns 33 at 4.7; Mammamu text recovered; load-more link reopens same ten-review set.",
+          "amazon": "Exact user-supplied portal, simplified portal, recent-reviews and product URLs failed in web tools; no new rating or review data captured.",
+          "browser": "Two browser startup attempts failed with sandbox helper runtime errors.",
+          "new_texts_captured": 1,
+          "star_histograms_captured": 0
+        }
+      },
+      "ratingHistory": {
+        "Philips.de": {
+          "complete": false,
+          "scope": "shared-scd871-pool",
+          "histogram": null,
+          "records": null,
+          "rating_count": 33,
+          "displayed_average": 4.7,
+          "checked_at_hong_kong": "2026-10-12T14:13:00+08:00",
+          "note": "SCD871 shared pool 33 verified, ten texts readable, no star histogram. Unknown stars not inferred.",
+          "observed_reviewers": [
+            "hhome",
+            "Stef4n",
+            "Naninour88",
+            "Blitz279",
+            "bambaer",
+            "Angix33",
+            "Lunamoon_2",
+            "Mammamu",
+            "Cooktest",
+            "Mamma#2"
+          ]
+        },
+        "Amazon.de": {
+          "complete": false,
+          "scope": "B0HBRDDJWG",
+          "histogram": null,
+          "records": null,
+          "rating_count": null,
+          "displayed_average": null,
+          "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
+          "note": "Inaccessible; last successful rating/review snapshot 9 Oct."
+        },
+        "bol.com": {
+          "complete": false,
+          "scope": "9300000318462240+9300000318462235",
+          "histogram": null,
+          "records": null,
+          "rating_count": null,
+          "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
+          "note": "No current verification; cached zero from 9 Oct only."
+        }
+      },
+      "note": "Before recovery retry"
     }
   ]
 };

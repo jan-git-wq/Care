@@ -91,7 +91,10 @@ function renderChanges(changes,selected){
  else note+='Added counts use new review IDs since the previous weekday; edits and removals are excluded. ';
  note+='Monday compares with Friday and includes changes observed over the weekend. Other weekdays compare with the preceding weekday.';
  const starTotal=rows.every(r=>r.today!==null)?rows.reduce((n,r)=>n+r.today,0):null;
+ const amazonPercent=selected==='Amazon.de'?DATA.check.platforms['Amazon.de'].displayed_star_percentages:null;
+ if(amazonPercent){todayHeading='Today count';distributionHeading='Displayed share';rows=rows.map(r=>({...r,today:null,delta:null}));note='17 global ratings verified today, up from 10 on Friday (+7 net). Amazon displays percentages, not exact star counts; percentages are not converted to counts. New-review identities are unavailable.';}
  const distributionCell=r=>{
+  if(amazonPercent){const share=amazonPercent[r.star];return '<div class="distribution-cell"><div class="distribution-track"><i style="width:'+share+'%"></i></div><span>'+share+'%</span></div>';}
   if(r.today===null||starTotal===null)return '<span class="unavailable">Unavailable</span>';
   if(starTotal===0)return '<span class="unavailable">No ratings</span>';
   const percent=r.today/starTotal*100,share=percent.toFixed(1).replace(/\.0$/,'')+'%';
@@ -127,13 +130,16 @@ function ratingTrend(data,platform,range='week'){
    if(!histogramSource){available=false;continue;}
    for(const s of stars)histogram[s]+=histogramSource[s];
   }
-  const total=available?stars.reduce((n,s)=>n+histogram[s],0):null;
+  let total=available?stars.reduce((n,s)=>n+histogram[s],0):null;
   const reported=available?[]:platforms.flatMap(name=>{
    const entry=history[date]?.[name];
    return entry?.scope===scopes[name]&&Number.isFinite(entry.displayed_average)&&Number.isInteger(entry.rating_count)?
     [{platform:name,average:entry.displayed_average,count:entry.rating_count}]:[];
   });
-  points.push({date,stars:available?histogram:null,total,average:total?Math.round(stars.reduce((n,s)=>n+s*histogram[s],0)*100/total)/100:null,cached,reported});
+  const estimated=!available&&platform==='all'&&reported.length===platforms.length;
+  const estimateCount=estimated?reported.reduce((n,r)=>n+r.count,0):null;
+  const average=estimated?Math.round(reported.reduce((n,r)=>n+r.average*r.count,0)/estimateCount*100)/100:total?Math.round(stars.reduce((n,s)=>n+s*histogram[s],0)*100/total)/100:null;
+  points.push({date,stars:available?histogram:null,total:total??estimateCount,average,cached,reported:estimated?[]:reported,estimated});
  }
  return {points,platforms,firstRecorded:dates[0]||null,windowStart,daysBack};
 }
@@ -197,10 +203,10 @@ function trendLineChart(points,series,{title,average=false,unit='Rating count'})
      svg+='<line class="coverage-bridge" x1="'+x(i-1)+'" y1="'+y(bridgeValue)+'" x2="'+x(i)+'" y2="'+y(value)+'" stroke="'+s.colour+'" stroke-width="2.2" stroke-dasharray="5 4" aria-label="'+esc(bridgeLabel)+'"><title>'+esc(bridgeLabel)+'</title></line>';
     }
    }
-   if(previousValue!==null&&!s.isolated)svg+='<line x1="'+x(i-1)+'" y1="'+y(previousValue)+'" x2="'+x(i)+'" y2="'+y(value)+'" stroke="'+s.colour+'" stroke-width="2.2"'+(p.cached.length||prev.cached.length?' stroke-dasharray="5 4"':s.dash?' stroke-dasharray="'+s.dash+'"':'')+'/>';
+   if(previousValue!==null&&!s.isolated)svg+='<line x1="'+x(i-1)+'" y1="'+y(previousValue)+'" x2="'+x(i)+'" y2="'+y(value)+'" stroke="'+s.colour+'" stroke-width="2.2"'+(p.cached.length||prev.cached.length||p.estimated||prev.estimated?' stroke-dasharray="5 4"':s.dash?' stroke-dasharray="'+s.dash+'"':'')+'/>';
    const detail=s.tooltip?s.tooltip(p,value):fmtDate(p.date)+' · '+s.label+': '+(average?value.toFixed(2)+'/5':value)+(p.cached.length?' · cached: '+p.cached.join('; '):p.evidence?' · '+p.evidence:' · verified');
    svg+='<circle tabindex="0" class="line-point" cx="'+x(i)+'" cy="'+y(value)+'" r="'+(s.radius||3.5)+'" fill="'+(p.cached.length?'white':s.colour)+'" stroke="'+s.colour+'" stroke-width="1.7" aria-label="'+esc(detail)+'"><title>'+esc(detail)+'</title></circle>';
-   if(average&&(points.length<=7||s.isolated&&i===points.length-1))svg+='<text class="trend-total" x="'+x(i)+'" y="'+(y(value)-9)+'" text-anchor="'+(i===0?'start':i===points.length-1?'end':'middle')+'">'+(s.labelValue?s.labelValue(value):value.toFixed(2))+(p.cached.length?'*':'')+'</text>';
+   if(average&&(points.length<=7||s.isolated&&i===points.length-1))svg+='<text class="trend-total" x="'+x(i)+'" y="'+(y(value)-9)+'" text-anchor="'+(i===0?'start':i===points.length-1?'end':'middle')+'">'+(s.labelValue?s.labelValue(value):value.toFixed(2)+(p.estimated?'†':''))+(p.cached.length?'*':'')+'</text>';
   });
  }
  if(!series.some(s=>points.some(p=>s.value(p)!==null)))svg+='<text class="trend-axis" x="'+width/2+'" y="'+height/2+'" text-anchor="middle">No comparable ratings available</text>';
@@ -226,7 +232,7 @@ function renderTrend(){
  const latest=trend.points[trend.points.length-1],fresh=latest?.reported||[];
  const details=fresh.map(r=>r.platform+' '+r.average.toFixed(1)+'/5 · '+r.count+(r.platform==='Philips.de'?' reviews':' ratings')).join('; ');
  $('average-status').innerHTML=fresh.length?'<strong>'+fmtDate(latest.date)+' · '+esc(details)+'</strong><span>† Amber point = reported platform score'+(platform==='all'?'; the combined average is unavailable.':'; individual-star average unavailable.')+' Historical green points use known individual stars. The dashed amber link connects the previous weekday; its rating basis changes, so it is not a like-for-like trend.</span>':
-  latest?.average!==null&&latest?.average!==undefined?'<strong>'+fmtDate(latest.date)+' · '+latest.average.toFixed(2)+'/5</strong><span>Average of known individual stars.</span>':
+  latest?.average!==null&&latest?.average!==undefined?'<strong>'+fmtDate(latest.date)+' · '+latest.average.toFixed(2)+'/5'+(latest.estimated?' estimated':'')+'</strong><span>'+(latest.estimated?'Weighted estimate across '+latest.total+' ratings using rounded platform scores. The dashed connection to Friday marks this change in calculation.':'Average of known individual stars.')+'</span>':
   '<strong>'+fmtDate(DATA.date)+' · Current average unavailable</strong><span>The source did not provide enough current rating data. Earlier points retain their original dates.</span>';
  const todayChanges=dailyChanges(DATA,platform),currentGroups=todayChanges.groups.filter(g=>g.todayCount!==null);
  const countDetails=currentGroups.map(g=>g.name+': '+g.todayCount+(g.name==='Philips.de'?' reviews':' ratings')+(g.net!==null?' ('+(g.net>0?'+':'')+g.net+' since '+fmtDate(todayChanges.yesterday)+')':'')).join('; ');
@@ -240,21 +246,21 @@ function renderTrend(){
  $('star-mode-note').textContent=single?'Single day: captured written reviews on each displayed posting date. Not additions since the previous weekday’s check. A zero means no captured reviews dated that day; inaccessible reviews are excluded.':'Accumulated: total ratings at each saved snapshot, including any labelled cached baseline.';
  $('star-day-table').hidden=!single;
  $('star-day-body').innerHTML=single?starTrend.points.map(p=>'<tr><td>'+fmtDate(p.date)+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??'—')+'</td></tr>').join(''):'';
- $('trend-note').textContent='History starts '+(trend.firstRecorded?fmtDate(trend.firstRecorded):'when the first snapshot is captured')+'. Monday–Friday only; missing weekday snapshots leave gaps. Saturdays and Sundays are hidden. '+(platform==='all'?'Combined trends use Philips + Amazon; bol is excluded from this comparison. ':'')+'Hollow points and dashed segments use cached stars, with the verification date in the point tooltip. Green averages use individual star counts. Amber points (†) show a rounded platform score when the complete star distribution is unavailable; they are not combined averages. A dashed amber link connects adjacent reporting weekdays across this change in rating basis, not a like-for-like rating change.';
- $('trend-note').textContent+=' No complete star snapshot after 9 Oct; missing weekday stars are not zero.';
- $('star-mode-note').textContent+=' Weekend posting dates are hidden in Single day mode; those reviews remain in accumulated totals and review analysis. Three captured Philips reviews have unavailable stars and are excluded from star lines.';
+ $('trend-note').textContent='History starts '+(trend.firstRecorded?fmtDate(trend.firstRecorded):'when the first snapshot is captured')+'. Monday–Friday only; missing weekday snapshots leave gaps. Saturdays and Sundays are hidden. '+(platform==='all'?'Combined trends use Philips + Amazon; bol is excluded from this comparison. ':'')+'Hollow points and dashed segments use cached stars, with the verification date in the point tooltip. Green averages use individual star counts. Amber points (†) show a rounded platform score when the complete star distribution is unavailable. A dashed amber link connects adjacent reporting weekdays across this change in rating basis, not a like-for-like rating change.';
+ $('trend-note').textContent+=' Combined estimates (†) weight each rounded platform score by its rating count. Philips stars are complete on 12 Oct; Amazon exact star counts remain unavailable.';
+ $('star-mode-note').textContent+=' Weekend posting dates are hidden in Single day mode; those reviews remain in accumulated totals and review analysis. All 33 Philips review stars are verified on 12 Oct. Amazon single-day analysis retains 10 texts from 9 Oct; seven additional ratings have no captured text.';
  $('trend-table').hidden=false;
  $('trend-table-body').innerHTML=trend.points.map(p=>{
  const reported=p.reported.map(r=>r.platform+': '+r.average.toFixed(1)+'/5').join('; ');
  const counts=p.reported.map(r=>r.platform+': '+r.count).join('; ');
- return '<tr><td>'+fmtDate(p.date)+'</td><td>'+(p.average===null?(reported?esc(reported)+'†':'—'):p.average.toFixed(2))+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??(counts?esc(counts):'—'))+'</td><td>'+(p.reported.length?'Partial: reported platform score/count; star split unavailable':p.cached.length?esc(p.cached.join('; ')):p.total===null?'Unavailable':'Verified')+'</td></tr>';
+ return '<tr><td>'+fmtDate(p.date)+'</td><td>'+(p.average===null?(reported?esc(reported)+'†':'—'):p.average.toFixed(2))+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??(counts?esc(counts):'—'))+'</td><td>'+(p.estimated?'Estimated from rounded platform scores; exact combined star counts unavailable':p.reported.length?'Partial: reported platform score/count; star split unavailable':p.cached.length?esc(p.cached.join('; ')):p.total===null?'Unavailable':'Verified')+'</td></tr>';
  }).join('');
 }
 
 function mentionNote(t){
  const x=DATA.check.new_mentions[t.sentiment+': '+t.key]||{},sel=$('platform').value,notes=[];
  if(sel==='all'||sel==='Philips.de')notes.push('New Philips mentions since '+fmtDate(DATA.check.theme_comparison_date)+': +'+(x.Philips||0));
- if(sel==='all'||sel==='Amazon.de')notes.push('Amazon: scrape unavailable; new mentions unverified');
+ if(sel==='all'||sel==='Amazon.de')notes.push('Amazon: current total verified; new review-text mentions unavailable');
  return notes.join('<br>');
 }
 function render(){
@@ -264,10 +270,10 @@ function render(){
  const freshness=DATA.check.theme_note;
  const observedMean=rated.length?(Math.round(rated.reduce((sum,r)=>sum+r.stars,0)*100/rated.length)/100).toFixed(2):'Unavailable';
  const p=DATA.check.platforms[selected];
- const displayMean=total?DATA.check.overall.last_verified_rating.toFixed(2):p?.rating?.toFixed(1)||'Unavailable';
- const metrics=[[total?'Combined rating · last verified':'Platform rating'+(p?.cached&&p?.rating!==null?' · cached':''),displayMean,displayMean==='Unavailable'?'':' / 5',total?'9 Oct: 40 known stars. Current combined score unavailable; 3 captured reviews have unknown stars.':p?.rating===null?'Current rating unavailable':p?.cached?'Last verified '+fmtDate(p.last_verified||'2026-10-09'):'Displayed score checked '+fmtDate(DATA.date)],
- ['Written reviews analysed',n,'',total?'33 Philips + 10 Amazon; 3 new texts captured today':selected==='Philips.de'?'10 texts readable in latest fetch; other texts retained':selected==='Amazon.de'?'10 cached review texts from 9 Oct':'No fresh readable reviews'],
- ['Known ratings of 4–5 stars',rated.length?Math.round(high/rated.length*100)+'%':'Unavailable','',rated.length?rated.length+' known stars from 9 Oct'+(unknown?'; '+unknown+' stars unavailable':''):'Current star evidence unavailable'],
+ const displayMean=total?(DATA.check.overall.current_available?DATA.check.overall.rating:DATA.check.overall.last_verified_rating).toFixed(2):p?.rating?.toFixed(1)||'Unavailable';
+ const metrics=[[total?'Combined rating · estimate':'Platform rating'+(p?.cached&&p?.rating!==null?' · cached':''),displayMean,displayMean==='Unavailable'?'':' / 5',total?'50 ratings: 33 Philips + 17 Amazon. Weighted rounded platform scores; bol excluded.':p?.rating===null?'Current rating unavailable':p?.cached?'Last verified '+fmtDate(p.last_verified||'2026-10-09'):'Displayed score checked '+fmtDate(DATA.date)],
+ ['Written reviews analysed',n,'',total?'33 Philips + 10 Amazon; 3 new texts captured today':selected==='Philips.de'?'All 33 texts and stars verified today':selected==='Amazon.de'?'10 cached review texts from 9 Oct':'No fresh readable reviews'],
+ ['Known ratings of 4–5 stars',rated.length?Math.round(high/rated.length*100)+'%':'Unavailable','',rated.length?rated.length+' captured review stars; dates vary by platform'+(unknown?'; '+unknown+' stars unavailable':''):'Current star evidence unavailable'],
  ['Promotion / Vine',n?Math.round(incentivized/n*100)+'%':'Unavailable','',n?incentivized+' of '+n+' captured texts labelled':'No readable reviews']];
  $('overview').innerHTML=metrics.map(([l,v,s,note])=>`<article class="metric"><div class="metric-label">${l==='Combined rating'&&!total?'Platform rating':l}</div><div class="metric-value">${v==='Unavailable'?'<span class="unavailable-value">Unavailable</span>':v}<small>${s}</small></div><div class="metric-note">${note}</div></article>`).join('');
  const changes=dailyChanges(DATA,$('platform').value);
@@ -288,16 +294,16 @@ function render(){
 $('platform-cards').innerHTML=['Amazon.de','Philips.de','bol.com'].map(name=>{
  const p=DATA.check.platforms[name],rating=p.rating?.toFixed(1)||'Unavailable';
  const url=name==='Amazon.de'?DATA.sources.amazon:name==='Philips.de'?philips('SCD871/26'):DATA.sources.bol861;
- const count=name==='Philips.de'?'33 shared reviews; 10 texts readable in latest fetch':name==='Amazon.de'?'10 ratings / 10 reviews · cached 9 Oct':'Current rating/review count unavailable';
+ const count=name==='Philips.de'?'33 shared reviews; all 33 texts and stars verified':name==='Amazon.de'?'17 global ratings · 10 older review texts retained':'Current rating/review count unavailable';
  return '<article class="platform-card"><div class="platform-top"><h3>'+name+'</h3>'+(p.cached?'<span class="badge">CACHED / UNAVAILABLE</span>':'<span class="badge">CHECKED 12 OCT</span>')+'</div><div class="platform-score">'+rating+(p.rating?'<small> / 5'+(p.cached?' · cached':'')+'</small>':'')+'</div><p>'+count+'</p><div class="platform-bottom"><span>'+esc(p.note)+'</span><a href="'+url+'" target="_blank" rel="noopener">View source</a></div></article>';
 }).join('');
-$('coverage-body').innerHTML=['SCD861/26','SCD863/26','SCD871/26'].map(sku=>'<tr><td>'+sku+'<small>Non-connected video monitor</small></td><td>'+(sku==='SCD871/26'?'<a href="'+DATA.sources.amazon+'" target="_blank" rel="noopener">4.9 / 5 · cached</a><small>10 ratings · last verified 9 Oct</small>':'<span class="unverified">Not verified</span>')+'</td><td><a href="'+philips(sku)+'" target="_blank" rel="noopener">'+(sku==='SCD863/26'?'Page check unavailable':'4.7 / 5')+'</a><small>'+(sku==='SCD863/26'?'Shared pool known; this page returned stale extraction':'33 shared reviews · SCD871 source checked 12 Oct 14:13')+'</small></td><td>'+(sku==='SCD863/26'?'<span class="unverified">Not verified</span>':'<a href="'+(sku==='SCD861/26'?DATA.sources.bol861:DATA.sources.bol871)+'" target="_blank" rel="noopener">No fresh verification</a><small>'+(sku==='SCD861/26'?'9 Oct crawl: no reviews':'Last observed zero: 9 Oct 10:26')+'</small>')+'</td></tr>').join('');
+$('coverage-body').innerHTML=['SCD861/26','SCD863/26','SCD871/26'].map(sku=>'<tr><td>'+sku+'<small>Non-connected video monitor</small></td><td>'+(sku==='SCD871/26'?'<a href="'+DATA.sources.amazon+'" target="_blank" rel="noopener">4.8 / 5</a><small>17 ratings · checked 12 Oct</small>':'<span class="unverified">Not verified</span>')+'</td><td><a href="'+philips(sku)+'" target="_blank" rel="noopener">'+(sku==='SCD863/26'?'Page check unavailable':'4.7 / 5')+'</a><small>'+(sku==='SCD863/26'?'Shared pool known; this page returned stale extraction':'33 shared reviews · SCD871 source checked 12 Oct')+'</small></td><td>'+(sku==='SCD863/26'?'<span class="unverified">Not verified</span>':'<a href="'+(sku==='SCD861/26'?DATA.sources.bol861:DATA.sources.bol871)+'" target="_blank" rel="noopener">No fresh verification</a><small>'+(sku==='SCD861/26'?'9 Oct crawl: no reviews':'Last observed zero: 9 Oct 10:26')+'</small>')+'</td></tr>').join('');
 $('sources').innerHTML=[['Amazon · SCD871',DATA.sources.amazon],['Amazon · supplied review portal',DATA.sources.amazonReviews],...['SCD861/26','SCD863/26','SCD871/26'].map(s=>[`Philips · ${s}`,philips(s)]),['bol · SCD861',DATA.sources.bol861],['bol · SCD871',DATA.sources.bol871]].map(([label,url])=>`<a href="${url}" target="_blank" rel="noopener">${label} ↗</a>`).join('');
 $('platform').addEventListener('change',render);
 $('trend-range').addEventListener('change',renderTrend);
 $('star-trend-mode').addEventListener('change',renderTrend);
 $('trend-legend').addEventListener('click',event=>{const b=event.target.closest('button[data-trend-star]');if(!b)return;const star=Number(b.dataset.trendStar);hiddenTrendStars.has(star)?hiddenTrendStars.delete(star):hiddenTrendStars.add(star);renderTrend();});
-$('themes').addEventListener('click',e=>{const b=e.target.closest('button[data-theme]');if(!b)return;const rows=filtered().filter(r=>r[b.dataset.sentiment].includes(b.dataset.theme));const theme=DATA.themes.find(t=>t.key===b.dataset.theme);$('dialog-title').textContent=theme.label;$('dialog-description').textContent=`${rows.length} of ${filtered().length} selected reviews mention this theme. Each review is counted once. Three new Philips texts were captured on 12 October, including Mammamu in the 14:13 retry; older evidence includes cached reviews. Verification dates appear below.`;$('dialog-reviews').innerHTML=rows.sort((a,b)=>b.date.localeCompare(a.date)).map(r=>`<div class="evidence-row"><div><strong>${esc(r.reviewer)} · ${starLabel(r)}</strong><small>${fmtDate(r.date)} · ${r.platform} · ${r.reviewed_sku}</small><small>${esc(r.incentive)}</small><small>Text last verified ${fmtDate(r.text_last_verified||'2026-10-09')}; stars ${r.stars_last_verified?'last verified '+fmtDate(r.stars_last_verified):'unavailable'}</small>${(DATA.excerpts?.[r.key]||DATA.excerpts?.[r.reviewer])?.[b.dataset.theme]?`<blockquote class="evidence-quote">“${esc((DATA.excerpts[r.key]||DATA.excerpts[r.reviewer])[b.dataset.theme])}”</blockquote><span class="excerpt-label">English translation · short excerpt</span>${r.qualifications?.[b.dataset.theme]?`<p class="footnote">${esc(r.qualifications[b.dataset.theme])}</p>`:''} `:`<p class="quote-unavailable">Quotation unavailable for this review.</p><span class="excerpt-label">Theme recorded in the earlier review snapshot.</span>`}</div><a href="${source(r)}" target="_blank" rel="noopener">Original source ↗</a></div>`).join('');$('evidence').showModal()});
+$('themes').addEventListener('click',e=>{const b=e.target.closest('button[data-theme]');if(!b)return;const rows=filtered().filter(r=>r[b.dataset.sentiment].includes(b.dataset.theme));const theme=DATA.themes.find(t=>t.key===b.dataset.theme);$('dialog-title').textContent=theme.label;$('dialog-description').textContent=`${rows.length} of ${filtered().length} selected reviews mention this theme. Each review is counted once. All 33 Philips texts and stars were reverified on 12 October. Amazon evidence retains 10 texts checked 9 October. Verification dates appear below.`;$('dialog-reviews').innerHTML=rows.sort((a,b)=>b.date.localeCompare(a.date)).map(r=>`<div class="evidence-row"><div><strong>${esc(r.reviewer)} · ${starLabel(r)}</strong><small>${fmtDate(r.date)} · ${r.platform} · ${r.reviewed_sku}</small><small>${esc(r.incentive)}</small><small>Text last verified ${fmtDate(r.text_last_verified||'2026-10-09')}; stars ${r.stars_last_verified?'last verified '+fmtDate(r.stars_last_verified):'unavailable'}</small>${(DATA.excerpts?.[r.key]||DATA.excerpts?.[r.reviewer])?.[b.dataset.theme]?`<blockquote class="evidence-quote">“${esc((DATA.excerpts[r.key]||DATA.excerpts[r.reviewer])[b.dataset.theme])}”</blockquote><span class="excerpt-label">English translation · short excerpt</span>${r.qualifications?.[b.dataset.theme]?`<p class="footnote">${esc(r.qualifications[b.dataset.theme])}</p>`:''} `:`<p class="quote-unavailable">Quotation unavailable for this review.</p><span class="excerpt-label">Theme recorded in the earlier review snapshot.</span>`}</div><a href="${source(r)}" target="_blank" rel="noopener">Original source ↗</a></div>`).join('');$('evidence').showModal()});
 $('close-dialog').addEventListener('click',()=>$('evidence').close());
 $('evidence').addEventListener('click',e=>{if(e.target===$('evidence')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close()}});
 
