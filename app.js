@@ -190,6 +190,13 @@ function trendLineChart(points,series,{title,average=false,unit='Rating count'})
   points.forEach((p,i)=>{
    const value=s.value(p),prev=i?points[i-1]:null,previousValue=prev?s.value(prev):null;
    if(value===null)return;
+   if(s.bridgeFrom&&prev&&prev.date===previousWeekday(p.date)&&previousValue===null){
+    const bridgeValue=s.bridgeFrom(prev);
+    if(Number.isFinite(bridgeValue)){
+     const bridgeLabel=fmtDate(prev.date)+' to '+fmtDate(p.date)+' · '+s.bridgeDescription+'; visual connection only, not a like-for-like rating change';
+     svg+='<line class="coverage-bridge" x1="'+x(i-1)+'" y1="'+y(bridgeValue)+'" x2="'+x(i)+'" y2="'+y(value)+'" stroke="'+s.colour+'" stroke-width="2.2" stroke-dasharray="5 4" aria-label="'+esc(bridgeLabel)+'"><title>'+esc(bridgeLabel)+'</title></line>';
+    }
+   }
    if(previousValue!==null&&!s.isolated)svg+='<line x1="'+x(i-1)+'" y1="'+y(previousValue)+'" x2="'+x(i)+'" y2="'+y(value)+'" stroke="'+s.colour+'" stroke-width="2.2"'+(p.cached.length||prev.cached.length?' stroke-dasharray="5 4"':s.dash?' stroke-dasharray="'+s.dash+'"':'')+'/>';
    const detail=s.tooltip?s.tooltip(p,value):fmtDate(p.date)+' · '+s.label+': '+(average?value.toFixed(2)+'/5':value)+(p.cached.length?' · cached: '+p.cached.join('; '):p.evidence?' · '+p.evidence:' · verified');
    svg+='<circle tabindex="0" class="line-point" cx="'+x(i)+'" cy="'+y(value)+'" r="'+(s.radius||3.5)+'" fill="'+(p.cached.length?'white':s.colour)+'" stroke="'+s.colour+'" stroke-width="1.7" aria-label="'+esc(detail)+'"><title>'+esc(detail)+'</title></circle>';
@@ -209,6 +216,8 @@ function renderTrend(){
  const reportedPlatforms=[...new Set(trend.points.flatMap(p=>p.reported.map(r=>r.platform)))];
  const averageSeries=[{label:platform==='all'?'Combined average':'Average from known stars',colour:'#24745e',value:p=>p.average},
   ...reportedPlatforms.map((name,i)=>({label:name+' reported score',colour:['#b48232','#639bcc','#a45270'][i%3],isolated:true,radius:4.5,
+   bridgeFrom:p=>p.average,
+   bridgeDescription:platform==='all'?'Combined average switches to '+name+' only':'Individual-star average switches to the rounded platform score',
    value:p=>p.reported.find(r=>r.platform===name)?.average??null,
    labelValue:value=>value.toFixed(1)+'†',
    tooltip:(p,value)=>fmtDate(p.date)+' · '+name+' reported score: '+value.toFixed(1)+'/5 · '+p.reported.find(r=>r.platform===name).count+(name==='Philips.de'?' reviews':' ratings')+' · rounded platform score; not a combined average'
@@ -216,7 +225,7 @@ function renderTrend(){
  $('average-trend').innerHTML=trendLineChart(trend.points,averageSeries,{title:'Average rating over time, with separately labelled available platform scores',average:true});
  const latest=trend.points[trend.points.length-1],fresh=latest?.reported||[];
  const details=fresh.map(r=>r.platform+' '+r.average.toFixed(1)+'/5 · '+r.count+(r.platform==='Philips.de'?' reviews':' ratings')).join('; ');
- $('average-status').innerHTML=fresh.length?'<strong>'+fmtDate(latest.date)+' · '+esc(details)+'</strong><span>† Amber point = reported platform score'+(platform==='all'?'; the combined average is unavailable.':'; individual-star average unavailable.')+' Historical green points use known individual stars.</span>':
+ $('average-status').innerHTML=fresh.length?'<strong>'+fmtDate(latest.date)+' · '+esc(details)+'</strong><span>† Amber point = reported platform score'+(platform==='all'?'; the combined average is unavailable.':'; individual-star average unavailable.')+' Historical green points use known individual stars. The dashed amber link connects the previous weekday; its rating basis changes, so it is not a like-for-like trend.</span>':
   latest?.average!==null&&latest?.average!==undefined?'<strong>'+fmtDate(latest.date)+' · '+latest.average.toFixed(2)+'/5</strong><span>Average of known individual stars.</span>':
   '<strong>'+fmtDate(DATA.date)+' · Current average unavailable</strong><span>The source did not provide enough current rating data. Earlier points retain their original dates.</span>';
  const todayChanges=dailyChanges(DATA,platform),currentGroups=todayChanges.groups.filter(g=>g.todayCount!==null);
@@ -231,7 +240,7 @@ function renderTrend(){
  $('star-mode-note').textContent=single?'Single day: captured written reviews on each displayed posting date. Not additions since the previous weekday’s check. A zero means no captured reviews dated that day; inaccessible reviews are excluded.':'Accumulated: total ratings at each saved snapshot, including any labelled cached baseline.';
  $('star-day-table').hidden=!single;
  $('star-day-body').innerHTML=single?starTrend.points.map(p=>'<tr><td>'+fmtDate(p.date)+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??'—')+'</td></tr>').join(''):'';
- $('trend-note').textContent='History starts '+(trend.firstRecorded?fmtDate(trend.firstRecorded):'when the first snapshot is captured')+'. Monday–Friday only; missing weekday snapshots leave gaps. Saturdays and Sundays are hidden. '+(platform==='all'?'Combined trends use Philips + Amazon; bol is excluded from this comparison. ':'')+'Hollow points and dashed segments use cached stars, with the verification date in the point tooltip. Green averages use individual star counts. Separate amber points (†) show a rounded platform score when the complete star distribution is unavailable; they are not combined averages.';
+ $('trend-note').textContent='History starts '+(trend.firstRecorded?fmtDate(trend.firstRecorded):'when the first snapshot is captured')+'. Monday–Friday only; missing weekday snapshots leave gaps. Saturdays and Sundays are hidden. '+(platform==='all'?'Combined trends use Philips + Amazon; bol is excluded from this comparison. ':'')+'Hollow points and dashed segments use cached stars, with the verification date in the point tooltip. Green averages use individual star counts. Amber points (†) show a rounded platform score when the complete star distribution is unavailable; they are not combined averages. A dashed amber link connects adjacent reporting weekdays across this change in rating basis, not a like-for-like rating change.';
  $('trend-note').textContent+=' No complete star snapshot after 9 Oct; missing weekday stars are not zero.';
  $('star-mode-note').textContent+=' Weekend posting dates are hidden in Single day mode; those reviews remain in accumulated totals and review analysis. Two new Philips reviews have unavailable stars and are excluded from star lines.';
  $('trend-table').hidden=false;
