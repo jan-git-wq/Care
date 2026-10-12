@@ -7,9 +7,14 @@ const filtered=()=>DATA.reviews.filter(r=>$('platform').value==='all'||r.platfor
 const fmtDate=s=>new Date(s+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 $('date').textContent=fmtDate(DATA.date);
 $('freshness').textContent='Checked '+DATA.check.checked_at_hong_kong.slice(0,16).replace('T',' ')+' HKT. '+DATA.check.freshness;
+const isWeekday=date=>![0,6].includes(new Date(date+'T12:00:00Z').getUTCDay());
+function previousWeekday(date){
+ const day=new Date(date+'T12:00:00Z');
+ do{day.setUTCDate(day.getUTCDate()-1);}while([0,6].includes(day.getUTCDay()));
+ return day.toISOString().slice(0,10);
+}
 function dailyChanges(data,platform){
- const day=new Date(data.date+'T12:00:00Z');day.setUTCDate(day.getUTCDate()-1);
- const yesterday=day.toISOString().slice(0,10);
+ const yesterday=previousWeekday(data.date);
  const platforms=platform==='all'?['Philips.de','Amazon.de','bol.com']:[platform];
  const current=data.ratingHistory?.[data.date],previous=data.ratingHistory?.[yesterday];
  const stars=[5,4,3,2,1];
@@ -58,51 +63,41 @@ function combinedChanges(changes){
   })};
 }
 function renderChanges(changes,selected){
- const signed=n=>n>0?'+'+n:String(n),value=n=>n===null?'&mdash;':n,total=changes.total;
- $('change-dates').textContent=fmtDate(DATA.date)+' vs '+fmtDate(changes.yesterday)+' · Hong Kong dates';
+ const signed=n=>n>0?'+'+n:String(n),value=n=>n===null?'&mdash;':n;
+ const comparisonDate=changes.yesterday,total=changes.total;
+ const previousLabel=new Date(DATA.date+'T12:00:00Z').getUTCDay()===1?'Last Friday':'Previous weekday';
+ $('change-dates').textContent=fmtDate(DATA.date)+' vs '+fmtDate(comparisonDate)+' · '+previousLabel+' · Hong Kong dates';
  $('change-summary').innerHTML=total?
-  '<div class="change-total"><strong>'+signed(total.net)+'<small> net ratings</small></strong><div>'+total.yesterday+' yesterday &rarr; '+total.today+' today<small>'+esc(total.names.join(' + '))+(total.complete?'':' · partial coverage')+'</small></div></div>':
+  '<div class="change-total"><strong>'+signed(total.net)+'<small> net ratings</small></strong><div>'+total.yesterday+' previous &rarr; '+total.today+' current<small>'+esc(total.names.join(' + '))+(total.complete?'':' · partial coverage')+'</small></div></div>':
   '<p class="footnote">A comparable total is unavailable for this selection.</p>';
- let rows,heading,yesterdayHeading='Yesterday',note,todayHeading='Today',distributionHeading='Today’s distribution';
- if(selected==='all'){
-  const combined=combinedChanges(changes);
-  rows=combined.rows;heading=combined.identifiable?'Added':combined.cached.length?'Change*':'Net change';
-  if(combined.cached.length)yesterdayHeading='Yesterday*';
-  note=(combined.excluded.length?'Includes '+combined.names.join(' + ')+'. '+combined.excluded.join(', ')+' excluded: incomplete comparable coverage. ':'')+
-   (combined.cached.length?'* Saved baseline includes '+combined.cached.map(g=>g.name+' stars last verified '+fmtDate(g.referenceDate)).join('; ')+'. Star changes compare with that saved baseline; they are not confirmed one-day additions.':
-    combined.identifiable?'Added counts use new review IDs since yesterday; edits and removals are excluded.':'Net changes can include additions, edits or removals. Actual additions are unavailable without matching review IDs.');
- }else{
-  const g=changes.groups[0],usesNet=!g.identifiable&&g.comparable;
-  heading=g.referenceDate?'Change*':usesNet?'Net change':'Added';
-  yesterdayHeading=g.referenceDate?'Yesterday*':'Yesterday';
-  rows=g.rows.map(r=>({star:r.star,yesterday:r.yesterday??r.savedYesterday,today:r.today,delta:g.referenceDate?r.changeFromSaved:usesNet?r.net:r.added}));
-  note=g.identifiable?'Added = newly observed review IDs since yesterday. Existing rating edits and removals are excluded.':
-   g.referenceDate?'* Saved stars last verified '+fmtDate(g.referenceDate)+'. Yesterday’s total of '+g.yesterdayCount+' was verified. Star changes compare with the saved baseline, not confirmed one-day additions.':
-   usesNet?'Net changes may include additions, edits or removals; actual additions are unavailable.':
-   'Some star counts or review IDs are unavailable. A dash means unavailable, not zero.';
- }
+ const names=selected==='all'?['Philips.de','Amazon.de']:[selected];
+ const groups=changes.groups.filter(g=>names.includes(g.name));
+ const sum=field=>i=>groups.every(g=>g.rows[i][field]!==null)?groups.reduce((n,g)=>n+g.rows[i][field],0):null;
+ const identifiable=groups.every(g=>g.identifiable),comparable=groups.every(g=>g.comparable);
+ let rows=[5,4,3,2,1].map((star,i)=>({star,yesterday:sum('yesterday')(i),today:sum('today')(i),delta:identifiable?sum('added')(i):comparable?sum('net')(i):null}));
+ let todayHeading='Today',distributionHeading='Today’s distribution',heading=identifiable?'Added':'Net change';
+ let note=selected==='all'?'Star distribution covers Philips + Amazon; bol lacks comparable coverage. ':'';
  if(rows.every(r=>r.today===null)){
-  const platforms=selected==='all'?['Philips.de','Amazon.de']:[selected];
-  const older=Object.keys(DATA.ratingHistory).filter(date=>date<DATA.date).sort().reverse();
-  const priorDate=older.find(date=>platforms.every(p=>DATA.ratingHistory[date]?.[p]?.complete&&DATA.ratingHistory[date][p].histogram&&DATA.ratingHistory[date][p].scope===DATA.ratingHistory[DATA.date]?.[p]?.scope));
+  const priorDate=Object.keys(DATA.ratingHistory).filter(date=>date<DATA.date&&isWeekday(date)).sort().reverse().find(date=>names.every(p=>DATA.ratingHistory[date]?.[p]?.complete&&DATA.ratingHistory[date][p].histogram&&DATA.ratingHistory[date][p].scope===DATA.ratingHistory[DATA.date]?.[p]?.scope));
   if(priorDate){
-   rows=rows.map(r=>({...r,today:platforms.reduce((n,p)=>n+DATA.ratingHistory[priorDate][p].histogram[r.star],0),delta:null}));
+   rows=rows.map(r=>({...r,today:names.reduce((n,p)=>n+DATA.ratingHistory[priorDate][p].histogram[r.star],0),delta:null}));
    todayHeading='Last known*';distributionHeading='Last known distribution*';
-   note='* Star counts last verified '+fmtDate(priorDate)+'. Current star distribution is unavailable.'+(selected==='all'||selected==='Philips.de'?' Two newly captured Philips reviews have unknown stars.':'')+' No snapshot exists for '+fmtDate(changes.yesterday)+', so daily changes are unavailable.';
+   note+='* Star counts last verified '+fmtDate(priorDate)+', not today. Current star distribution and per-star changes are unavailable. ';
   }
  }
- if(!DATA.ratingHistory[changes.yesterday]){
-  $('change-summary').innerHTML='<div class="change-total"><div>Yesterday’s comparison unavailable<small>No '+fmtDate(changes.yesterday)+' snapshot.'+(selected==='all'||selected==='Philips.de'?' Philips now has 32 reviews (+2 since 9 Oct).':'')+'</small></div></div>';
-  if(!note.includes('No snapshot'))note+=' No '+fmtDate(changes.yesterday)+' snapshot exists; do not treat missing counts as zero.';
- }
- const todayTotal=rows.every(r=>r.today!==null)?rows.reduce((n,r)=>n+r.today,0):null;
+ if(total)note+='Comparable total: '+total.names.join(' + ')+', '+total.yesterday+' on '+fmtDate(comparisonDate)+' to '+total.today+' on '+fmtDate(DATA.date)+' ('+signed(total.net)+'). ';
+ if(!DATA.ratingHistory[comparisonDate])note+='No '+fmtDate(comparisonDate)+' snapshot exists; missing counts are not zero. ';
+ else if(!identifiable)note+='Actual additions by star cannot be established without comparable star counts and review IDs. ';
+ else note+='Added counts use new review IDs since the previous weekday; edits and removals are excluded. ';
+ note+='Monday compares with Friday and includes changes observed over the weekend. Other weekdays compare with the preceding weekday.';
+ const starTotal=rows.every(r=>r.today!==null)?rows.reduce((n,r)=>n+r.today,0):null;
  const distributionCell=r=>{
-  if(r.today===null||todayTotal===null)return '<span class="unavailable">Unavailable</span>';
-  if(todayTotal===0)return '<span class="unavailable">No ratings</span>';
-  const percent=r.today/todayTotal*100,share=percent.toFixed(1).replace(/\.0$/,'')+'%';
+  if(r.today===null||starTotal===null)return '<span class="unavailable">Unavailable</span>';
+  if(starTotal===0)return '<span class="unavailable">No ratings</span>';
+  const percent=r.today/starTotal*100,share=percent.toFixed(1).replace(/\.0$/,'')+'%';
   return '<div class="distribution-cell"><div class="distribution-track" aria-hidden="true"><i style="width:'+percent+'%"></i></div><span>'+share+'</span></div>';
  };
- $('daily-changes').innerHTML='<div class="table-scroll distribution-comparison"><table aria-label="'+(selected==='all'?'Combined':esc(selected))+' rating distribution and count changes"><thead><tr><th scope="col">Star</th><th scope="col">'+distributionHeading+'</th><th scope="col">'+yesterdayHeading+'</th><th scope="col">'+todayHeading+'</th><th scope="col">'+heading+'</th></tr></thead><tbody>'+
+ $('daily-changes').innerHTML='<div class="table-scroll distribution-comparison"><table aria-label="'+(selected==='all'?'Combined':esc(selected))+' rating distribution and count changes"><thead><tr><th scope="col">Star</th><th scope="col">'+distributionHeading+'</th><th scope="col">'+previousLabel+'</th><th scope="col">'+todayHeading+'</th><th scope="col">'+heading+'</th></tr></thead><tbody>'+
   rows.map(r=>'<tr><th scope="row">'+r.star+' &#9733;</th><td>'+distributionCell(r)+'</td><td>'+value(r.yesterday)+'</td><td class="today-count">'+value(r.today)+'</td><td>'+(r.delta===null?'<span class="unavailable">Unavailable</span>':'<span class="delta-badge '+(r.delta>0?'positive':r.delta<0?'negative':'unchanged')+'">'+signed(r.delta)+'</span>')+'</td></tr>').join('')+
   '</tbody></table></div>';
  $('change-note').textContent=note;
@@ -118,6 +113,7 @@ function ratingTrend(data,platform,range='week'){
  const scopes=Object.fromEntries(platforms.map(p=>[p,history[data.date]?.[p]?.scope]));
  const points=[];
  for(let cursor=new Date(start+'T12:00:00Z');cursor<=end;cursor.setUTCDate(cursor.getUTCDate()+1)){
+  if([0,6].includes(cursor.getUTCDay()))continue;
   const date=cursor.toISOString().slice(0,10),histogram={1:0,2:0,3:0,4:0,5:0},cached=[];
   let available=true;
   for(const p of platforms){
@@ -152,6 +148,7 @@ function singleDayStarTrend(data,platform,range='week'){
  const readable=reviews.length>0;
  const points=[];
  for(let cursor=new Date(start+'T12:00:00Z');cursor<=end;cursor.setUTCDate(cursor.getUTCDate()+1)){
+  if([0,6].includes(cursor.getUTCDay()))continue;
   points.push({date:cursor.toISOString().slice(0,10),stars:readable?{1:0,2:0,3:0,4:0,5:0}:null,total:readable?0:null,cached:[],evidence:'captured reviews by posting date'});
  }
  const byDate=new Map(points.map(p=>[p.date,p]));
@@ -205,12 +202,12 @@ function renderTrend(){
  $('review-trend').innerHTML=trendLineChart(starTrend.points,stars.filter(s=>!hiddenTrendStars.has(s)).map(s=>({label:s+'-star ratings',colour:colours[s],value:p=>p.stars?.[s]??null,radius:2+s*.4,dash:s<=3?s+' 3':null})),{title:single?'Single-day review counts by posting date and star rating':'Accumulated rating counts by snapshot date and star rating',unit:single?'Reviews on this date':'Accumulated ratings'});
  const zeros=stars.filter(s=>starTrend.points.some(p=>p.stars)&&starTrend.points.every(p=>!p.stars||p.stars[s]===0));
  $('trend-zero-note').textContent=zeros.length?zeros.join(', ')+'-star counts remain zero in the selected dates; these lines overlap at zero. Select a star in the legend to hide or show its line.':'Select a star in the legend to hide or show its line.';
- $('star-mode-note').textContent=single?'Single day: captured written reviews on each displayed posting date. Not additions since yesterday’s check. A zero means no captured reviews dated that day; inaccessible reviews are excluded.':'Accumulated: total ratings at each saved snapshot, including any labelled cached baseline.';
+ $('star-mode-note').textContent=single?'Single day: captured written reviews on each displayed posting date. Not additions since the previous weekday’s check. A zero means no captured reviews dated that day; inaccessible reviews are excluded.':'Accumulated: total ratings at each saved snapshot, including any labelled cached baseline.';
  $('star-day-table').hidden=!single;
  $('star-day-body').innerHTML=single?starTrend.points.map(p=>'<tr><td>'+fmtDate(p.date)+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??'—')+'</td></tr>').join(''):'';
- $('trend-note').textContent='History starts '+(trend.firstRecorded?fmtDate(trend.firstRecorded):'when the first snapshot is captured')+'. Only recorded dates are plotted; missing snapshots leave gaps. '+(platform==='all'?'Combined trends use Philips + Amazon; bol is excluded from this comparison. ':'')+'Hollow points and dashed segments use cached stars, with the verification date in the point tooltip. Averages are calculated from individual star counts.';
- $('trend-note').textContent+=' No complete star snapshot after 9 Oct; 10–12 Oct gaps are not zero.';
- $('star-mode-note').textContent+=' Two new Philips reviews have unavailable stars and are excluded from star lines.';
+ $('trend-note').textContent='History starts '+(trend.firstRecorded?fmtDate(trend.firstRecorded):'when the first snapshot is captured')+'. Monday–Friday only; missing weekday snapshots leave gaps. Saturdays and Sundays are hidden. '+(platform==='all'?'Combined trends use Philips + Amazon; bol is excluded from this comparison. ':'')+'Hollow points and dashed segments use cached stars, with the verification date in the point tooltip. Averages are calculated from individual star counts.';
+ $('trend-note').textContent+=' No complete star snapshot after 9 Oct; missing weekday stars are not zero.';
+ $('star-mode-note').textContent+=' Weekend posting dates are hidden in Single day mode; those reviews remain in accumulated totals and review analysis. Two new Philips reviews have unavailable stars and are excluded from star lines.';
  $('trend-table').hidden=false;
  $('trend-table-body').innerHTML=trend.points.map(p=>'<tr><td>'+fmtDate(p.date)+'</td><td>'+(p.average===null?'—':p.average.toFixed(2))+'</td>'+stars.map(s=>'<td>'+(p.stars?.[s]??'—')+'</td>').join('')+'<td>'+(p.total??'—')+'</td><td>'+(p.cached.length?esc(p.cached.join('; ')):p.total===null?'Unavailable':'Verified')+'</td></tr>').join('');
 }

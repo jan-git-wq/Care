@@ -5,8 +5,8 @@ const DATA = {
     "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
     "status": "partial_source_refresh",
     "last_complete_date": "2026-10-09",
-    "comparison_date": "2026-10-11",
-    "comparison_available": false,
+    "comparison_date": "2026-10-09",
+    "comparison_available": true,
     "theme_comparison_date": "2026-10-09",
     "platforms": {
       "Philips.de": {
@@ -69,7 +69,7 @@ const DATA = {
         "new_records_confirmed": null
       }
     },
-    "freshness": "Partial refresh. Philips: 4.7/5, 32 shared reviews (+2 since 9 Oct); two new texts captured, stars unavailable. Amazon: 4.9/5 and 10 ratings cached from 9 Oct. bol: no fresh verification. No 11 Oct snapshot; yesterday’s changes unavailable.",
+    "freshness": "Partial refresh. Philips: 4.7/5, 32 shared reviews (+2 since 9 Oct); two new texts captured, stars unavailable. Amazon: 4.9/5 and 10 ratings cached from 9 Oct. bol: no fresh verification. Monday compares with Friday 9 Oct: Philips +2 reviews; per-star changes and current Amazon/bol comparisons unavailable.",
     "new_review_ids": [
       "philips-scd871-Lunamoon_2-2026-10-10",
       "philips-scd871-Cooktest-2026-10-09"
@@ -128,10 +128,9 @@ const DATA = {
         "Amazon": null
       }
     },
-    "theme_note": "42 deduplicated texts: 32 Philips + 10 Amazon. Two new Philips texts captured today; earlier evidence retained. New mentions compare with 9 Oct, not yesterday. Ten Philips texts are readable today; individual stars are not exposed.",
+    "theme_note": "42 deduplicated texts: 32 Philips + 10 Amazon. Two new Philips texts captured today; earlier evidence retained. New mentions compare with 9 Oct, the previous reporting weekday. Ten Philips texts are readable today; individual stars are not exposed.",
     "new_content": "Lunamoon_2 and Cooktest praise picture quality, easy operation and battery life. Cooktest also values the lack of internet dependence and raises a qualified concern about the fixed camera.",
     "coverage_gaps": [
-      "No 11 Oct snapshot exists in published history.",
       "Amazon product and review pages inaccessible; cached from 9 Oct.",
       "Philips SCD863 returned a stale page; do not treat its older count of 20 as current.",
       "Philips star breakdown and two new review stars not readable.",
@@ -169,7 +168,8 @@ const DATA = {
         "status": "inaccessible"
       }
     },
-    "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run."
+    "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run.",
+    "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable"
   },
   "date": "2026-10-12",
   "timezone": "Asia/Hong_Kong",
@@ -2200,8 +2200,8 @@ const DATA = {
       "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
       "status": "partial_source_refresh",
       "last_complete_date": "2026-10-09",
-      "comparison_date": "2026-10-11",
-      "comparison_available": false,
+      "comparison_date": "2026-10-09",
+      "comparison_available": true,
       "theme_comparison_date": "2026-10-09",
       "platforms": {
         "Philips.de": {
@@ -2228,7 +2228,7 @@ const DATA = {
         "bol.com": {
           "rating": null,
           "rating_count": null,
-          "written_count": 0,
+          "written_count": null,
           "readable_today": 0,
           "last_verified": null,
           "cached": true,
@@ -2264,7 +2264,7 @@ const DATA = {
           "new_records_confirmed": null
         }
       },
-      "freshness": "Partial refresh. Philips: 4.7/5, 32 shared reviews (+2 since 9 Oct); two new texts captured, stars unavailable. Amazon: 4.9/5 and 10 ratings cached from 9 Oct. bol: no fresh verification. No 11 Oct snapshot; yesterday’s changes unavailable.",
+      "freshness": "Partial refresh. Philips: 4.7/5, 32 shared reviews (+2 since 9 Oct); two new texts captured, stars unavailable. Amazon: 4.9/5 and 10 ratings cached from 9 Oct. bol: no fresh verification. Monday compares with Friday 9 Oct: Philips +2 reviews; per-star changes and current Amazon/bol comparisons unavailable.",
       "new_review_ids": [
         "philips-scd871-Lunamoon_2-2026-10-10",
         "philips-scd871-Cooktest-2026-10-09"
@@ -2323,10 +2323,9 @@ const DATA = {
           "Amazon": null
         }
       },
-      "theme_note": "42 deduplicated texts: 32 Philips + 10 Amazon. Two new Philips texts captured today; earlier evidence retained. New mentions compare with 9 Oct, not yesterday. Ten Philips texts are readable today; individual stars are not exposed.",
+      "theme_note": "42 deduplicated texts: 32 Philips + 10 Amazon. Two new Philips texts captured today; earlier evidence retained. New mentions compare with 9 Oct, the previous reporting weekday. Ten Philips texts are readable today; individual stars are not exposed.",
       "new_content": "Lunamoon_2 and Cooktest praise picture quality, easy operation and battery life. Cooktest also values the lack of internet dependence and raises a qualified concern about the fixed camera.",
       "coverage_gaps": [
-        "No 11 Oct snapshot exists in published history.",
         "Amazon product and review pages inaccessible; cached from 9 Oct.",
         "Philips SCD863 returned a stale page; do not treat its older count of 20 as current.",
         "Philips star breakdown and two new review stars not readable.",
@@ -2364,7 +2363,21 @@ const DATA = {
           "status": "inaccessible"
         }
       },
-      "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run."
+      "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run.",
+      "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable"
     }
+  },
+  "reporting_schedule": {
+    "timezone": "Asia/Hong_Kong",
+    "days": [
+      "MO",
+      "TU",
+      "WE",
+      "TH",
+      "FR"
+    ],
+    "time": "09:00",
+    "comparison": "previous_weekday",
+    "weekend_reviews": "Retain in review ledger and accumulated totals; show no weekend chart points."
   }
 };
