@@ -2,7 +2,7 @@ const DATA = {
   "check": {
     "date": "2026-10-12",
     "timezone": "Asia/Hong_Kong",
-    "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
+    "checked_at_hong_kong": "2026-10-12T14:13:00+08:00",
     "status": "partial_source_refresh",
     "last_complete_date": "2026-10-09",
     "comparison_date": "2026-10-09",
@@ -11,14 +11,15 @@ const DATA = {
     "platforms": {
       "Philips.de": {
         "rating": 4.7,
-        "rating_count": 32,
-        "written_count": 32,
+        "rating_count": 33,
+        "written_count": 33,
         "readable_today": 10,
         "last_verified": "2026-10-12",
         "cached": false,
-        "net_count_change": 2,
+        "net_count_change": 3,
         "comparison_date": "2026-10-09",
-        "note": "Shared pool: 32 reviews on SCD861 and SCD871 today; +2 since 9 Oct. Ten review texts readable; star distribution unavailable."
+        "note": "33 shared reviews at 4.7/5 independently retrieved from SCD871 reviews on 12 Oct, 14:13 HKT; +3 versus Friday. Mammamu is newly captured. Ten texts readable in this fetch; individual stars unavailable.",
+        "last_verified_at": "2026-10-12T14:13:00+08:00"
       },
       "Amazon.de": {
         "rating": 4.9,
@@ -28,7 +29,13 @@ const DATA = {
         "last_verified": "2026-10-09",
         "cached": true,
         "net_count_change": null,
-        "note": "Unavailable today. Last verified 9 Oct: 4.9/5, 10 ratings and 10 written reviews."
+        "note": "Fresh fetch failed, including the supplied review-portal link. Last independently verified: 9 Oct, 4.9/5 and 10 ratings/texts. User observes 17 at 4.8 on 12 Oct; not independently confirmed and excluded from verified totals.",
+        "user_observation": {
+          "rating": 4.8,
+          "count": 17,
+          "observed_date": "2026-10-12",
+          "independently_verified": false
+        }
       },
       "bol.com": {
         "rating": null,
@@ -46,17 +53,18 @@ const DATA = {
       "last_verified_rating": 4.73,
       "last_verified_count": 40,
       "last_verified_date": "2026-10-09",
-      "coded_review_count": 42,
+      "coded_review_count": 43,
       "known_star_count": 40,
-      "unknown_star_count": 2,
-      "reason": "Current combined rating cannot be verified. Display retains the exact mean of 40 stars last verified 9 Oct (189/40=4.725); two new reviews have unavailable stars, Amazon is inaccessible and bol is not fresh."
+      "unknown_star_count": 3,
+      "reason": "43 captured review texts; 40 known stars last verified 9 Oct, three unavailable stars. Current Amazon/bol data are unverified; retain last verified 4.73/5 from 40 known stars."
     },
     "review_access": {
       "Philips.de": {
         "readable_today": 10,
-        "cached_reviews": 22,
-        "new_records_confirmed": 2,
-        "last_text_check": "2026-10-12"
+        "cached_reviews": 23,
+        "new_records_confirmed": 3,
+        "last_text_check": "2026-10-12",
+        "new_records_this_retry": 1
       },
       "Amazon.de": {
         "readable_today": 0,
@@ -69,18 +77,19 @@ const DATA = {
         "new_records_confirmed": null
       }
     },
-    "freshness": "Partial refresh. Philips: 4.7/5, 32 shared reviews (+2 since 9 Oct); two new texts captured, stars unavailable. Amazon: 4.9/5 and 10 ratings cached from 9 Oct. bol: no fresh verification. Monday compares with Friday 9 Oct: Philips +2 reviews; per-star changes and current Amazon/bol comparisons unavailable.",
+    "freshness": "Partial verified refresh at 14:13 HKT: Philips 4.7/5 from 33 shared reviews (+3 since Friday); Mammamu newly captured. Amazon remains inaccessible; the user’s 17 at 4.8 is recorded separately, not treated as scraped evidence. Analysis: 43 captured texts. Star distributions and current combined rating remain unavailable.",
     "new_review_ids": [
       "philips-scd871-Lunamoon_2-2026-10-10",
-      "philips-scd871-Cooktest-2026-10-09"
+      "philips-scd871-Cooktest-2026-10-09",
+      "philips-scd871-Mammamu-2026-10-09"
     ],
     "new_mentions": {
       "positive: Satisfactory picture quality": {
-        "Philips": 2,
+        "Philips": 3,
         "Amazon": null
       },
       "positive: Easy setup/use": {
-        "Philips": 2,
+        "Philips": 3,
         "Amazon": null
       },
       "positive: Works without Wi-Fi": {
@@ -96,7 +105,7 @@ const DATA = {
         "Amazon": null
       },
       "negative: High price": {
-        "Philips": 0,
+        "Philips": 1,
         "Amazon": null
       },
       "negative: Missing mounting clamp": {
@@ -128,12 +137,12 @@ const DATA = {
         "Amazon": null
       }
     },
-    "theme_note": "42 deduplicated texts: 32 Philips + 10 Amazon. Two new Philips texts captured today; earlier evidence retained. New mentions compare with 9 Oct, the previous reporting weekday. Ten Philips texts are readable today; individual stars are not exposed.",
-    "new_content": "Lunamoon_2 and Cooktest praise picture quality, easy operation and battery life. Cooktest also values the lack of internet dependence and raises a qualified concern about the fixed camera.",
+    "theme_note": "43 deduplicated texts: 33 Philips + 10 cached Amazon. Three Philips texts newly captured since 9 Oct; one (Mammamu) in the 14:13 retry. Ten Philips texts readable in this fetch. Three individual stars unavailable.",
+    "new_content": "Mammamu praises picture quality and ease of use, and lists price as a drawback. Captured earlier today: Lunamoon_2 and Cooktest praise image, ease and battery; Cooktest has a qualified fixed-camera concern.",
     "coverage_gaps": [
       "Amazon product and review pages inaccessible; cached from 9 Oct.",
       "Philips SCD863 returned a stale page; do not treat its older count of 20 as current.",
-      "Philips star breakdown and two new review stars not readable.",
+      "Philips star breakdown and three new review stars not readable.",
       "Only ten Philips texts readable; full expansion blocked by local browser runtime.",
       "bol SCD861 crawl is dated 9 Oct; bol SCD871 inaccessible.",
       "Amazon SCD861/SCD863 and bol SCD863 listings remain unverified."
@@ -141,15 +150,15 @@ const DATA = {
     "sources_checked": {
       "philips861": {
         "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
-        "status": "today-crawled",
+        "status": "Earlier 12 Oct extraction showed 32; not independently revalidated at 33.",
         "rating": 4.7,
         "count": 32
       },
       "philips871": {
-        "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium",
-        "status": "today-crawled",
+        "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+        "status": "retrieved 12 Oct 14:13 HKT",
         "rating": 4.7,
-        "count": 32
+        "count": 33
       },
       "philips863": {
         "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
@@ -166,10 +175,23 @@ const DATA = {
       "bol871": {
         "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
         "status": "inaccessible"
+      },
+      "amazonReviews": {
+        "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
+        "status": "inaccessible in both web readers"
       }
     },
     "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run.",
-    "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable"
+    "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable",
+    "last_attempt_at_hong_kong": "2026-10-12T14:13:00+08:00",
+    "retry_attempt": {
+      "time": "2026-10-12T14:13:00+08:00",
+      "philips": "SCD871 #reviews independently returns 33 at 4.7; Mammamu text recovered; load-more link reopens same ten-review set.",
+      "amazon": "Exact user-supplied portal, simplified portal, recent-reviews and product URLs failed in web tools; no new rating or review data captured.",
+      "browser": "Two browser startup attempts failed with sandbox helper runtime errors.",
+      "new_texts_captured": 1,
+      "star_histograms_captured": 0
+    }
   },
   "date": "2026-10-12",
   "timezone": "Asia/Hong_Kong",
@@ -1072,6 +1094,34 @@ const DATA = {
       "qualifications": {
         "No remote camera pan/tilt": "The reviewer says the wide angle is sufficient, qualifying the fixed-camera concern."
       }
+    },
+    {
+      "key": "philips-scd871-Mammamu-2026-10-09",
+      "platform": "Philips.de",
+      "reviewer": "Mammamu",
+      "date": "2026-10-09",
+      "reviewed_sku": "SCD871/26",
+      "stars": null,
+      "incentive": "Teil der Aktion",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use"
+      ],
+      "negative": [
+        "High price"
+      ],
+      "original_excerpts": {
+        "Satisfactory picture quality": "riktigt bra bildkvalitet",
+        "Easy setup/use": "enkel att använda",
+        "High price": "Priset"
+      },
+      "text_last_verified": "2026-10-12",
+      "text_verified_at": "2026-10-12T14:13:00+08:00",
+      "stars_last_verified": null,
+      "first_seen": "2026-10-12",
+      "first_seen_at": "2026-10-12T14:13:00+08:00",
+      "star_status": "Not exposed in readable source; not inferred",
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews"
     }
   ],
   "themes": [
@@ -1189,7 +1239,8 @@ const DATA = {
   "sources": {
     "amazon": "https://www.amazon.de/dp/B0HBRDDJWG",
     "bol861": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
-    "bol871": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/"
+    "bol871": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+    "amazonReviews": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar"
   },
   "excerpts": {
     "hhome": {
@@ -1414,6 +1465,11 @@ const DATA = {
       "Works without Wi-Fi": "Without an internet connection.",
       "Long parent-unit battery": "Strong battery.",
       "No remote camera pan/tilt": "The camera is fixed."
+    },
+    "philips-scd871-Mammamu-2026-10-09": {
+      "Satisfactory picture quality": "Really good picture quality.",
+      "Easy setup/use": "Easy to use.",
+      "High price": "The price."
     }
   },
   "ratingHistory": {
@@ -1970,10 +2026,10 @@ const DATA = {
         "scope": "shared-scd871-pool",
         "histogram": null,
         "records": null,
-        "rating_count": 32,
+        "rating_count": 33,
         "displayed_average": 4.7,
-        "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
-        "note": "Ten texts readable; full star counts unknown. Do not carry 9 Oct histogram into today.",
+        "checked_at_hong_kong": "2026-10-12T14:13:00+08:00",
+        "note": "SCD871 shared pool 33 verified, ten texts readable, no star histogram. Unknown stars not inferred.",
         "observed_reviewers": [
           "hhome",
           "Stef4n",
@@ -1981,10 +2037,10 @@ const DATA = {
           "Blitz279",
           "bambaer",
           "Angix33",
-          "Mamma#2",
-          "Svampbob97",
           "Lunamoon_2",
-          "Cooktest"
+          "Mammamu",
+          "Cooktest",
+          "Mamma#2"
         ]
       },
       "Amazon.de": {
@@ -2197,7 +2253,7 @@ const DATA = {
     "2026-10-12": {
       "date": "2026-10-12",
       "timezone": "Asia/Hong_Kong",
-      "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
+      "checked_at_hong_kong": "2026-10-12T14:13:00+08:00",
       "status": "partial_source_refresh",
       "last_complete_date": "2026-10-09",
       "comparison_date": "2026-10-09",
@@ -2206,14 +2262,15 @@ const DATA = {
       "platforms": {
         "Philips.de": {
           "rating": 4.7,
-          "rating_count": 32,
-          "written_count": 32,
+          "rating_count": 33,
+          "written_count": 33,
           "readable_today": 10,
           "last_verified": "2026-10-12",
           "cached": false,
-          "net_count_change": 2,
+          "net_count_change": 3,
           "comparison_date": "2026-10-09",
-          "note": "Shared pool: 32 reviews on SCD861 and SCD871 today; +2 since 9 Oct. Ten review texts readable; star distribution unavailable."
+          "note": "33 shared reviews at 4.7/5 independently retrieved from SCD871 reviews on 12 Oct, 14:13 HKT; +3 versus Friday. Mammamu is newly captured. Ten texts readable in this fetch; individual stars unavailable.",
+          "last_verified_at": "2026-10-12T14:13:00+08:00"
         },
         "Amazon.de": {
           "rating": 4.9,
@@ -2223,7 +2280,13 @@ const DATA = {
           "last_verified": "2026-10-09",
           "cached": true,
           "net_count_change": null,
-          "note": "Unavailable today. Last verified 9 Oct: 4.9/5, 10 ratings and 10 written reviews."
+          "note": "Fresh fetch failed, including the supplied review-portal link. Last independently verified: 9 Oct, 4.9/5 and 10 ratings/texts. User observes 17 at 4.8 on 12 Oct; not independently confirmed and excluded from verified totals.",
+          "user_observation": {
+            "rating": 4.8,
+            "count": 17,
+            "observed_date": "2026-10-12",
+            "independently_verified": false
+          }
         },
         "bol.com": {
           "rating": null,
@@ -2241,17 +2304,18 @@ const DATA = {
         "last_verified_rating": 4.73,
         "last_verified_count": 40,
         "last_verified_date": "2026-10-09",
-        "coded_review_count": 42,
+        "coded_review_count": 43,
         "known_star_count": 40,
-        "unknown_star_count": 2,
-        "reason": "Current combined rating cannot be verified. Display retains the exact mean of 40 stars last verified 9 Oct (189/40=4.725); two new reviews have unavailable stars, Amazon is inaccessible and bol is not fresh."
+        "unknown_star_count": 3,
+        "reason": "43 captured review texts; 40 known stars last verified 9 Oct, three unavailable stars. Current Amazon/bol data are unverified; retain last verified 4.73/5 from 40 known stars."
       },
       "review_access": {
         "Philips.de": {
           "readable_today": 10,
-          "cached_reviews": 22,
-          "new_records_confirmed": 2,
-          "last_text_check": "2026-10-12"
+          "cached_reviews": 23,
+          "new_records_confirmed": 3,
+          "last_text_check": "2026-10-12",
+          "new_records_this_retry": 1
         },
         "Amazon.de": {
           "readable_today": 0,
@@ -2264,18 +2328,19 @@ const DATA = {
           "new_records_confirmed": null
         }
       },
-      "freshness": "Partial refresh. Philips: 4.7/5, 32 shared reviews (+2 since 9 Oct); two new texts captured, stars unavailable. Amazon: 4.9/5 and 10 ratings cached from 9 Oct. bol: no fresh verification. Monday compares with Friday 9 Oct: Philips +2 reviews; per-star changes and current Amazon/bol comparisons unavailable.",
+      "freshness": "Partial verified refresh at 14:13 HKT: Philips 4.7/5 from 33 shared reviews (+3 since Friday); Mammamu newly captured. Amazon remains inaccessible; the user’s 17 at 4.8 is recorded separately, not treated as scraped evidence. Analysis: 43 captured texts. Star distributions and current combined rating remain unavailable.",
       "new_review_ids": [
         "philips-scd871-Lunamoon_2-2026-10-10",
-        "philips-scd871-Cooktest-2026-10-09"
+        "philips-scd871-Cooktest-2026-10-09",
+        "philips-scd871-Mammamu-2026-10-09"
       ],
       "new_mentions": {
         "positive: Satisfactory picture quality": {
-          "Philips": 2,
+          "Philips": 3,
           "Amazon": null
         },
         "positive: Easy setup/use": {
-          "Philips": 2,
+          "Philips": 3,
           "Amazon": null
         },
         "positive: Works without Wi-Fi": {
@@ -2291,7 +2356,7 @@ const DATA = {
           "Amazon": null
         },
         "negative: High price": {
-          "Philips": 0,
+          "Philips": 1,
           "Amazon": null
         },
         "negative: Missing mounting clamp": {
@@ -2323,12 +2388,12 @@ const DATA = {
           "Amazon": null
         }
       },
-      "theme_note": "42 deduplicated texts: 32 Philips + 10 Amazon. Two new Philips texts captured today; earlier evidence retained. New mentions compare with 9 Oct, the previous reporting weekday. Ten Philips texts are readable today; individual stars are not exposed.",
-      "new_content": "Lunamoon_2 and Cooktest praise picture quality, easy operation and battery life. Cooktest also values the lack of internet dependence and raises a qualified concern about the fixed camera.",
+      "theme_note": "43 deduplicated texts: 33 Philips + 10 cached Amazon. Three Philips texts newly captured since 9 Oct; one (Mammamu) in the 14:13 retry. Ten Philips texts readable in this fetch. Three individual stars unavailable.",
+      "new_content": "Mammamu praises picture quality and ease of use, and lists price as a drawback. Captured earlier today: Lunamoon_2 and Cooktest praise image, ease and battery; Cooktest has a qualified fixed-camera concern.",
       "coverage_gaps": [
         "Amazon product and review pages inaccessible; cached from 9 Oct.",
         "Philips SCD863 returned a stale page; do not treat its older count of 20 as current.",
-        "Philips star breakdown and two new review stars not readable.",
+        "Philips star breakdown and three new review stars not readable.",
         "Only ten Philips texts readable; full expansion blocked by local browser runtime.",
         "bol SCD861 crawl is dated 9 Oct; bol SCD871 inaccessible.",
         "Amazon SCD861/SCD863 and bol SCD863 listings remain unverified."
@@ -2336,15 +2401,15 @@ const DATA = {
       "sources_checked": {
         "philips861": {
           "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
-          "status": "today-crawled",
+          "status": "Earlier 12 Oct extraction showed 32; not independently revalidated at 33.",
           "rating": 4.7,
           "count": 32
         },
         "philips871": {
-          "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium",
-          "status": "today-crawled",
+          "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+          "status": "retrieved 12 Oct 14:13 HKT",
           "rating": 4.7,
-          "count": 32
+          "count": 33
         },
         "philips863": {
           "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
@@ -2361,10 +2426,23 @@ const DATA = {
         "bol871": {
           "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
           "status": "inaccessible"
+        },
+        "amazonReviews": {
+          "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
+          "status": "inaccessible in both web readers"
         }
       },
       "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run.",
-      "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable"
+      "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable",
+      "last_attempt_at_hong_kong": "2026-10-12T14:13:00+08:00",
+      "retry_attempt": {
+        "time": "2026-10-12T14:13:00+08:00",
+        "philips": "SCD871 #reviews independently returns 33 at 4.7; Mammamu text recovered; load-more link reopens same ten-review set.",
+        "amazon": "Exact user-supplied portal, simplified portal, recent-reviews and product URLs failed in web tools; no new rating or review data captured.",
+        "browser": "Two browser startup attempts failed with sandbox helper runtime errors.",
+        "new_texts_captured": 1,
+        "star_histograms_captured": 0
+      }
     }
   },
   "reporting_schedule": {
@@ -2379,5 +2457,225 @@ const DATA = {
     "time": "09:00",
     "comparison": "previous_weekday",
     "weekend_reviews": "Retain in review ledger and accumulated totals; show no weekend chart points."
-  }
+  },
+  "intraday_history": [
+    {
+      "saved_at": "2026-10-12T14:13:00+08:00",
+      "check": {
+        "date": "2026-10-12",
+        "timezone": "Asia/Hong_Kong",
+        "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
+        "status": "partial_source_refresh",
+        "last_complete_date": "2026-10-09",
+        "comparison_date": "2026-10-09",
+        "comparison_available": true,
+        "theme_comparison_date": "2026-10-09",
+        "platforms": {
+          "Philips.de": {
+            "rating": 4.7,
+            "rating_count": 32,
+            "written_count": 32,
+            "readable_today": 10,
+            "last_verified": "2026-10-12",
+            "cached": false,
+            "net_count_change": 2,
+            "comparison_date": "2026-10-09",
+            "note": "Shared pool: 32 reviews on SCD861 and SCD871 today; +2 since 9 Oct. Ten review texts readable; star distribution unavailable."
+          },
+          "Amazon.de": {
+            "rating": 4.9,
+            "rating_count": 10,
+            "written_count": 10,
+            "readable_today": 0,
+            "last_verified": "2026-10-09",
+            "cached": true,
+            "net_count_change": null,
+            "note": "Unavailable today. Last verified 9 Oct: 4.9/5, 10 ratings and 10 written reviews."
+          },
+          "bol.com": {
+            "rating": null,
+            "rating_count": null,
+            "written_count": null,
+            "readable_today": 0,
+            "last_verified": null,
+            "cached": true,
+            "net_count_change": null,
+            "note": "No fresh check: SCD861 extraction crawled 9 Oct says no reviews; SCD871 inaccessible (last zero observed 9 Oct 10:26)."
+          }
+        },
+        "overall": {
+          "current_available": false,
+          "last_verified_rating": 4.73,
+          "last_verified_count": 40,
+          "last_verified_date": "2026-10-09",
+          "coded_review_count": 42,
+          "known_star_count": 40,
+          "unknown_star_count": 2,
+          "reason": "Current combined rating cannot be verified. Display retains the exact mean of 40 stars last verified 9 Oct (189/40=4.725); two new reviews have unavailable stars, Amazon is inaccessible and bol is not fresh."
+        },
+        "review_access": {
+          "Philips.de": {
+            "readable_today": 10,
+            "cached_reviews": 22,
+            "new_records_confirmed": 2,
+            "last_text_check": "2026-10-12"
+          },
+          "Amazon.de": {
+            "readable_today": 0,
+            "cached_reviews": 10,
+            "new_records_confirmed": null,
+            "last_text_check": "2026-10-09"
+          },
+          "bol.com": {
+            "readable_today": 0,
+            "new_records_confirmed": null
+          }
+        },
+        "freshness": "Partial refresh. Philips: 4.7/5, 32 shared reviews (+2 since 9 Oct); two new texts captured, stars unavailable. Amazon: 4.9/5 and 10 ratings cached from 9 Oct. bol: no fresh verification. Monday compares with Friday 9 Oct: Philips +2 reviews; per-star changes and current Amazon/bol comparisons unavailable.",
+        "new_review_ids": [
+          "philips-scd871-Lunamoon_2-2026-10-10",
+          "philips-scd871-Cooktest-2026-10-09"
+        ],
+        "new_mentions": {
+          "positive: Satisfactory picture quality": {
+            "Philips": 2,
+            "Amazon": null
+          },
+          "positive: Easy setup/use": {
+            "Philips": 2,
+            "Amazon": null
+          },
+          "positive: Works without Wi-Fi": {
+            "Philips": 1,
+            "Amazon": null
+          },
+          "positive: Long parent-unit battery": {
+            "Philips": 2,
+            "Amazon": null
+          },
+          "negative: Camera requires mains power": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: High price": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: Missing mounting clamp": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: No remote camera pan/tilt": {
+            "Philips": 1,
+            "Amazon": null
+          },
+          "negative: Menu closes too quickly": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: Recording expectation mismatch": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: No remote smartphone monitoring": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: Limited parent-unit battery life": {
+            "Philips": 0,
+            "Amazon": null
+          },
+          "negative: Missing motion detection": {
+            "Philips": 0,
+            "Amazon": null
+          }
+        },
+        "theme_note": "42 deduplicated texts: 32 Philips + 10 Amazon. Two new Philips texts captured today; earlier evidence retained. New mentions compare with 9 Oct, the previous reporting weekday. Ten Philips texts are readable today; individual stars are not exposed.",
+        "new_content": "Lunamoon_2 and Cooktest praise picture quality, easy operation and battery life. Cooktest also values the lack of internet dependence and raises a qualified concern about the fixed camera.",
+        "coverage_gaps": [
+          "Amazon product and review pages inaccessible; cached from 9 Oct.",
+          "Philips SCD863 returned a stale page; do not treat its older count of 20 as current.",
+          "Philips star breakdown and two new review stars not readable.",
+          "Only ten Philips texts readable; full expansion blocked by local browser runtime.",
+          "bol SCD861 crawl is dated 9 Oct; bol SCD871 inaccessible.",
+          "Amazon SCD861/SCD863 and bol SCD863 listings remain unverified."
+        ],
+        "sources_checked": {
+          "philips861": {
+            "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
+            "status": "today-crawled",
+            "rating": 4.7,
+            "count": 32
+          },
+          "philips871": {
+            "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium",
+            "status": "today-crawled",
+            "rating": 4.7,
+            "count": 32
+          },
+          "philips863": {
+            "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
+            "status": "stale last-week extraction; not current"
+          },
+          "amazon": {
+            "url": "https://www.amazon.de/dp/B0HBRDDJWG",
+            "status": "inaccessible"
+          },
+          "bol861": {
+            "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
+            "status": "9 Oct crawl; not current"
+          },
+          "bol871": {
+            "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+            "status": "inaccessible"
+          }
+        },
+        "local_runtime_status": "Shell and browser startup blocked by sandbox runtime errors; local snapshots cannot be synchronized in this run.",
+        "comparison_scope": "Philips.de total count only; current star breakdown and other platform counts unavailable"
+      },
+      "ratingHistory": {
+        "Philips.de": {
+          "complete": false,
+          "scope": "shared-scd871-pool",
+          "histogram": null,
+          "records": null,
+          "rating_count": 32,
+          "displayed_average": 4.7,
+          "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
+          "note": "Ten texts readable; full star counts unknown. Do not carry 9 Oct histogram into today.",
+          "observed_reviewers": [
+            "hhome",
+            "Stef4n",
+            "Naninour88",
+            "Blitz279",
+            "bambaer",
+            "Angix33",
+            "Mamma#2",
+            "Svampbob97",
+            "Lunamoon_2",
+            "Cooktest"
+          ]
+        },
+        "Amazon.de": {
+          "complete": false,
+          "scope": "B0HBRDDJWG",
+          "histogram": null,
+          "records": null,
+          "rating_count": null,
+          "displayed_average": null,
+          "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
+          "note": "Inaccessible; last successful rating/review snapshot 9 Oct."
+        },
+        "bol.com": {
+          "complete": false,
+          "scope": "9300000318462240+9300000318462235",
+          "histogram": null,
+          "records": null,
+          "rating_count": null,
+          "checked_at_hong_kong": "2026-10-12T10:32:00+08:00",
+          "note": "No current verification; cached zero from 9 Oct only."
+        }
+      }
+    }
+  ]
 };
