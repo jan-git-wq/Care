@@ -252,10 +252,21 @@ function render(){
  }
 
 }
-$('platform-cards').innerHTML=['Amazon.de','Philips.de','bol.com'].map(name=>{
- const p=DATA.check.platforms[name],rating=p.rating?.toFixed(p.calculated?2:1)||'Unrated';
- const url=name==='Amazon.de'?DATA.sources.amazon:name==='Philips.de'?philips('SCD863/26'):DATA.sources.bol861;
- return '<article class="platform-card"><div class="platform-top"><h3>'+name+'</h3><span class="badge">CHECKED '+esc(fmtDate(DATA.date))+'</span></div><div class="platform-score">'+rating+(p.rating?'<small> / 5'+(p.calculated?' · calculated':'')+'</small>':'')+'</div><p>'+p.rating_count+' ratings · '+p.written_count+' written reviews · '+p.readable_today+' read</p><div class="platform-bottom"><span>'+esc(p.note)+'</span><a href="'+url+'" target="_blank" rel="noopener">View source</a></div></article>';
+$('platform-cards').innerHTML=[
+ {name:'Amazon.de',sku:'SCD871/26',sourceKey:'amazon',poolKey:'Amazon.de'},
+ {name:'Amazon.de',sku:'SCD861/26',sourceKey:'amazon861',poolKey:'Amazon.de:SCD861/26'},
+ {name:'Philips.de'},{name:'bol.com'}
+].map(({name,sku,sourceKey,poolKey})=>{
+ let p=DATA.check.platforms[name],url=name==='Philips.de'?philips('SCD863/26'):DATA.sources.bol861;
+ if(sku){
+  const listing=DATA.check.sources_checked[sourceKey],pool=DATA.ratingHistory[DATA.date]?.[poolKey];
+  const reviews=DATA.reviews.filter(r=>r.platform==='Amazon.de'&&r.pool_id===pool?.scope);
+  const comparison=dailyChanges(DATA,'Amazon.de').groups.find(g=>g.name===poolKey);
+  const note=comparison?.coverageBackfill?'Newly tracked listing. Earlier reviews added to coverage; no previous weekday comparison.':comparison?.net!==null&&comparison?.net!==undefined?(comparison.net>0?'+':'')+comparison.net+' ratings since '+fmtDate(previousWeekday(DATA.date))+'. All captured reviews are Vine free-product reviews.':'Previous weekday comparison unavailable.';
+  p={rating:listing?.rating??null,rating_count:listing?.count??null,written_count:reviews.length,readable_today:reviews.filter(r=>r.text_last_verified===DATA.date).length,note};url=listing?.url||DATA.sources[sourceKey];
+ }
+ const rating=p.rating?.toFixed(1)||'Unrated';
+ return '<article class="platform-card"'+(sku?' data-sku="'+sku+'"':'')+'><div class="platform-top"><div><h3>'+name+'</h3>'+(sku?'<div class="platform-sku">'+sku+'</div>':'')+'</div><span class="badge">CHECKED '+esc(fmtDate(DATA.date))+'</span></div><div class="platform-score">'+rating+(p.rating?'<small> / 5</small>':'')+'</div><p>'+(p.rating_count??'Unavailable')+' ratings · '+p.written_count+' written reviews · '+p.readable_today+' read</p><div class="platform-bottom"><span>'+esc(p.note)+'</span><a href="'+url+'" target="_blank" rel="noopener" aria-label="View '+name+(sku?' '+sku:'')+' source">View source</a></div></article>';
 }).join('');
 $('coverage-body').innerHTML=['SCD861/26','SCD863/26','SCD871/26'].map(sku=>{
  const a=sku==='SCD861/26'?DATA.check.sources_checked.amazon861:sku==='SCD871/26'?DATA.check.sources_checked.amazon:null;
