@@ -874,7 +874,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "R22EVOPIT6VTMX",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R22EVOPIT6VTMX/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany"
     },
     {
       "key": "R13GK2DBW70V2K",
@@ -896,7 +897,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "R13GK2DBW70V2K",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R13GK2DBW70V2K/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany"
     },
     {
       "key": "R2DNDDQCG4O2G7",
@@ -918,7 +920,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "R2DNDDQCG4O2G7",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R2DNDDQCG4O2G7/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany"
     },
     {
       "key": "R16Y9LUAWSTVC5",
@@ -942,7 +945,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "R16Y9LUAWSTVC5",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R16Y9LUAWSTVC5/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany"
     },
     {
       "key": "R3SKEHRKNWLCHQ",
@@ -966,7 +970,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "R3SKEHRKNWLCHQ",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R3SKEHRKNWLCHQ/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "France"
     },
     {
       "key": "R22CARJK56LEDC",
@@ -988,7 +993,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "R22CARJK56LEDC",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R22CARJK56LEDC/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "France"
     },
     {
       "key": "philips-scd871-Mamma#2-2026-10-08",
@@ -1133,7 +1139,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "RJ3NW8FSMAA6P",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/RJ3NW8FSMAA6P/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany"
     },
     {
       "key": "R2QBHMUEUY8W3W",
@@ -1157,7 +1164,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "R2QBHMUEUY8W3W",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R2QBHMUEUY8W3W/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany"
     },
     {
       "key": "RC1G8223KFVC2",
@@ -1185,7 +1193,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "RC1G8223KFVC2",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/RC1G8223KFVC2/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany"
     },
     {
       "key": "R1NAB29KIA69FK",
@@ -1213,7 +1222,8 @@ const DATA = {
       "stars_last_verified": "2026-10-15",
       "source_id": "R1NAB29KIA69FK",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1NAB29KIA69FK/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "pool_id": "B0HBRDDJWG"
+      "pool_id": "B0HBRDDJWG",
+      "country": "France"
     },
     {
       "key": "philips-scd871-Lunamoon_2-2026-10-10",
