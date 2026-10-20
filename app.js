@@ -22,7 +22,8 @@ function dailyChanges(data,platform){
  const groups=poolKeys(data,platform).map(name=>{
   const now=current[name],before=previous[name],same=now.scope===before?.scope,comparable=same&&valid(now)&&valid(before);
   const identifiable=comparable&&Array.isArray(now.records)&&Array.isArray(before.records),known=new Set((before?.records||[]).map(r=>r.id));
-  const coverageBackfill=!before&&valid(now),todayCount=now.rating_count??null,yesterdayCount=before?.rating_count??null;
+  const previouslyTracked=Object.entries(data.ratingHistory||{}).some(([date,pools])=>date<data.date&&pools[name]?.scope===now.scope);
+  const coverageBackfill=!before&&!previouslyTracked&&valid(now),todayCount=now.rating_count??null,yesterdayCount=before?.rating_count??null;
   return {name,comparable,identifiable,coverageBackfill,todayCount,yesterdayCount,referenceDate:null,
    net:same&&todayCount!==null&&yesterdayCount!==null?todayCount-yesterdayCount:null,
    rows:stars.map(star=>({star,today:valid(now)?now.histogram[star]:null,yesterday:valid(before)?before.histogram[star]:null,
@@ -90,7 +91,7 @@ function ratingTrend(data,platform,range='week'){
    for(const s of stars)histogram[s]+=histogramSource[s];
   }
   if(!active.length)available=false;
-  const scopeKey=active.join("|");const coverageChanged=previousScope!==null&&scopeKey!==previousScope;previousScope=scopeKey;
+  const scopeKey=active.join("|");const coverageChanged=active.length>0&&previousScope!==null&&scopeKey!==previousScope;if(active.length)previousScope=scopeKey;
   let total=available?stars.reduce((n,s)=>n+histogram[s],0):null;
   const reported=available?[]:active.flatMap(name=>{
    const entry=history[date]?.[name];
@@ -218,6 +219,11 @@ function renderTrend(){
 }
 
 function mentionNote(t){
+ if(DATA.check.theme_comparison_available===false){
+  const x=DATA.check.mentions_since_last_successful?.[t.sentiment+': '+t.key],sel=$('platform').value;
+  const n=sel==='all'?x?.total:sel==='Philips.de'?x?.Philips:sel==='Amazon.de'?x?.Amazon:null;
+  return 'Change since '+fmtDate(DATA.check.theme_comparison_date)+': unavailable'+(n!==null&&n!==undefined?'<br>Since last verified '+fmtDate(DATA.check.last_successful_comparison_date)+': +'+n+' mentions':'');
+ }
  const name=t.sentiment+': '+t.key,x=DATA.check.new_mentions[name]||{},extra=DATA.check.coverage_mentions?.[name]?.Amazon||0,sel=$('platform').value,notes=[];
  if(sel==='all'||sel==='Philips.de')notes.push('New Philips mentions since '+fmtDate(DATA.check.theme_comparison_date)+': +'+(x.Philips||0));
  if(sel==='all'||sel==='Amazon.de')notes.push('New Amazon mentions on tracked listings: +'+(x.Amazon||0)+(extra?'; new SCD861 coverage: +'+extra:''));
@@ -290,3 +296,4 @@ $('method-freshness').innerHTML='<b>Freshness.</b> Collected '+esc(DATA.check.ch
 
 document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));
 render();
+
