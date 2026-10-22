@@ -1,71 +1,67 @@
 const DATA = {
   "check": {
-    "date": "2026-10-20",
+    "date": "2026-10-22",
     "timezone": "Asia/Hong_Kong",
-    "checked_at_hong_kong": "2026-10-20T10:10:45+08:00",
-    "last_attempt_at_hong_kong": "2026-10-20T10:10:45+08:00",
-    "status": "verified_all_seven_listings",
+    "checked_at_hong_kong": "2026-10-22T14:28:36+08:00",
+    "last_attempt_at_hong_kong": "2026-10-22T14:28:36+08:00",
+    "status": "partial_browser_unavailable",
     "last_complete_date": "2026-10-20",
-    "comparison_date": "2026-10-19",
-    "theme_comparison_date": "2026-10-19",
+    "comparison_date": "2026-10-21",
+    "theme_comparison_date": "2026-10-21",
     "comparison_available": false,
     "platforms": {
       "Philips.de": {
         "rating": 4.7,
-        "rating_count": 41,
-        "written_count": 41,
-        "readable_today": 41,
+        "rating_count": 46,
+        "written_count": 46,
+        "readable_today": 10,
+        "captured_review_count": 44,
         "cached": false,
-        "last_verified": "2026-10-20",
+        "last_verified": "2026-10-22",
         "net_count_change": null,
-        "last_successful_net_count_change": 3,
-        "note": "All three live SKU pages show 4.7/5 and one shared pool of 41 promotional SCD871 reviews. All 41 read. Three new identities since 16 October; 19 October comparison unavailable."
+        "last_successful_net_count_change": 5,
+        "note": "SCD871 web source crawled today shows 46 shared reviews at 4.7/5; +5 net versus 20 October. Ten texts readable today, three newly captured; 44 retained texts, two uncollected. Current individual stars unavailable."
       },
       "Amazon.de": {
         "rating": 4.796296296296297,
         "calculated": true,
         "rating_count": 54,
         "written_count": 54,
-        "readable_today": 54,
-        "cached": false,
+        "readable_today": 0,
+        "cached": true,
         "last_verified": "2026-10-20",
         "net_count_change": null,
-        "last_successful_net_count_change": 6,
+        "last_successful_net_count_change": null,
         "coverage_backfill": 0,
-        "note": "Separate pools: SCD871 4.8/5 with 34 ratings/reviews; SCD861 4.9/5 with 20. All 54 texts and stars captured. Six new identities since 16 October; 19 October comparison unavailable."
+        "note": "Unavailable today: web extraction failed and browser could not open. Retained 20 October: SCD871 4.8/5 with 34 reviews; SCD861 4.9/5 with 20."
       },
       "bol.com": {
         "rating": null,
         "rating_count": 0,
         "written_count": 0,
         "readable_today": 0,
-        "cached": false,
+        "cached": true,
         "last_verified": "2026-10-20",
         "net_count_change": null,
-        "last_successful_net_count_change": 0,
-        "note": "Both SCD861 and SCD871 live listings say Nog geen reviews. Unchanged from 16 October; 19 October comparison unavailable."
+        "last_successful_net_count_change": null,
+        "note": "No fresh verification. Retained 20 October: both listings had no reviews; current counts unavailable."
       }
     },
     "overall": {
-      "current_available": true,
+      "current_available": false,
       "rating": 4.768421052631579,
-      "rating_count": 95,
-      "coded_review_count": 95,
+      "rating_count": null,
+      "coded_review_count": 98,
       "known_star_count": 95,
-      "unknown_star_count": 0,
+      "unknown_star_count": 3,
       "estimated": false,
-      "reason": "(74 × 5 + 20 × 4 + 1 × 3) / 95 = 4.77. Three distinct review pools counted once; bol has zero ratings. This is a raw-star arithmetic mean, not Amazon’s displayed weighted score."
+      "reason": "Last verified combined rating: 4.77/5 on 20 October, calculated from 95 individual stars (74 five-star, 20 four-star, one three-star). Current combined rating unavailable: Amazon/bol not refreshed and Philips current star distribution incomplete.",
+      "last_verified": "2026-10-20"
     },
     "new_review_ids": [
-      "R3FZUYEB9BDKN8",
-      "RVAK30K9MPWTV",
-      "R1EZFMHZ4WO2DN",
-      "RP6CSGHN4ZN0O",
-      "R35KMJKMWOPDBF",
-      "R3OH1JNSPPUJX1",
-      "philips-scd871-FrMMM-2026-10-17",
-      "philips-scd871-Hellkitty1522-2026-10-16",
-      "philips-scd871-Bolidas-2026-10-16"
+      "philips-scd871-Martinha91-2026-10-20",
+      "philips-scd871-Pedrotelmo-2026-10-18",
+      "philips-scd871-veralet-2026-10-18"
     ],
     "coverage_backfill_ids": [],
     "new_mentions": {
@@ -221,95 +217,103 @@ const DATA = {
       }
     },
     "coverage_mentions": {},
-    "freshness": "95 texts and individual stars checked today. Nine newly observed identities since the last successful check on 16 October (86 → 95). No 19 October snapshot exists: previous-weekday changes are unavailable, not zero.",
-    "theme_note": "95 unique texts: 41 Philips + 54 Amazon; all promotional/Vine. Changes versus 19 October unavailable. Separately labelled mention changes use the last successful check on 16 October.",
-    "new_content": "New feedback praises image quality, easy use, Wi-Fi independence and battery endurance. Criticism includes price, camera positioning and power constraints, one short camera cable and one camera becoming warm. Warmth is a reviewer observation, not a verified overheating fault. Some newly observed reviews were posted before 16 October; first-publication times are not established.",
+    "freshness": "Partial refresh. Philips SCD871 web source shows 46 reviews at 4.7/5 (+5 net since 20 October). Three new texts captured, stars unavailable. Amazon and bol retain 20 October data. Browser could not open after three attempts. No 21 October comparison snapshot.",
+    "theme_note": "98 retained unique texts: 44 Philips + 54 Amazon. Ten Philips texts readable today; other texts retained from earlier checks. Two of the 46 Philips texts remain uncollected. All captured texts are promotional/Vine. Today’s themes are partial.",
+    "new_content": "Three newly captured Philips texts praise image quality and ease of use; two praise independence from internet. One reviewer criticizes mains-powered camera operation and daily parent-unit charging. Stars are unavailable for these three; the phrase “5 estrelas” in a title is not used as a star rating.",
     "coverage_gaps": [
-      "No verified 19 October snapshot: all previous-weekday count and theme changes unavailable.",
-      "Amazon SCD863/26 and bol SCD863/26 listings remain unverified after a fresh search.",
-      "Philips uses one shared SCD871 pool, not separate SCD861/SCD863 experiences.",
-      "Full historical raw-text edit comparison is unavailable."
+      "No 21 October snapshot; previous-weekday changes unavailable.",
+      "Amazon extraction unavailable and browser failed to attach after three attempts; Amazon/bol retained from 20 October.",
+      "Philips only ten texts readable: three new, 44 retained in ledger out of 46 displayed; two uncollected. Current star split unavailable.",
+      "SCD861/SCD863 Philips search extractions were stale; retain their 20 October page checks. Latest family pool verified on SCD871 only.",
+      "Amazon and bol SCD863 matching listings remain unverified."
     ],
-    "comparison_scope": "Previous weekday (19 October) unavailable. Separately, since the last successful check on 16 October: Philips 38 → 41 (+3); Amazon SCD871 32 → 34 (+2); Amazon SCD861 16 → 20 (+4); bol 0 → 0. Nine new IDs: eight 5-star and one 4-star. All 86 earlier identities retain their stars; no new listing coverage.",
+    "comparison_scope": "21 October comparison unavailable. Philips shared count increased 41 → 46 since 20 October (+5 net); three new review identities captured, two texts still missing. This is not a one-day addition count. Amazon and bol changes unavailable.",
     "sources_checked": {
       "philips861": {
         "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
         "rating": 4.7,
         "count": 41,
-        "status": "Live browser: 41 reviews in the shared SCD871 pool; all 41 texts and stars expanded on SCD871, counted once.",
-        "last_verified": "2026-10-20"
+        "status": "Not freshly verified; retained last successful 20 October values.",
+        "last_verified": "2026-10-20",
+        "cached": true
       },
       "philips871": {
         "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
         "rating": 4.7,
-        "count": 41,
-        "status": "Live browser: 41 reviews in the shared SCD871 pool; all 41 texts and stars expanded on SCD871, counted once.",
-        "last_verified": "2026-10-20"
+        "count": 46,
+        "status": "Web source crawled today: 46 reviews; 10 readable texts, no individual star labels. Browser unavailable.",
+        "last_verified": "2026-10-22",
+        "cached": false
       },
       "philips863": {
         "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
         "rating": 4.7,
         "count": 41,
-        "status": "Live browser: 41 reviews in the shared SCD871 pool; all 41 texts and stars expanded on SCD871, counted once.",
-        "last_verified": "2026-10-20"
+        "status": "Not freshly verified; retained last successful 20 October values.",
+        "last_verified": "2026-10-20",
+        "cached": true
       },
       "amazon": {
         "url": "https://www.amazon.de/dp/B0HBRDDJWG",
         "rating": 4.8,
         "count": 34,
-        "status": "Signed-in live browser: 34 global ratings and 34 customer reviews; all 34 read.",
-        "last_verified": "2026-10-20"
+        "status": "Not freshly verified; retained last successful 20 October values.",
+        "last_verified": "2026-10-20",
+        "cached": true
       },
       "bol861": {
         "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
         "count": 0,
         "rating": null,
-        "status": "Live browser: Nog geen reviews.",
-        "last_verified": "2026-10-20"
+        "status": "Not freshly verified; retained last successful 20 October values.",
+        "last_verified": "2026-10-20",
+        "cached": true
       },
       "bol871": {
         "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
         "count": 0,
         "rating": null,
-        "status": "Live browser: Nog geen reviews.",
-        "last_verified": "2026-10-20"
+        "status": "Not freshly verified; retained last successful 20 October values.",
+        "last_verified": "2026-10-20",
+        "cached": true
       },
       "amazonReviews": {
         "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
-        "status": "Signed-in live browser: 34 global ratings and 34 customer reviews; all 34 read.",
+        "status": "Not freshly verified; retained last successful 20 October values.",
         "last_verified": "2026-10-20",
-        "count": 34
+        "count": 34,
+        "cached": true
       },
       "amazon861": {
         "url": "https://www.amazon.de/dp/B0HBRLCWQ6",
         "rating": 4.9,
         "count": 20,
-        "status": "Signed-in live browser: 20 global ratings and 20 customer reviews; all 20 read; no overlapping IDs with SCD871.",
-        "last_verified": "2026-10-20"
+        "status": "Not freshly verified; retained last successful 20 October values.",
+        "last_verified": "2026-10-20",
+        "cached": true
       }
     },
     "review_access": {
       "Philips.de": {
-        "readable_today": 41,
-        "cached_reviews": 0,
+        "readable_today": 10,
+        "cached_reviews": 34,
         "new_records_confirmed": 3,
-        "new_records_reference_date": "2026-10-16",
+        "new_records_reference_date": "2026-10-20",
         "coverage_backfill": 0,
-        "last_text_check": "2026-10-20"
+        "last_text_check": "2026-10-22",
+        "uncollected": 2
       },
       "Amazon.de": {
-        "readable_today": 54,
-        "cached_reviews": 0,
-        "new_records_confirmed": 6,
-        "new_records_reference_date": "2026-10-16",
+        "readable_today": 0,
+        "cached_reviews": 54,
+        "new_records_confirmed": null,
         "coverage_backfill": 0,
         "last_text_check": "2026-10-20"
       },
       "bol.com": {
         "readable_today": 0,
         "cached_reviews": 0,
-        "new_records_confirmed": 0,
-        "new_records_reference_date": "2026-10-16",
+        "new_records_confirmed": null,
         "coverage_backfill": 0,
         "last_text_check": "2026-10-20"
       }
@@ -322,172 +326,173 @@ const DATA = {
       "bol.com"
     ],
     "identity_audit": {
-      "previous_date": "2026-10-16",
-      "previous_count": 86,
-      "retained_ids": 86,
-      "new_ids": 9,
+      "previous_date": "2026-10-20",
+      "previous_count": 95,
+      "retained_ids": 95,
+      "new_ids": 3,
       "deleted_ids": [],
       "changed_star_ids": [],
-      "text_edits": "Full historical raw-text equality not established for every review; original excerpts retained locally.",
+      "audit_complete": false,
+      "text_edits": "Partial collection cannot establish deletions, star changes or text edits. Earlier records retained, not freshly verified.",
       "coverage_backfill": 0
     },
     "theme_comparison_available": false,
-    "last_successful_comparison_date": "2026-10-16",
-    "new_review_ids_reference_date": "2026-10-16",
+    "last_successful_comparison_date": "2026-10-20",
+    "new_review_ids_reference_date": "2026-10-20",
     "mentions_since_last_successful": {
       "positive: Satisfactory picture quality": {
-        "total": 7,
-        "Philips": 2,
-        "Amazon": 5
+        "total": 3,
+        "Philips": 3,
+        "Amazon": null
       },
       "positive: Easy setup/use": {
-        "total": 6,
-        "Philips": 1,
-        "Amazon": 5
+        "total": 3,
+        "Philips": 3,
+        "Amazon": null
       },
       "positive: Works without Wi-Fi": {
         "total": 2,
-        "Philips": 0,
-        "Amazon": 2
+        "Philips": 2,
+        "Amazon": null
       },
       "positive: Long parent-unit battery": {
-        "total": 3,
-        "Philips": 1,
-        "Amazon": 2
+        "total": 0,
+        "Philips": 0,
+        "Amazon": null
       },
       "negative: Camera requires mains power": {
         "total": 1,
-        "Philips": 0,
-        "Amazon": 1
+        "Philips": 1,
+        "Amazon": null
       },
       "negative: High price": {
-        "total": 2,
+        "total": 0,
         "Philips": 0,
-        "Amazon": 2
+        "Amazon": null
       },
       "negative: Missing mounting clamp": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: No remote camera pan/tilt": {
-        "total": 1,
+        "total": 0,
         "Philips": 0,
-        "Amazon": 1
+        "Amazon": null
       },
       "negative: Menu closes too quickly": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Recording expectation mismatch": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: No remote smartphone monitoring": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      },
-      "negative: Limited parent-unit battery life": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
+      },
+      "negative: Limited parent-unit battery life": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": null
       },
       "negative: Missing motion detection": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Limited lullaby choice": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Picture resolution below expectations": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Video lacks fluidity": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Video latency": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Limited settings": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Missing night light": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Slow screen startup": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Missing recording function": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Missing camera zoom claim": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Menu navigation difficult": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Parent-unit screen too small": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Bulky non-folding monitor stand": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Lullaby disliked": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Digital zoom reduces clarity": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Parent unit bulky to carry": {
         "total": 0,
         "Philips": 0,
-        "Amazon": 0
+        "Amazon": null
       },
       "negative: Camera cable too short": {
-        "total": 1,
-        "Philips": 1,
-        "Amazon": 0
+        "total": 0,
+        "Philips": 0,
+        "Amazon": null
       },
       "negative: Camera becomes warm": {
-        "total": 1,
-        "Philips": 1,
-        "Amazon": 0
+        "total": 0,
+        "Philips": 0,
+        "Amazon": null
       }
     }
   },
-  "date": "2026-10-20",
+  "date": "2026-10-22",
   "timezone": "Asia/Hong_Kong",
   "reviews": [
     {
@@ -510,7 +515,7 @@ const DATA = {
       ],
       "last_verified": "2026-10-20",
       "source_id": "1232210586",
-      "text_last_verified": "2026-10-20",
+      "text_last_verified": "2026-10-22",
       "stars_last_verified": "2026-10-20",
       "pool_id": "shared-scd871-pool"
     },
@@ -534,7 +539,7 @@ const DATA = {
       },
       "last_verified": "2026-10-20",
       "source_id": "1231945633",
-      "text_last_verified": "2026-10-20",
+      "text_last_verified": "2026-10-22",
       "stars_last_verified": "2026-10-20",
       "pool_id": "shared-scd871-pool"
     },
@@ -555,7 +560,7 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-20",
       "source_id": "1231328899",
-      "text_last_verified": "2026-10-20",
+      "text_last_verified": "2026-10-22",
       "stars_last_verified": "2026-10-20",
       "pool_id": "shared-scd871-pool"
     },
@@ -574,7 +579,7 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-20",
       "source_id": "1231304948",
-      "text_last_verified": "2026-10-20",
+      "text_last_verified": "2026-10-22",
       "stars_last_verified": "2026-10-20",
       "pool_id": "shared-scd871-pool"
     },
@@ -594,7 +599,7 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-20",
       "source_id": "1231134215",
-      "text_last_verified": "2026-10-20",
+      "text_last_verified": "2026-10-22",
       "stars_last_verified": "2026-10-20",
       "pool_id": "shared-scd871-pool"
     },
@@ -614,7 +619,7 @@ const DATA = {
       "negative": [],
       "last_verified": "2026-10-20",
       "source_id": "1231024236",
-      "text_last_verified": "2026-10-20",
+      "text_last_verified": "2026-10-22",
       "stars_last_verified": "2026-10-20",
       "pool_id": "shared-scd871-pool"
     },
@@ -2670,7 +2675,7 @@ const DATA = {
       "pool_id": "shared-scd871-pool",
       "first_seen": "2026-10-14",
       "last_verified": "2026-10-20",
-      "text_last_verified": "2026-10-20",
+      "text_last_verified": "2026-10-22",
       "stars_last_verified": "2026-10-20",
       "source_url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
       "original_language": "German",
@@ -3093,6 +3098,83 @@ const DATA = {
       "last_verified": "2026-10-20",
       "text_last_verified": "2026-10-20",
       "stars_last_verified": "2026-10-20",
+      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+    },
+    {
+      "key": "philips-scd871-Martinha91-2026-10-20",
+      "reviewer": "Martinha91",
+      "date": "2026-10-20",
+      "stars": null,
+      "platform": "Philips.de",
+      "pool_id": "shared-scd871-pool",
+      "reviewed_sku": "SCD871/26",
+      "country": "Portugal",
+      "original_language": "Portuguese",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Works without Wi-Fi"
+      ],
+      "negative": [],
+      "incentive": "Teil der Aktion",
+      "first_seen": "2026-10-22",
+      "last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-22",
+      "stars_last_verified": null,
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title.",
+      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+    },
+    {
+      "key": "philips-scd871-Pedrotelmo-2026-10-18",
+      "reviewer": "Pedrotelmo",
+      "date": "2026-10-18",
+      "stars": null,
+      "platform": "Philips.de",
+      "pool_id": "shared-scd871-pool",
+      "reviewed_sku": "SCD871/26",
+      "country": "Portugal",
+      "original_language": "Portuguese",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Works without Wi-Fi"
+      ],
+      "negative": [],
+      "incentive": "Teil der Aktion",
+      "first_seen": "2026-10-22",
+      "last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-22",
+      "stars_last_verified": null,
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title.",
+      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+    },
+    {
+      "key": "philips-scd871-veralet-2026-10-18",
+      "reviewer": "veralet",
+      "date": "2026-10-18",
+      "stars": null,
+      "platform": "Philips.de",
+      "pool_id": "shared-scd871-pool",
+      "reviewed_sku": "SCD871/26",
+      "country": "Portugal",
+      "original_language": "Portuguese",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use"
+      ],
+      "negative": [
+        "Camera requires mains power",
+        "Limited parent-unit battery life"
+      ],
+      "incentive": "Teil der Aktion",
+      "first_seen": "2026-10-22",
+      "last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-22",
+      "stars_last_verified": null,
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title.",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     }
   ],
@@ -3829,6 +3911,22 @@ const DATA = {
       "Satisfactory picture quality": "Excellent camera image quality.",
       "Long parent-unit battery": "Battery seems to have good endurance.",
       "Camera becomes warm": "Camera sometimes warms after being on for a while."
+    },
+    "philips-scd871-Martinha91-2026-10-20": {
+      "Satisfactory picture quality": "I like the image quality.",
+      "Easy setup/use": "Ease of use.",
+      "Works without Wi-Fi": "Without depending on Wi-Fi or internet."
+    },
+    "philips-scd871-Pedrotelmo-2026-10-18": {
+      "Satisfactory picture quality": "Image quality and night vision are useful.",
+      "Easy setup/use": "Easy to use.",
+      "Works without Wi-Fi": "No internet connection needed."
+    },
+    "philips-scd871-veralet-2026-10-18": {
+      "Satisfactory picture quality": "Excellent definition.",
+      "Easy setup/use": "Very easy to use.",
+      "Camera requires mains power": "Camera must stay connected to mains power.",
+      "Limited parent-unit battery life": "Limited battery capacity requires daily charging."
     }
   },
   "ratingHistory": {
@@ -6619,6 +6717,52 @@ const DATA = {
         "checked_at_hong_kong": "2026-10-20T10:10:45+08:00",
         "note": "Both live listings have no reviews."
       }
+    },
+    "2026-10-22": {
+      "Philips.de": {
+        "complete": false,
+        "scope": "shared-scd871-pool",
+        "histogram": null,
+        "records": null,
+        "rating_count": 46,
+        "displayed_average": 4.7,
+        "checked_at_hong_kong": "2026-10-22T14:28:36+08:00",
+        "last_verified_date": "2026-10-22",
+        "note": "Reported total and score only; current star distribution and full identities unavailable."
+      },
+      "Amazon.de": {
+        "complete": false,
+        "scope": "B0HBRDDJWG",
+        "histogram": null,
+        "records": null,
+        "rating_count": null,
+        "displayed_average": null,
+        "checked_at_hong_kong": "2026-10-22T14:28:36+08:00",
+        "last_verified_date": "2026-10-20",
+        "note": "Unavailable today; do not carry cached stars into a current observation."
+      },
+      "Amazon.de:SCD861/26": {
+        "complete": false,
+        "scope": "B0HBRLCWQ6",
+        "histogram": null,
+        "records": null,
+        "rating_count": null,
+        "displayed_average": null,
+        "checked_at_hong_kong": "2026-10-22T14:28:36+08:00",
+        "last_verified_date": "2026-10-20",
+        "note": "Unavailable today; do not carry cached stars into a current observation."
+      },
+      "bol.com": {
+        "complete": false,
+        "scope": "9300000318462240+9300000318462235",
+        "histogram": null,
+        "records": null,
+        "rating_count": null,
+        "displayed_average": null,
+        "checked_at_hong_kong": "2026-10-22T14:28:36+08:00",
+        "last_verified_date": "2026-10-20",
+        "note": "Unavailable today; do not carry cached stars into a current observation."
+      }
     }
   },
   "check_history": {
@@ -8780,6 +8924,499 @@ const DATA = {
           "total": 1,
           "Philips": 1,
           "Amazon": 0
+        }
+      }
+    },
+    "2026-10-22": {
+      "date": "2026-10-22",
+      "timezone": "Asia/Hong_Kong",
+      "checked_at_hong_kong": "2026-10-22T14:28:36+08:00",
+      "last_attempt_at_hong_kong": "2026-10-22T14:28:36+08:00",
+      "status": "partial_browser_unavailable",
+      "last_complete_date": "2026-10-20",
+      "comparison_date": "2026-10-21",
+      "theme_comparison_date": "2026-10-21",
+      "comparison_available": false,
+      "platforms": {
+        "Philips.de": {
+          "rating": 4.7,
+          "rating_count": 46,
+          "written_count": 46,
+          "readable_today": 10,
+          "captured_review_count": 44,
+          "cached": false,
+          "last_verified": "2026-10-22",
+          "net_count_change": null,
+          "last_successful_net_count_change": 5,
+          "note": "SCD871 web source crawled today shows 46 shared reviews at 4.7/5; +5 net versus 20 October. Ten texts readable today, three newly captured; 44 retained texts, two uncollected. Current individual stars unavailable."
+        },
+        "Amazon.de": {
+          "rating": 4.796296296296297,
+          "calculated": true,
+          "rating_count": 54,
+          "written_count": 54,
+          "readable_today": 0,
+          "cached": true,
+          "last_verified": "2026-10-20",
+          "net_count_change": null,
+          "last_successful_net_count_change": null,
+          "coverage_backfill": 0,
+          "note": "Unavailable today: web extraction failed and browser could not open. Retained 20 October: SCD871 4.8/5 with 34 reviews; SCD861 4.9/5 with 20."
+        },
+        "bol.com": {
+          "rating": null,
+          "rating_count": 0,
+          "written_count": 0,
+          "readable_today": 0,
+          "cached": true,
+          "last_verified": "2026-10-20",
+          "net_count_change": null,
+          "last_successful_net_count_change": null,
+          "note": "No fresh verification. Retained 20 October: both listings had no reviews; current counts unavailable."
+        }
+      },
+      "overall": {
+        "current_available": false,
+        "rating": 4.768421052631579,
+        "rating_count": null,
+        "coded_review_count": 98,
+        "known_star_count": 95,
+        "unknown_star_count": 3,
+        "estimated": false,
+        "reason": "Last verified combined rating: 4.77/5 on 20 October, calculated from 95 individual stars (74 five-star, 20 four-star, one three-star). Current combined rating unavailable: Amazon/bol not refreshed and Philips current star distribution incomplete.",
+        "last_verified": "2026-10-20"
+      },
+      "new_review_ids": [
+        "philips-scd871-Martinha91-2026-10-20",
+        "philips-scd871-Pedrotelmo-2026-10-18",
+        "philips-scd871-veralet-2026-10-18"
+      ],
+      "coverage_backfill_ids": [],
+      "new_mentions": {
+        "positive: Satisfactory picture quality": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "positive: Easy setup/use": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "positive: Works without Wi-Fi": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "positive: Long parent-unit battery": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Camera requires mains power": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: High price": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Missing mounting clamp": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: No remote camera pan/tilt": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Menu closes too quickly": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Recording expectation mismatch": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: No remote smartphone monitoring": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Limited parent-unit battery life": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Missing motion detection": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Limited lullaby choice": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Picture resolution below expectations": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Video lacks fluidity": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Video latency": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Limited settings": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Missing night light": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Slow screen startup": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Missing recording function": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Missing camera zoom claim": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Menu navigation difficult": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Parent-unit screen too small": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Bulky non-folding monitor stand": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Lullaby disliked": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Digital zoom reduces clarity": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Parent unit bulky to carry": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Camera cable too short": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        },
+        "negative: Camera becomes warm": {
+          "total": null,
+          "Philips": null,
+          "Amazon": null
+        }
+      },
+      "coverage_mentions": {},
+      "freshness": "Partial refresh. Philips SCD871 web source shows 46 reviews at 4.7/5 (+5 net since 20 October). Three new texts captured, stars unavailable. Amazon and bol retain 20 October data. Browser could not open after three attempts. No 21 October comparison snapshot.",
+      "theme_note": "98 retained unique texts: 44 Philips + 54 Amazon. Ten Philips texts readable today; other texts retained from earlier checks. Two of the 46 Philips texts remain uncollected. All captured texts are promotional/Vine. Today’s themes are partial.",
+      "new_content": "Three newly captured Philips texts praise image quality and ease of use; two praise independence from internet. One reviewer criticizes mains-powered camera operation and daily parent-unit charging. Stars are unavailable for these three; the phrase “5 estrelas” in a title is not used as a star rating.",
+      "coverage_gaps": [
+        "No 21 October snapshot; previous-weekday changes unavailable.",
+        "Amazon extraction unavailable and browser failed to attach after three attempts; Amazon/bol retained from 20 October.",
+        "Philips only ten texts readable: three new, 44 retained in ledger out of 46 displayed; two uncollected. Current star split unavailable.",
+        "SCD861/SCD863 Philips search extractions were stale; retain their 20 October page checks. Latest family pool verified on SCD871 only.",
+        "Amazon and bol SCD863 matching listings remain unverified."
+      ],
+      "comparison_scope": "21 October comparison unavailable. Philips shared count increased 41 → 46 since 20 October (+5 net); three new review identities captured, two texts still missing. This is not a one-day addition count. Amazon and bol changes unavailable.",
+      "sources_checked": {
+        "philips861": {
+          "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
+          "rating": 4.7,
+          "count": 41,
+          "status": "Not freshly verified; retained last successful 20 October values.",
+          "last_verified": "2026-10-20",
+          "cached": true
+        },
+        "philips871": {
+          "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+          "rating": 4.7,
+          "count": 46,
+          "status": "Web source crawled today: 46 reviews; 10 readable texts, no individual star labels. Browser unavailable.",
+          "last_verified": "2026-10-22",
+          "cached": false
+        },
+        "philips863": {
+          "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
+          "rating": 4.7,
+          "count": 41,
+          "status": "Not freshly verified; retained last successful 20 October values.",
+          "last_verified": "2026-10-20",
+          "cached": true
+        },
+        "amazon": {
+          "url": "https://www.amazon.de/dp/B0HBRDDJWG",
+          "rating": 4.8,
+          "count": 34,
+          "status": "Not freshly verified; retained last successful 20 October values.",
+          "last_verified": "2026-10-20",
+          "cached": true
+        },
+        "bol861": {
+          "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
+          "count": 0,
+          "rating": null,
+          "status": "Not freshly verified; retained last successful 20 October values.",
+          "last_verified": "2026-10-20",
+          "cached": true
+        },
+        "bol871": {
+          "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+          "count": 0,
+          "rating": null,
+          "status": "Not freshly verified; retained last successful 20 October values.",
+          "last_verified": "2026-10-20",
+          "cached": true
+        },
+        "amazonReviews": {
+          "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
+          "status": "Not freshly verified; retained last successful 20 October values.",
+          "last_verified": "2026-10-20",
+          "count": 34,
+          "cached": true
+        },
+        "amazon861": {
+          "url": "https://www.amazon.de/dp/B0HBRLCWQ6",
+          "rating": 4.9,
+          "count": 20,
+          "status": "Not freshly verified; retained last successful 20 October values.",
+          "last_verified": "2026-10-20",
+          "cached": true
+        }
+      },
+      "review_access": {
+        "Philips.de": {
+          "readable_today": 10,
+          "cached_reviews": 34,
+          "new_records_confirmed": 3,
+          "new_records_reference_date": "2026-10-20",
+          "coverage_backfill": 0,
+          "last_text_check": "2026-10-22",
+          "uncollected": 2
+        },
+        "Amazon.de": {
+          "readable_today": 0,
+          "cached_reviews": 54,
+          "new_records_confirmed": null,
+          "coverage_backfill": 0,
+          "last_text_check": "2026-10-20"
+        },
+        "bol.com": {
+          "readable_today": 0,
+          "cached_reviews": 0,
+          "new_records_confirmed": null,
+          "coverage_backfill": 0,
+          "last_text_check": "2026-10-20"
+        }
+      },
+      "last_complete_scope": "Seven verified listings; three distinct non-overlapping review pools; all 95 texts and stars read.",
+      "reporting_pool_keys": [
+        "Philips.de",
+        "Amazon.de",
+        "Amazon.de:SCD861/26",
+        "bol.com"
+      ],
+      "identity_audit": {
+        "previous_date": "2026-10-20",
+        "previous_count": 95,
+        "retained_ids": 95,
+        "new_ids": 3,
+        "deleted_ids": [],
+        "changed_star_ids": [],
+        "audit_complete": false,
+        "text_edits": "Partial collection cannot establish deletions, star changes or text edits. Earlier records retained, not freshly verified.",
+        "coverage_backfill": 0
+      },
+      "theme_comparison_available": false,
+      "last_successful_comparison_date": "2026-10-20",
+      "new_review_ids_reference_date": "2026-10-20",
+      "mentions_since_last_successful": {
+        "positive: Satisfactory picture quality": {
+          "total": 3,
+          "Philips": 3,
+          "Amazon": null
+        },
+        "positive: Easy setup/use": {
+          "total": 3,
+          "Philips": 3,
+          "Amazon": null
+        },
+        "positive: Works without Wi-Fi": {
+          "total": 2,
+          "Philips": 2,
+          "Amazon": null
+        },
+        "positive: Long parent-unit battery": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Camera requires mains power": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": null
+        },
+        "negative: High price": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Missing mounting clamp": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: No remote camera pan/tilt": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Menu closes too quickly": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Recording expectation mismatch": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: No remote smartphone monitoring": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Limited parent-unit battery life": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": null
+        },
+        "negative: Missing motion detection": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Limited lullaby choice": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Picture resolution below expectations": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Video lacks fluidity": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Video latency": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Limited settings": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Missing night light": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Slow screen startup": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Missing recording function": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Missing camera zoom claim": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Menu navigation difficult": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Parent-unit screen too small": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Bulky non-folding monitor stand": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Lullaby disliked": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Digital zoom reduces clarity": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Parent unit bulky to carry": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Camera cable too short": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
+        },
+        "negative: Camera becomes warm": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": null
         }
       }
     }
