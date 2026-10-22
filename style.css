@@ -26,3 +26,6 @@
 
 /* Separate Amazon listing cards remain readable across screen sizes. */
 #platform-cards{grid-template-columns:repeat(4,minmax(0,1fr))}#platform-cards .platform-top{align-items:flex-start;flex-wrap:wrap;gap:8px}.platform-sku{font-size:13px;font-weight:600;color:var(--green);margin-top:3px}#platform-cards .platform-bottom{flex-direction:column;gap:8px}#platform-cards .platform-bottom a{align-self:flex-start;white-space:nowrap}@media(max-width:1100px){#platform-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){#platform-cards{grid-template-columns:1fr}}
+
+
+.review-count-note{margin:24px 0 28px}.review-count-note h3{margin:0 0 8px}.review-count-note p{line-height:1.6}.review-count-note details{margin-top:12px}.review-count-note table{margin-top:16px}
