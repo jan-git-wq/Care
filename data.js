@@ -1,40 +1,40 @@
 const DATA = {
   "check": {
-    "date": "2026-10-22",
+    "date": "2026-10-23",
     "timezone": "Asia/Hong_Kong",
-    "checked_at_hong_kong": "2026-10-22T18:53:21+08:00",
-    "last_attempt_at_hong_kong": "2026-10-22T18:53:21+08:00",
+    "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+    "last_attempt_at_hong_kong": "2026-10-23T09:54:00+08:00",
     "status": "verified_all_seven_listings",
-    "last_complete_date": "2026-10-22",
-    "comparison_date": "2026-10-21",
-    "theme_comparison_date": "2026-10-21",
-    "comparison_available": false,
+    "last_complete_date": "2026-10-23",
+    "comparison_date": "2026-10-22",
+    "theme_comparison_date": "2026-10-22",
+    "comparison_available": true,
     "platforms": {
       "Philips.de": {
         "rating": 4.7,
-        "rating_count": 46,
-        "written_count": 46,
-        "readable_today": 46,
-        "captured_review_count": 46,
+        "rating_count": 61,
+        "written_count": 61,
+        "readable_today": 61,
+        "captured_review_count": 61,
         "cached": false,
-        "last_verified": "2026-10-22",
-        "net_count_change": null,
-        "last_successful_net_count_change": 5,
-        "note": "All three Philips pages show one shared pool: 4.7/5 from 46 reviews, all about SCD871. All 46 texts and stars read today; 34 five-star and 12 four-star. +5 since 20 October."
+        "last_verified": "2026-10-23",
+        "net_count_change": 15,
+        "last_successful_net_count_change": 15,
+        "note": "All three live Philips pages show 4.7/5 and one shared pool of 61 SCD871 reviews. All texts and stars read: 41 five-star, 20 four-star. Increase of 15 includes 14 July-dated access backfills and one newly observed October review; not 15 newly posted daily reviews."
       },
       "Amazon.de": {
-        "rating": 4.818181818181818,
+        "rating": 4.811594202898551,
         "calculated": true,
-        "rating_count": 66,
-        "listing_rating_count": 69,
-        "written_count": 69,
-        "readable_today": 69,
-        "captured_review_count": 66,
+        "rating_count": 69,
+        "listing_rating_count": 72,
+        "written_count": 72,
+        "readable_today": 72,
+        "captured_review_count": 69,
         "cached": false,
-        "last_verified": "2026-10-22",
-        "net_count_change": null,
-        "last_successful_net_count_change": 12,
-        "note": "Both live listings fully read: SCD871 4.7/5 from 38; SCD861 4.9/5 from 31. 69 listing records, 66 after excluding three copied texts across listings. Calculated mean uses 66 unique stars. +15 listing records / +12 unique reviews since 20 October."
+        "last_verified": "2026-10-23",
+        "net_count_change": 3,
+        "last_successful_net_count_change": 3,
+        "note": "Amazon now displays one shared all-variant pool: 4.8/5, 72 ratings and written reviews. All 72 read: 40 labelled 60-hour/SCD871 and 32 labelled 48-hour/SCD861. Three matching cross-variant texts excluded: 69 unique. Three newly observed IDs; two five-star and one four-star. One Verified Purchase review, 68 unique Vine reviews."
       },
       "bol.com": {
         "rating": null,
@@ -42,268 +42,540 @@ const DATA = {
         "written_count": 0,
         "readable_today": 0,
         "cached": false,
-        "last_verified": "2026-10-22",
-        "net_count_change": null,
+        "last_verified": "2026-10-23",
+        "net_count_change": 0,
         "last_successful_net_count_change": 0,
-        "note": "Both live SCD861 and SCD871 listings say Nog geen reviews (no reviews), checked today."
+        "note": "Both live SCD861 and SCD871 listings show Nog geen reviews, checked 23 October."
       }
     },
     "overall": {
       "current_available": true,
-      "rating": 4.785714285714286,
-      "rating_count": 112,
-      "coded_review_count": 112,
-      "known_star_count": 112,
+      "rating": 4.746153846153846,
+      "rating_count": 130,
+      "coded_review_count": 130,
+      "known_star_count": 130,
       "unknown_star_count": 0,
       "estimated": false,
-      "last_verified": "2026-10-22",
-      "reason": "Exact arithmetic mean: 536 star points ÷ 112 unique ratings (46 Philips + 66 Amazon). Three copied Amazon reviews are counted once. All current individual stars verified on 22 October."
+      "last_verified": "2026-10-23",
+      "reason": "Exact arithmetic mean: 617 star points / 130 unique ratings (61 Philips + 69 Amazon). 133 listed records minus three matching Amazon entries. All current texts/stars verified 23 October; includes 14 newly recovered July reviews."
     },
     "new_review_ids": [
-      "philips-scd871-Martinha91-2026-10-20",
-      "philips-scd871-Pedrotelmo-2026-10-18",
-      "philips-scd871-veralet-2026-10-18",
-      "R1TF8WU2KID0WU",
-      "R2DH2DXVZEJGLP",
-      "R27QPCBDBUEVLA",
-      "RHRL638K938C7",
-      "R3CCOW7X18QB9F",
-      "R1NODPJ520GUR5",
-      "R386Y11A9E6LK0",
-      "RL3ZLAOTZURMM",
-      "R1YA1VH9ECKNKO",
-      "R225GV2NYAZWPE",
-      "R1SM4HQUBMVDAU",
-      "R3T3VO8810BLIF",
-      "philips-scd871-Haervee29-2026-10-18",
-      "philips-scd871-Tester_JJ-2026-10-18"
+      "philips-scd871-Familie van Wijk-2026-10-19",
+      "RKAKO39LXU7BN",
+      "R1IK57WJB1ZC5Z",
+      "R302K94BUZNSA3"
     ],
-    "coverage_backfill_ids": [],
+    "coverage_backfill_ids": [
+      "philips-scd871-Ewi_LE-2026-07-06",
+      "philips-scd871-GhostCovi-2026-07-05",
+      "philips-scd871-Anonymous (Herzensempfehlung!)-2026-07-05",
+      "philips-scd871-Lena0705-2026-07-04",
+      "philips-scd871-Anonymous (Ich bin sehr begeistert)-2026-07-02",
+      "philips-scd871-Vapeception-2026-07-02",
+      "philips-scd871-LenningWest-2026-07-07",
+      "philips-scd871-Carry K-2026-07-07",
+      "philips-scd871-Baschdi-2026-07-07",
+      "philips-scd871-Domi1609-2026-07-07",
+      "philips-scd871-Elli93-2026-07-04",
+      "philips-scd871-Shadowsgirl-2026-07-03",
+      "philips-scd871-Jujani-2026-07-02",
+      "philips-scd871-Zebra 91-2026-07-02"
+    ],
     "new_mentions": {
       "positive: Satisfactory picture quality": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 3,
+        "Philips": 1,
+        "Amazon": 2
       },
       "positive: Easy setup/use": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 2,
+        "Philips": 1,
+        "Amazon": 1
       },
       "positive: Works without Wi-Fi": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 3,
+        "Philips": 1,
+        "Amazon": 2
       },
       "positive: Long parent-unit battery": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
       },
       "negative: Camera requires mains power": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: High price": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 1,
+        "Philips": 0,
+        "Amazon": 1
       },
       "negative: Missing mounting clamp": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: No remote camera pan/tilt": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 2,
+        "Philips": 1,
+        "Amazon": 1
       },
       "negative: Menu closes too quickly": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Recording expectation mismatch": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: No remote smartphone monitoring": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Limited parent-unit battery life": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Missing motion detection": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Limited lullaby choice": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Picture resolution below expectations": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Video lacks fluidity": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Video latency": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Limited settings": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Missing night light": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Slow screen startup": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Missing recording function": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Missing camera zoom claim": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Menu navigation difficult": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Parent-unit screen too small": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Bulky non-folding monitor stand": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Lullaby disliked": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Digital zoom reduces clarity": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Parent unit bulky to carry": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Camera cable too short": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Camera becomes warm": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Some functions take time to learn": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Metallic talk-back sound": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       },
       "negative: Reduced range through thick walls": {
-        "total": null,
-        "Philips": null,
-        "Amazon": null
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Monitor tips backwards": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Time and temperature not continuously displayed": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Limited camera tilt range": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Missing audible low-battery warning": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Camera power switch awkward": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Audio delay": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Limited indoor range": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Camera slips under cable pull": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Temperature reading questioned": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Missing carrying clip": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
       }
     },
-    "coverage_mentions": {},
-    "freshness": "Current coverage complete: 112 unique texts and stars. Philips 46 at 4.7/5; Amazon SCD871 38 at 4.7 and SCD861 31 at 4.9; bol has no reviews. Three copied Amazon records counted once. No 21 October snapshot; a separately labelled comparison with 20 October is provided.",
-    "theme_note": "112 unique texts: 46 Philips + 66 Amazon. All texts and individual stars checked today. All reviews promotional/Vine; three copied Amazon texts counted once.",
-    "new_content": "Since 20 October, 17 additional unique reviews captured: five Philips and 12 Amazon. The two Philips texts recovered in this final check praise image quality and usability; one also reports limited continuous-screen battery life and basic screen resolution.",
+    "coverage_mentions": {
+      "positive: Satisfactory picture quality": {
+        "total": 13,
+        "Philips": 13,
+        "Amazon": 0
+      },
+      "positive: Easy setup/use": {
+        "total": 9,
+        "Philips": 9,
+        "Amazon": 0
+      },
+      "positive: Works without Wi-Fi": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "positive: Long parent-unit battery": {
+        "total": 6,
+        "Philips": 6,
+        "Amazon": 0
+      },
+      "negative: Camera requires mains power": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: High price": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Missing mounting clamp": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: No remote camera pan/tilt": {
+        "total": 2,
+        "Philips": 2,
+        "Amazon": 0
+      },
+      "negative: Menu closes too quickly": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Recording expectation mismatch": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: No remote smartphone monitoring": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Limited parent-unit battery life": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Missing motion detection": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Limited lullaby choice": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Picture resolution below expectations": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Video lacks fluidity": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Video latency": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Limited settings": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Missing night light": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Slow screen startup": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Missing recording function": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Missing camera zoom claim": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Menu navigation difficult": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Parent-unit screen too small": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Bulky non-folding monitor stand": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Lullaby disliked": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Digital zoom reduces clarity": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Parent unit bulky to carry": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Camera cable too short": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Camera becomes warm": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Some functions take time to learn": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Metallic talk-back sound": {
+        "total": 0,
+        "Philips": 0,
+        "Amazon": 0
+      },
+      "negative: Reduced range through thick walls": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Monitor tips backwards": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Time and temperature not continuously displayed": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Limited camera tilt range": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Missing audible low-battery warning": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Camera power switch awkward": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Audio delay": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Limited indoor range": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Camera slips under cable pull": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Temperature reading questioned": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      },
+      "negative: Missing carrying clip": {
+        "total": 1,
+        "Philips": 1,
+        "Amazon": 0
+      }
+    },
+    "freshness": "133 listed records, 130 unique reviews after three matched Amazon entries. Amazon shares a 72-review pool across two variants; Philips shared pool has 61. Four newly observed October reviews plus 14 recovered July reviews since 22 October. bol remains unrated.",
+    "theme_note": "130 unique texts: 61 Philips + 69 Amazon; all read today. 129 promotional/Vine, one Verified Purchase. Four newly observed October records and 14 July access backfills coded separately.",
+    "new_content": "Three additional Amazon IDs include the first captured Verified Purchase review, praising camera quality. Philips adds one October review and 14 July-dated backfills. Recovered reviews mention picture clarity and usability, plus range, camera adjustment and handling complaints.",
     "coverage_gaps": [
-      "No 21 October snapshot: exact previous-weekday changes cannot be recovered. Separately labelled changes since 20 October are available.",
-      "Amazon and bol SCD863 listings not verified."
+      "Amazon and bol SCD863 listings remain unverified.",
+      "Amazon SCD871 filter header shows 38, while the complete all-variant capture contains 40 explicitly labelled SCD871 records. Shared total is 72; variant counts use captured records.",
+      "Philips surfaced 14 July-dated reviews today. They are access backfills; historical snapshots are not rewritten."
     ],
-    "comparison_scope": "21 October was not captured, so the previous-weekday comparison is unavailable. Separately, since 20 October: 95 → 112 unique ratings (+17), comprising +15 five-star and +2 four-star. These are newly observed reviews since 20 October, not one-day additions.",
+    "comparison_scope": "23 vs 22 October: 112 to 130 unique reviews (+18 observed net). Four newly observed October records (+3 five-star, +1 four-star) and 14 recovered July records (+6 five-star, +8 four-star). No old IDs lost or stars changed. These are observation changes, not reviews posted today.",
     "sources_checked": {
       "philips861": {
         "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
         "rating": 4.7,
-        "count": 46,
-        "status": "Live page shows the same shared 46-review pool at 4.7/5. All 46 individual texts and stars expanded on SCD871.",
-        "last_verified": "2026-10-22",
+        "count": 61,
+        "status": "Live page shows the shared 61-review pool at 4.7/5; all 61 texts and stars expanded on SCD871.",
+        "last_verified": "2026-10-23",
         "cached": false,
-        "checked_at_hong_kong": "2026-10-22T18:53:21+08:00",
-        "readable_today": 46
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "readable_today": 61
       },
       "philips871": {
         "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
         "rating": 4.7,
-        "count": 46,
-        "status": "Live page shows the same shared 46-review pool at 4.7/5. All 46 individual texts and stars expanded on SCD871.",
-        "last_verified": "2026-10-22",
+        "count": 61,
+        "status": "Live page shows the shared 61-review pool at 4.7/5; all 61 texts and stars expanded on SCD871.",
+        "last_verified": "2026-10-23",
         "cached": false,
-        "checked_at_hong_kong": "2026-10-22T18:53:21+08:00",
-        "readable_today": 46
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "readable_today": 61
       },
       "philips863": {
         "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
         "rating": 4.7,
-        "count": 46,
-        "status": "Live page shows the same shared 46-review pool at 4.7/5. All 46 individual texts and stars expanded on SCD871.",
-        "last_verified": "2026-10-22",
+        "count": 61,
+        "status": "Live page shows the shared 61-review pool at 4.7/5; all 61 texts and stars expanded on SCD871.",
+        "last_verified": "2026-10-23",
         "cached": false,
-        "checked_at_hong_kong": "2026-10-22T18:53:21+08:00",
-        "readable_today": 46
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "readable_today": 61
       },
       "amazon": {
         "url": "https://www.amazon.de/dp/B0HBRDDJWG",
-        "rating": 4.7,
-        "count": 38,
-        "status": "All listing reviews and individual stars read in signed-in browser.",
-        "last_verified": "2026-10-22",
+        "rating": 4.75,
+        "count": 40,
+        "status": "40 all-variant records explicitly labelled 60-hour/SCD871; calculated mean 4.75. Shared page displays 4.8/72. SKU filter count still shows 38; record-level capture includes two additional SCD871 IDs.",
+        "last_verified": "2026-10-23",
         "cached": false,
-        "checked_at_hong_kong": "2026-10-22T15:08:26+08:00",
-        "readable_today": 38
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "readable_today": 40,
+        "calculated": true,
+        "shared_rating": 4.8,
+        "shared_count": 72
       },
       "bol861": {
         "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
         "count": 0,
         "rating": null,
         "status": "Live listing states Nog geen reviews.",
-        "last_verified": "2026-10-22",
+        "last_verified": "2026-10-23",
         "cached": false,
-        "checked_at_hong_kong": "2026-10-22T15:08:26+08:00",
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
         "readable_today": 0
       },
       "bol871": {
@@ -311,62 +583,66 @@ const DATA = {
         "count": 0,
         "rating": null,
         "status": "Live listing states Nog geen reviews.",
-        "last_verified": "2026-10-22",
+        "last_verified": "2026-10-23",
         "cached": false,
-        "checked_at_hong_kong": "2026-10-22T15:08:26+08:00",
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
         "readable_today": 0
       },
       "amazonReviews": {
         "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
-        "status": "All listing reviews and individual stars read in signed-in browser.",
-        "last_verified": "2026-10-22",
-        "count": 38,
+        "status": "Shared all-variants page: all 72 review IDs, texts, stars and variant labels captured.",
+        "last_verified": "2026-10-23",
+        "count": 72,
         "cached": false,
-        "rating": 4.7,
-        "checked_at_hong_kong": "2026-10-22T15:08:26+08:00",
-        "readable_today": 38
+        "rating": 4.8,
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "readable_today": 72
       },
       "amazon861": {
         "url": "https://www.amazon.de/dp/B0HBRLCWQ6",
-        "rating": 4.9,
-        "count": 31,
-        "status": "All listing reviews and individual stars read in signed-in browser.",
-        "last_verified": "2026-10-22",
+        "rating": 4.90625,
+        "count": 32,
+        "status": "32 all-variant records explicitly labelled 48-hour/SCD861; calculated mean 4.90625. Shared page displays 4.8/72. Three copied cross-variant texts excluded only in combined analysis.",
+        "last_verified": "2026-10-23",
         "cached": false,
-        "checked_at_hong_kong": "2026-10-22T15:08:26+08:00",
-        "readable_today": 31
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "readable_today": 32,
+        "calculated": true,
+        "shared_rating": 4.8,
+        "shared_count": 72
       }
     },
     "review_access": {
       "Philips.de": {
-        "readable_today": 46,
+        "readable_today": 61,
         "cached_reviews": 0,
-        "new_records_confirmed": 5,
-        "new_records_reference_date": "2026-10-20",
-        "coverage_backfill": 0,
-        "last_text_check": "2026-10-22",
+        "new_records_confirmed": 1,
+        "new_records_reference_date": "2026-10-22",
+        "coverage_backfill": 14,
+        "last_text_check": "2026-10-23",
         "uncollected": 0
       },
       "Amazon.de": {
-        "readable_today": 69,
-        "unique_readable_today": 66,
+        "readable_today": 72,
+        "unique_readable_today": 69,
         "cached_reviews": 0,
-        "new_records_confirmed": 12,
-        "new_listing_ids": 15,
+        "new_records_confirmed": 3,
+        "new_listing_ids": 3,
         "duplicate_records": 3,
-        "new_records_reference_date": "2026-10-20",
+        "new_records_reference_date": "2026-10-22",
         "coverage_backfill": 0,
-        "last_text_check": "2026-10-22"
+        "last_text_check": "2026-10-23",
+        "uncollected": 0
       },
       "bol.com": {
         "readable_today": 0,
         "cached_reviews": 0,
         "new_records_confirmed": 0,
         "coverage_backfill": 0,
-        "last_text_check": "2026-10-22"
+        "last_text_check": "2026-10-23"
       }
     },
-    "last_complete_scope": "Seven verified listings; all current texts and individual stars captured; 112 unique reviews after excluding three copied Amazon records.",
+    "last_complete_scope": "Seven verified listings; 133 raw records and 130 unique texts/stars. Amazon shared pool counted once and allocated by each review variant label.",
     "reporting_pool_keys": [
       "Philips.de",
       "Amazon.de",
@@ -374,205 +650,27 @@ const DATA = {
       "bol.com"
     ],
     "identity_audit": {
-      "previous_date": "2026-10-20",
-      "previous_count": 95,
-      "retained_ids": 95,
-      "new_ids": 17,
-      "new_listing_ids": 20,
+      "previous_date": "2026-10-22",
+      "previous_count": 112,
+      "retained_ids": 112,
+      "new_ids": 4,
+      "backfilled_ids": 14,
+      "new_listing_ids": 3,
       "deleted_ids": [],
       "changed_star_ids": [],
       "audit_complete": true,
       "amazon_audit_complete": true,
-      "text_edits": "All 95 previously captured review identities remain, with unchanged stars. Philips identities matched by reviewer/date/product; Amazon by review ID. Three copied Amazon records excluded separately. Text edits were not exhaustively diffed.",
-      "coverage_backfill": 0,
-      "philips_audit_complete": true
+      "philips_audit_complete": true,
+      "coverage_backfill": 14,
+      "text_edits": "All prior IDs/composite identities remain with unchanged stars. Three copied Amazon texts rechecked. Text edits were not exhaustively diffed."
     },
-    "theme_comparison_available": false,
-    "last_successful_comparison_date": "2026-10-20",
-    "new_review_ids_reference_date": "2026-10-20",
-    "mentions_since_last_successful": {
-      "positive: Satisfactory picture quality": {
-        "total": 17,
-        "Philips": 5,
-        "Amazon": 12
-      },
-      "positive: Easy setup/use": {
-        "total": 15,
-        "Philips": 4,
-        "Amazon": 11
-      },
-      "positive: Works without Wi-Fi": {
-        "total": 13,
-        "Philips": 3,
-        "Amazon": 10
-      },
-      "positive: Long parent-unit battery": {
-        "total": 9,
-        "Philips": 0,
-        "Amazon": 9
-      },
-      "negative: Camera requires mains power": {
-        "total": 2,
-        "Philips": 1,
-        "Amazon": 1
-      },
-      "negative: High price": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      },
-      "negative: Missing mounting clamp": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: No remote camera pan/tilt": {
-        "total": 3,
-        "Philips": 0,
-        "Amazon": 3
-      },
-      "negative: Menu closes too quickly": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Recording expectation mismatch": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: No remote smartphone monitoring": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Limited parent-unit battery life": {
-        "total": 2,
-        "Philips": 2,
-        "Amazon": 0
-      },
-      "negative: Missing motion detection": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Limited lullaby choice": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Picture resolution below expectations": {
-        "total": 1,
-        "Philips": 1,
-        "Amazon": 0
-      },
-      "negative: Video lacks fluidity": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Video latency": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      },
-      "negative: Limited settings": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Missing night light": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Slow screen startup": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Missing recording function": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Missing camera zoom claim": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Menu navigation difficult": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Parent-unit screen too small": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      },
-      "negative: Bulky non-folding monitor stand": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Lullaby disliked": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Digital zoom reduces clarity": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      },
-      "negative: Parent unit bulky to carry": {
-        "total": 3,
-        "Philips": 0,
-        "Amazon": 3
-      },
-      "negative: Camera cable too short": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      },
-      "negative: Camera becomes warm": {
-        "total": 0,
-        "Philips": 0,
-        "Amazon": 0
-      },
-      "negative: Some functions take time to learn": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      },
-      "negative: Metallic talk-back sound": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      },
-      "negative: Reduced range through thick walls": {
-        "total": 1,
-        "Philips": 0,
-        "Amazon": 1
-      }
-    },
+    "theme_comparison_available": true,
+    "last_successful_comparison_date": "2026-10-22",
+    "new_review_ids_reference_date": "2026-10-22",
     "new_listing_ids": [
-      "R1TF8WU2KID0WU",
-      "R2DH2DXVZEJGLP",
-      "R27QPCBDBUEVLA",
-      "RHRL638K938C7",
-      "R2IG7313QVV5JO",
-      "R3CCOW7X18QB9F",
-      "R1NODPJ520GUR5",
-      "R2E242QL6BKTHT",
-      "R386Y11A9E6LK0",
-      "RHPS2L0PRDIS7",
-      "RL3ZLAOTZURMM",
-      "R1YA1VH9ECKNKO",
-      "R225GV2NYAZWPE",
-      "R1SM4HQUBMVDAU",
-      "R3T3VO8810BLIF"
+      "RKAKO39LXU7BN",
+      "R1IK57WJB1ZC5Z",
+      "R302K94BUZNSA3"
     ],
     "duplicate_review_ids": [
       "R2IG7313QVV5JO",
@@ -600,7 +698,7 @@ const DATA = {
       }
     }
   },
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "timezone": "Asia/Hong_Kong",
   "reviews": [
     {
@@ -621,10 +719,10 @@ const DATA = {
         "Camera requires mains power",
         "High price"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232210586",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -642,13 +740,10 @@ const DATA = {
       "negative": [
         "No remote smartphone monitoring"
       ],
-      "original_excerpts": {
-        "No remote smartphone monitoring": "Keine App-Anbindung"
-      },
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231945633",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -666,10 +761,10 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231328899",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -685,10 +780,10 @@ const DATA = {
         "Easy setup/use"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231304948",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -705,10 +800,10 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231134215",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -725,10 +820,10 @@ const DATA = {
         "Works without Wi-Fi"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231024236",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -744,10 +839,10 @@ const DATA = {
         "Easy setup/use"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232436816",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -764,10 +859,10 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232233092",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -784,10 +879,10 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232215198",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -805,10 +900,10 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231827578",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -821,10 +916,10 @@ const DATA = {
       "incentive": "Teil der Aktion",
       "positive": [],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231786651",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -840,10 +935,10 @@ const DATA = {
         "Easy setup/use"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231780872",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -862,10 +957,10 @@ const DATA = {
       "negative": [
         "Missing mounting clamp"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231479666",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -882,10 +977,10 @@ const DATA = {
         "Works without Wi-Fi"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231031036",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -904,10 +999,10 @@ const DATA = {
       "negative": [
         "Camera requires mains power"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1230643429",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -923,10 +1018,10 @@ const DATA = {
         "Easy setup/use"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1230337930",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -944,10 +1039,10 @@ const DATA = {
       "negative": [
         "Missing mounting clamp"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232221411",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -965,10 +1060,10 @@ const DATA = {
       "negative": [
         "No remote camera pan/tilt"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231926688",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -988,10 +1083,10 @@ const DATA = {
       "negative": [
         "Camera requires mains power"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231382535",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1007,10 +1102,10 @@ const DATA = {
         "Easy setup/use"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232541973",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1026,10 +1121,10 @@ const DATA = {
         "Works without Wi-Fi"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232477351",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1047,10 +1142,10 @@ const DATA = {
       "negative": [
         "No remote camera pan/tilt"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232455351",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1068,10 +1163,10 @@ const DATA = {
       "negative": [
         "High price"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232186852",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1091,10 +1186,10 @@ const DATA = {
         "Camera requires mains power",
         "No remote camera pan/tilt"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1231792224",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1114,13 +1209,10 @@ const DATA = {
         "High price",
         "Limited parent-unit battery life"
       ],
-      "original_excerpts": {
-        "Limited parent-unit battery life": "Batteritiden kan upplevas som begränsad vid längre användning."
-      },
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1230848601",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1138,10 +1230,10 @@ const DATA = {
         "Camera requires mains power",
         "Missing mounting clamp"
       ],
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1230319484",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1158,9 +1250,9 @@ const DATA = {
         "Works without Wi-Fi"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R22EVOPIT6VTMX",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R22EVOPIT6VTMX/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1181,9 +1273,9 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R13GK2DBW70V2K",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R13GK2DBW70V2K/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1204,9 +1296,9 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R2DNDDQCG4O2G7",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R2DNDDQCG4O2G7/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1229,9 +1321,9 @@ const DATA = {
         "Menu closes too quickly",
         "Recording expectation mismatch"
       ],
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R16Y9LUAWSTVC5",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R16Y9LUAWSTVC5/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1254,9 +1346,9 @@ const DATA = {
       "negative": [
         "No remote smartphone monitoring"
       ],
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R3SKEHRKNWLCHQ",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R3SKEHRKNWLCHQ/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1277,9 +1369,9 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R22CARJK56LEDC",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R22CARJK56LEDC/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1303,15 +1395,9 @@ const DATA = {
         "Camera requires mains power"
       ],
       "first_seen": "2026-10-09",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Grym bild!",
-        "Works without Wi-Fi": "Ingen Wi-Fi behövs.",
-        "Long parent-unit battery": "batteri som håller bra",
-        "Camera requires mains power": "Kameradelen har sladd"
-      },
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1329,13 +1415,9 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-09",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Bilden är tydlig",
-        "Easy setup/use": "enkel att använda"
-      },
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1357,17 +1439,10 @@ const DATA = {
         "Missing motion detection"
       ],
       "first_seen": "2026-10-09",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Den skarpa och tydliga bilden",
-        "Easy setup/use": "enkel att använda",
-        "Long parent-unit battery": "Batteritiden på monitorn var förvånansvärt lång",
-        "No remote smartphone monitoring": "gärna sett uppkoppling mot mobilen",
-        "Missing motion detection": "Det jag främst saknar är rörelsedetektering"
-      },
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232847901",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1389,17 +1464,10 @@ const DATA = {
         "Limited parent-unit battery life"
       ],
       "first_seen": "2026-10-09",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Très bonne qualité de l'image",
-        "Easy setup/use": "Très simple d’utilisation",
-        "Works without Wi-Fi": "pas besoin de wifi",
-        "Camera requires mains power": "prise proche du lit bébé",
-        "Limited parent-unit battery life": "Autonomie de l’unité des parents"
-      },
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "source_id": "1232508888",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1418,14 +1486,9 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-09",
-      "original_excerpts": {
-        "Satisfactory picture quality": "schön klar und ausreichend detailliert",
-        "Easy setup/use": "Die Einrichtung war dadurch schnell erledigt",
-        "Works without Wi-Fi": "dass das Babyphone ohne WLAN funktioniert"
-      },
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "RJ3NW8FSMAA6P",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/RJ3NW8FSMAA6P/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1445,12 +1508,9 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-09",
-      "original_excerpts": {
-        "Easy setup/use": "funktionierte bei uns auf Anhieb"
-      },
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R2QBHMUEUY8W3W",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R2QBHMUEUY8W3W/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1472,14 +1532,9 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-09",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Die Kamera liefert ein scharfes Bild",
-        "Works without Wi-Fi": "Die Verbindung läuft ohne WLAN",
-        "Long parent-unit battery": "Der Akku hält lange durch"
-      },
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "RC1G8223KFVC2",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/RC1G8223KFVC2/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1501,14 +1556,9 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-09",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Une qualité d'image impressionnante",
-        "Easy setup/use": "On branche, on allume, et ça fonctionne instantanément",
-        "Works without Wi-Fi": "l'absence de Wi-Fi ou d'application à configurer"
-      },
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1NAB29KIA69FK",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1NAB29KIA69FK/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
       "pool_id": "B0HBRDDJWG",
@@ -1528,17 +1578,12 @@ const DATA = {
         "Long parent-unit battery"
       ],
       "negative": [],
-      "original_excerpts": {
-        "Satisfactory picture quality": "nitidez de la pantalla",
-        "Easy setup/use": "fácil de entender",
-        "Long parent-unit battery": "Su batería dura varios días"
-      },
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "first_seen": "2026-10-12",
       "star_status": "Not exposed in readable source; not inferred",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium",
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1558,22 +1603,15 @@ const DATA = {
       "negative": [
         "No remote camera pan/tilt"
       ],
-      "original_excerpts": {
-        "Satisfactory picture quality": "Écran HD",
-        "Easy setup/use": "Facilité d’installation",
-        "Works without Wi-Fi": "sans connexion internet",
-        "Long parent-unit battery": "Batterie robuste",
-        "No remote camera pan/tilt": "la caméra est fixe"
-      },
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "first_seen": "2026-10-12",
       "star_status": "Not exposed in readable source; not inferred",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium",
       "qualifications": {
         "No remote camera pan/tilt": "The reviewer says the wide angle is sufficient, qualifying the fixed-camera concern."
       },
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1591,19 +1629,14 @@ const DATA = {
       "negative": [
         "High price"
       ],
-      "original_excerpts": {
-        "Satisfactory picture quality": "riktigt bra bildkvalitet",
-        "Easy setup/use": "enkel att använda",
-        "High price": "Priset"
-      },
-      "text_last_verified": "2026-10-22",
+      "text_last_verified": "2026-10-23",
       "text_verified_at": "2026-10-12T14:13:00+08:00",
-      "stars_last_verified": "2026-10-22",
+      "stars_last_verified": "2026-10-23",
       "first_seen": "2026-10-12",
       "first_seen_at": "2026-10-12T14:13:00+08:00",
       "star_status": "Not exposed in readable source; not inferred",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
-      "last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
       "pool_id": "shared-scd871-pool"
     },
     {
@@ -1625,17 +1658,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-12",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R2MDAW9G3Z687E",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R2MDAW9G3Z687E/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Sehr klares und gut erkennbares Bild",
-        "Easy setup/use": "Einfache und unkomplizierte Einrichtung",
-        "Works without Wi-Fi": "Keine Internet- oder WLAN-Verbindung notwendig",
-        "Long parent-unit battery": "Lange Akkulaufzeit"
-      },
       "pool_id": "B0HBRDDJWG"
     },
     {
@@ -1657,17 +1684,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-12",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1XHZ9CODQ1MW0",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1XHZ9CODQ1MW0/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "original_excerpts": {
-        "Satisfactory picture quality": "sehr klares und detailreiches Bild",
-        "Easy setup/use": "einfacher Bedienung",
-        "Works without Wi-Fi": "vollständig ohne WLAN",
-        "Long parent-unit battery": "langer Akkulaufzeit"
-      },
       "pool_id": "B0HBRDDJWG"
     },
     {
@@ -1688,15 +1709,11 @@ const DATA = {
         "High price"
       ],
       "first_seen": "2026-10-12",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R2PVSI7NC5D3F2",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R2PVSI7NC5D3F2/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "original_excerpts": {
-        "Works without Wi-Fi": "kein separates Haus WLAN benötigt",
-        "High price": "Der Preis ist allerdings absolut hoch."
-      },
       "pool_id": "B0HBRDDJWG"
     },
     {
@@ -1717,16 +1734,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-12",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1PQY0GFFMTPB9",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1PQY0GFFMTPB9/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Das Bild ist ausreichend",
-        "Easy setup/use": "sehr einfach einzurichten",
-        "Works without Wi-Fi": "nicht mit dem Internet verbundenen Produkt"
-      },
       "pool_id": "B0HBRDDJWG"
     },
     {
@@ -1746,15 +1758,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-12",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R30G8AZ84ITPNN",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R30G8AZ84ITPNN/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Die Bildqualität ist durchweg klar",
-        "Easy setup/use": "alles selbsterklärend"
-      },
       "pool_id": "B0HBRDDJWG"
     },
     {
@@ -1780,20 +1788,11 @@ const DATA = {
         "Video lacks fluidity"
       ],
       "first_seen": "2026-10-12",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1U2ZOG7VVSAB0",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1U2ZOG7VVSAB0/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "original_excerpts": {
-        "Satisfactory picture quality": "on y voit suffisamment",
-        "Works without Wi-Fi": "ne dépend pas du réseau Wifi",
-        "No remote camera pan/tilt": "j’aurais vraiment apprécier piloter l’orientation de la caméra depuis le moniteur",
-        "Missing motion detection": "qu’il n’ait pas de détecteur de mouvement",
-        "Limited lullaby choice": "qu’il ne dispose pas de d’avantage de musique berceuse",
-        "Picture resolution below expectations": "la résolution n’est pas à la hauteur de ce que j’attendais",
-        "Video lacks fluidity": "manque un peut de fluidité en qualité vidéos"
-      },
       "qualifications": {
         "Satisfactory picture quality": "Qualified satisfaction: the reviewer also criticises resolution and video fluidity.",
         "No remote camera pan/tilt": "The reviewer says this is less troublesome after finding a suitable camera angle."
@@ -1822,19 +1821,11 @@ const DATA = {
         "Limited settings"
       ],
       "first_seen": "2026-10-12",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "RXO84VR2NPDBL",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/RXO84VR2NPDBL/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8",
-      "original_excerpts": {
-        "Satisfactory picture quality": "L’image sur l’écran de 4,5\" est nette",
-        "Easy setup/use": "j’apprécie surtout sa simplicité",
-        "Works without Wi-Fi": "pas de Wi-Fi, pas d’application",
-        "No remote camera pan/tilt": "je trouve dommage que la caméra ne puisse pas être orientée à distance",
-        "Video latency": "une légère latence",
-        "Limited settings": "des réglages assez limités"
-      },
       "pool_id": "B0HBRDDJWG"
     },
     {
@@ -1857,17 +1848,11 @@ const DATA = {
         "Slow screen startup"
       ],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": null,
       "source_url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium#reviews",
-      "original_excerpts": {
-        "Satisfactory picture quality": "scherper beeld",
-        "Long parent-unit battery": "De accuduur is bovendien erg goed.",
-        "Missing night light": "Geen nachtlampje in dit model",
-        "Slow screen startup": "start het scherm iets langzamer op"
-      },
       "coverage_backfill": false,
       "qualifications": {
         "Missing night light": "Reviewer misses the previous model’s light, but says it is not essential. This is a reviewer claim, not a verified specification.",
@@ -1895,17 +1880,11 @@ const DATA = {
         "No remote camera pan/tilt"
       ],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1CKG77ACIJF9C",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R1CKG77ACIJF9C",
-      "original_excerpts": {
-        "Satisfactory picture quality": "l'image est nette",
-        "Works without Wi-Fi": "La connexion sans Wi-Fi, est un vrai avantage de ce modèle",
-        "No remote smartphone monitoring": "Il n'est pas possible de consulter les images depuis un smartphone",
-        "No remote camera pan/tilt": "La caméra ne pivote pas à distance"
-      },
       "coverage_backfill": false,
       "pool_id": "B0HBRDDJWG"
     },
@@ -1927,16 +1906,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1TXD7A3OOE0NF",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R1TXD7A3OOE0NF",
-      "original_excerpts": {
-        "Easy setup/use": "unkomplizierten Funktionsweise",
-        "Works without Wi-Fi": "ohne WLAN",
-        "Long parent-unit battery": "Lange Akkulaufzeit"
-      },
       "coverage_backfill": true,
       "qualifications": {
         "Long parent-unit battery": "Reviewer explicitly lists long battery life, while qualifying that actual runtime depends on screen use and settings."
@@ -1962,17 +1936,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1E2V59KHMVA2",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R1E2V59KHMVA2",
-      "original_excerpts": {
-        "Satisfactory picture quality": "klar und detailliert",
-        "Easy setup/use": "angenehm unspektakulär",
-        "Works without Wi-Fi": "nicht über WLAN läuft",
-        "Long parent-unit battery": "die Akkulaufzeit ist ebenfalls ein großer Pluspunkt"
-      },
       "coverage_backfill": true,
       "pool_id": "B0HBRLCWQ6"
     },
@@ -1999,20 +1967,11 @@ const DATA = {
         "Missing camera zoom claim"
       ],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R2L20TB8KWR7LO",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R2L20TB8KWR7LO",
-      "original_excerpts": {
-        "Satisfactory picture quality": "tatsächlich so scharf wie beworben",
-        "Easy setup/use": "Das dauert buchstäblich zwei Minuten.",
-        "Works without Wi-Fi": "kein WLAN",
-        "Long parent-unit battery": "nicht jeden Tag ans Laden denken muss",
-        "No remote smartphone monitoring": "keine Remote-Überwachung per Smartphone",
-        "Missing recording function": "keine Aufzeichnungsfunktion",
-        "Missing camera zoom claim": "keine Zoom-Kamera"
-      },
       "coverage_backfill": true,
       "qualifications": {
         "Missing camera zoom claim": "Reviewer claim about a missing zoom camera; the listing advertises digital zoom. Do not treat this as a verified product limitation."
@@ -2039,17 +1998,11 @@ const DATA = {
         "No remote camera pan/tilt"
       ],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R219ZB8QI76FC5",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R219ZB8QI76FC5",
-      "original_excerpts": {
-        "Easy setup/use": "Die Einrichtung ist unkompliziert",
-        "Works without Wi-Fi": "es funktioniert ohne WLAN",
-        "High price": "den deutlichen Aufpreis",
-        "No remote camera pan/tilt": "lässt sich die Kamera nicht motorisiert über die Elterneinheit schwenken oder neigen"
-      },
       "coverage_backfill": true,
       "pool_id": "B0HBRLCWQ6"
     },
@@ -2069,14 +2022,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R23KE90JC3VOC9",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R23KE90JC3VOC9",
-      "original_excerpts": {
-        "Works without Wi-Fi": "reduziert die Abhängigkeit von einem heimischen Netzwerk"
-      },
       "coverage_backfill": true,
       "qualifications": {
         "Works without Wi-Fi": "Positive evaluation of the connection design; much of this review describes advertised features rather than a measured usage test."
@@ -2102,17 +2052,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "RV57V2ZEJOC3T",
       "source_url": "https://www.amazon.de/gp/customer-reviews/RV57V2ZEJOC3T",
-      "original_excerpts": {
-        "Satisfactory picture quality": "klar und ausreichend detailreich",
-        "Easy setup/use": "angenehm unkompliziert",
-        "Works without Wi-Fi": "kein WLAN",
-        "Long parent-unit battery": "Laufzeit überzeugt mich im Alltag"
-      },
       "coverage_backfill": true,
       "pool_id": "B0HBRLCWQ6"
     },
@@ -2135,17 +2079,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R30Q0PTGR9KCOO",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R30Q0PTGR9KCOO",
-      "original_excerpts": {
-        "Satisfactory picture quality": "Die Bildqualität auf dem 4,5-Zoll-Display ist wirklich gut.",
-        "Easy setup/use": "problemlos und einfach",
-        "Works without Wi-Fi": "ohne App-Zwang und WLAN-Gefrickel",
-        "Long parent-unit battery": "Akku erstaunlich lange"
-      },
       "coverage_backfill": true,
       "pool_id": "B0HBRLCWQ6"
     },
@@ -2166,15 +2104,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1H46OX4K1MDFM",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R1H46OX4K1MDFM",
-      "original_excerpts": {
-        "Satisfactory picture quality": "HD camera provides a clear picture",
-        "Works without Wi-Fi": "works without WiFi"
-      },
       "coverage_backfill": true,
       "original_language": "English",
       "pool_id": "B0HBRLCWQ6"
@@ -2202,20 +2136,11 @@ const DATA = {
         "Menu navigation difficult"
       ],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "RV1PKOPLIU66W",
       "source_url": "https://www.amazon.de/gp/customer-reviews/RV1PKOPLIU66W",
-      "original_excerpts": {
-        "Satisfactory picture quality": "qualité d'image est au rendez-vous",
-        "Easy setup/use": "simple d'utilisation",
-        "Works without Wi-Fi": "L'absence de Wi-Fi",
-        "Long parent-unit battery": "tient bien le coup sur une soirée",
-        "High price": "Le prix reste assez élevé",
-        "No remote camera pan/tilt": "elle n'est pas motorisée",
-        "Menu navigation difficult": "manquent de souplesse"
-      },
       "coverage_backfill": true,
       "pool_id": "B0HBRLCWQ6"
     },
@@ -2239,17 +2164,11 @@ const DATA = {
         "No remote camera pan/tilt"
       ],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "RTJKLSOUSSKP0",
       "source_url": "https://www.amazon.de/gp/customer-reviews/RTJKLSOUSSKP0",
-      "original_excerpts": {
-        "Satisfactory picture quality": "l'image est top",
-        "Easy setup/use": "la mise en route est très simple",
-        "Works without Wi-Fi": "pas besoin de connexion wifi",
-        "No remote camera pan/tilt": "la caméra doit être orientée manuellement"
-      },
       "coverage_backfill": true,
       "pool_id": "B0HBRLCWQ6"
     },
@@ -2271,16 +2190,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R37FWO6XD58RP4",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R37FWO6XD58RP4",
-      "original_excerpts": {
-        "Satisfactory picture quality": "La qualité d’image est bonne",
-        "Easy setup/use": "L’utilisation est intuitive",
-        "Works without Wi-Fi": "ne pas dépendre du Wi-Fi"
-      },
       "coverage_backfill": true,
       "pool_id": "B0HBRLCWQ6"
     },
@@ -2303,17 +2217,11 @@ const DATA = {
       ],
       "negative": [],
       "first_seen": "2026-10-13",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R3RDZZYMBYEKAU",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R3RDZZYMBYEKAU",
-      "original_excerpts": {
-        "Satisfactory picture quality": "offre une image nette",
-        "Easy setup/use": "l’utilisation est assez simple",
-        "Works without Wi-Fi": "sans avoir besoin de passer par une connexion Wi-Fi",
-        "Long parent-unit battery": "La longue autonomie est aussi appréciable"
-      },
       "coverage_backfill": true,
       "pool_id": "B0HBRLCWQ6"
     },
@@ -2336,9 +2244,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R14JZ39TVCBME1",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2363,9 +2271,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R2R7DPQUKIHWUL",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2390,9 +2298,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/RHBVWM1WVWKBB",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2418,9 +2326,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R3JOTK8DO7YK1L",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2445,9 +2353,9 @@ const DATA = {
       ],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R276BVKUXQFDFN",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2481,9 +2389,9 @@ const DATA = {
       ],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R23U29MRFZ7H1I",
       "original_language": "French",
       "qualifications": {
@@ -2514,9 +2422,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R3QMUUM5QOG2A8",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2542,9 +2450,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R181T32U6V7JUK",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2570,9 +2478,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R328FL0EZ811W7",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2598,9 +2506,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/RAXK6D06J8D32",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2625,9 +2533,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R2MEIYM49HU9V4",
       "original_language": "French",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2659,9 +2567,9 @@ const DATA = {
       ],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R1V01H1NOS6I2Y",
       "original_language": "French",
       "qualifications": {
@@ -2689,9 +2597,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRDDJWG",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R3MX6GD3DR69XI",
       "original_language": "French",
       "qualifications": {
@@ -2717,9 +2625,9 @@ const DATA = {
       "negative": [],
       "pool_id": "B0HBRLCWQ6",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R1ICBRVUVAY925",
       "original_language": "German",
       "qualifications": {
@@ -2752,9 +2660,9 @@ const DATA = {
       ],
       "pool_id": "B0HBRLCWQ6",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R2P8TY6VNU6WAF",
       "original_language": "French",
       "qualifications": {
@@ -2782,9 +2690,9 @@ const DATA = {
       "negative": [],
       "pool_id": "shared-scd871-pool",
       "first_seen": "2026-10-14",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
       "original_language": "German",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
@@ -2810,9 +2718,9 @@ const DATA = {
       "sku_note": "Listing SKU verified; exact reviewed variant not explicitly named in the review.",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-15",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R28ZCL08D0YPUZ",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
@@ -2838,9 +2746,9 @@ const DATA = {
       "sku_note": "Listing SKU verified; exact reviewed variant not explicitly named in the review.",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-15",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/R1QDXSMK8WLZKT",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
@@ -2866,9 +2774,9 @@ const DATA = {
       "sku_note": "Listing SKU verified; exact reviewed variant not explicitly named in the review.",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-15",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.amazon.de/gp/customer-reviews/RTI41E0Z59OX9",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
@@ -2892,9 +2800,9 @@ const DATA = {
       "reviewed_sku": "SCD871/26",
       "incentive": "Teil der Aktion",
       "first_seen": "2026-10-15",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
@@ -2917,9 +2825,9 @@ const DATA = {
       "reviewed_sku": "SCD871/26",
       "incentive": "Teil der Aktion",
       "first_seen": "2026-10-15",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
       "qualifications": [
         "Full-HD and movement-alert descriptions are reviewer claims, not independently verified product specifications."
@@ -2946,9 +2854,9 @@ const DATA = {
       "reviewed_sku": "SCD871/26",
       "incentive": "Teil der Aktion",
       "first_seen": "2026-10-15",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
       "qualifications": [
         "Battery criticism is qualified: reviewer still finds it reasonable depending on use. Security claims are reviewer opinions, not proof of immunity from hacking."
@@ -2981,9 +2889,9 @@ const DATA = {
       "source_id": "R3FZUYEB9BDKN8",
       "sku_note": "Listing SKU verified; exact reviewed variant not explicitly named in the review.",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3013,9 +2921,9 @@ const DATA = {
       "source_url": "https://www.amazon.de/gp/customer-reviews/RVAK30K9MPWTV",
       "source_id": "RVAK30K9MPWTV",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3042,9 +2950,9 @@ const DATA = {
       "source_url": "https://www.amazon.de/gp/customer-reviews/R1EZFMHZ4WO2DN",
       "source_id": "R1EZFMHZ4WO2DN",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3070,9 +2978,9 @@ const DATA = {
       "source_id": "RP6CSGHN4ZN0O",
       "sku_note": "Listing SKU verified; exact reviewed variant not explicitly named in the review.",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3096,9 +3004,9 @@ const DATA = {
       "source_id": "R35KMJKMWOPDBF",
       "sku_note": "Listing SKU verified; exact reviewed variant not explicitly named in the review.",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3123,9 +3031,9 @@ const DATA = {
       "source_id": "R3OH1JNSPPUJX1",
       "sku_note": "Listing SKU verified; exact reviewed variant not explicitly named in the review.",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3150,9 +3058,9 @@ const DATA = {
       "incentive": "Teil der Aktion",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3175,9 +3083,9 @@ const DATA = {
       "incentive": "Teil der Aktion",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3203,9 +3111,9 @@ const DATA = {
       "incentive": "Teil der Aktion",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
       "first_seen": "2026-10-20",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
     },
     {
@@ -3226,12 +3134,11 @@ const DATA = {
       "negative": [],
       "incentive": "Teil der Aktion",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
-      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title.",
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title."
     },
     {
       "key": "philips-scd871-Pedrotelmo-2026-10-18",
@@ -3251,12 +3158,11 @@ const DATA = {
       "negative": [],
       "incentive": "Teil der Aktion",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
-      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title.",
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title."
     },
     {
       "key": "philips-scd871-veralet-2026-10-18",
@@ -3278,12 +3184,11 @@ const DATA = {
       ],
       "incentive": "Teil der Aktion",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
-      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title.",
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      "stars_note": "Individual star rating not exposed in web extraction; not inferred from review title."
     },
     {
       "key": "R1TF8WU2KID0WU",
@@ -3298,9 +3203,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1TF8WU2KID0WU",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1TF8WU2KID0WU/",
       "positive": [
@@ -3312,8 +3217,7 @@ const DATA = {
       "negative": [
         "No remote camera pan/tilt",
         "Parent unit bulky to carry"
-      ],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      ]
     },
     {
       "key": "R2DH2DXVZEJGLP",
@@ -3328,9 +3232,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R2DH2DXVZEJGLP",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R2DH2DXVZEJGLP/",
       "positive": [
@@ -3344,8 +3248,7 @@ const DATA = {
       ],
       "qualifications": {
         "Video latency": "Reviewer describes a slight delay but says it does not hinder monitoring."
-      },
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      }
     },
     {
       "key": "R27QPCBDBUEVLA",
@@ -3360,9 +3263,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R27QPCBDBUEVLA",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R27QPCBDBUEVLA/",
       "positive": [
@@ -3374,8 +3277,7 @@ const DATA = {
       "negative": [
         "Parent unit bulky to carry",
         "Some functions take time to learn"
-      ],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      ]
     },
     {
       "key": "RHRL638K938C7",
@@ -3390,9 +3292,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "RHRL638K938C7",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/RHRL638K938C7/",
       "positive": [
@@ -3403,8 +3305,7 @@ const DATA = {
       ],
       "negative": [
         "No remote camera pan/tilt"
-      ],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      ]
     },
     {
       "key": "R3CCOW7X18QB9F",
@@ -3419,9 +3320,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R3CCOW7X18QB9F",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R3CCOW7X18QB9F/",
       "positive": [
@@ -3435,8 +3336,7 @@ const DATA = {
         "Digital zoom reduces clarity",
         "Metallic talk-back sound",
         "Camera cable too short"
-      ],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      ]
     },
     {
       "key": "R1NODPJ520GUR5",
@@ -3451,9 +3351,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1NODPJ520GUR5",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1NODPJ520GUR5/",
       "positive": [
@@ -3461,8 +3361,7 @@ const DATA = {
         "Easy setup/use",
         "Works without Wi-Fi"
       ],
-      "negative": [],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      "negative": []
     },
     {
       "key": "R386Y11A9E6LK0",
@@ -3477,9 +3376,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R386Y11A9E6LK0",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R386Y11A9E6LK0/",
       "positive": [
@@ -3488,8 +3387,7 @@ const DATA = {
         "Works without Wi-Fi",
         "Long parent-unit battery"
       ],
-      "negative": [],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      "negative": []
     },
     {
       "key": "RL3ZLAOTZURMM",
@@ -3504,9 +3402,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "RL3ZLAOTZURMM",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/RL3ZLAOTZURMM/",
       "positive": [
@@ -3518,8 +3416,7 @@ const DATA = {
       "negative": [],
       "qualifications": {
         "Long parent-unit battery": "Praise concerns advertised endurance, not a measured battery test."
-      },
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      }
     },
     {
       "key": "R1YA1VH9ECKNKO",
@@ -3534,9 +3431,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1YA1VH9ECKNKO",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1YA1VH9ECKNKO/",
       "positive": [
@@ -3548,8 +3445,7 @@ const DATA = {
       "negative": [
         "High price",
         "Reduced range through thick walls"
-      ],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      ]
     },
     {
       "key": "R225GV2NYAZWPE",
@@ -3564,9 +3460,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R225GV2NYAZWPE",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R225GV2NYAZWPE/",
       "positive": [
@@ -3578,8 +3474,7 @@ const DATA = {
       "negative": [
         "Parent unit bulky to carry",
         "Parent-unit screen too small"
-      ],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      ]
     },
     {
       "key": "R1SM4HQUBMVDAU",
@@ -3594,9 +3489,9 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R1SM4HQUBMVDAU",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1SM4HQUBMVDAU/",
       "positive": [
@@ -3604,8 +3499,7 @@ const DATA = {
       ],
       "negative": [
         "No remote camera pan/tilt"
-      ],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      ]
     },
     {
       "key": "R3T3VO8810BLIF",
@@ -3620,17 +3514,16 @@ const DATA = {
       "original_language": "French",
       "incentive": "Vine Customer Review of Free Product",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
       "source_id": "R3T3VO8810BLIF",
       "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R3T3VO8810BLIF/",
       "positive": [
         "Satisfactory picture quality",
         "Easy setup/use"
       ],
-      "negative": [],
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      "negative": []
     },
     {
       "reviewer": "Haervee29",
@@ -3649,11 +3542,10 @@ const DATA = {
       "pool_id": "shared-scd871-pool",
       "incentive": "Teil der Aktion",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
-      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews"
     },
     {
       "reviewer": "Tester_JJ",
@@ -3679,11 +3571,492 @@ const DATA = {
       "pool_id": "shared-scd871-pool",
       "incentive": "Teil der Aktion",
       "first_seen": "2026-10-22",
-      "last_verified": "2026-10-22",
-      "text_last_verified": "2026-10-22",
-      "stars_last_verified": "2026-10-22",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews"
+    },
+    {
+      "key": "philips-scd871-Ewi_LE-2026-07-06",
+      "platform": "Philips.de",
+      "reviewer": "Ewi_LE",
+      "date": "2026-07-06",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use"
+      ],
+      "negative": [],
       "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
-      "original_evidence_note": "Original excerpts retained in the dated local evidence ledger; brief English translations shown here."
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-GhostCovi-2026-07-05",
+      "platform": "Philips.de",
+      "reviewer": "GhostCovi",
+      "date": "2026-07-05",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use"
+      ],
+      "negative": [],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Anonymous (Herzensempfehlung!)-2026-07-05",
+      "platform": "Philips.de",
+      "reviewer": "Anonymous (Herzensempfehlung!)",
+      "date": "2026-07-05",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Long parent-unit battery"
+      ],
+      "negative": [],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Lena0705-2026-07-04",
+      "platform": "Philips.de",
+      "reviewer": "Lena0705",
+      "date": "2026-07-04",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use"
+      ],
+      "negative": [],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Anonymous (Ich bin sehr begeistert)-2026-07-02",
+      "platform": "Philips.de",
+      "reviewer": "Anonymous (Ich bin sehr begeistert)",
+      "date": "2026-07-02",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Long parent-unit battery"
+      ],
+      "negative": [],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Vapeception-2026-07-02",
+      "platform": "Philips.de",
+      "reviewer": "Vapeception",
+      "date": "2026-07-02",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Long parent-unit battery",
+        "Works without Wi-Fi"
+      ],
+      "negative": [],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Familie van Wijk-2026-10-19",
+      "platform": "Philips.de",
+      "reviewer": "Familie van Wijk",
+      "date": "2026-10-19",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Nederland",
+      "original_language": "Dutch",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Long parent-unit battery",
+        "Works without Wi-Fi"
+      ],
+      "negative": [
+        "No remote camera pan/tilt"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": false
+    },
+    {
+      "key": "philips-scd871-LenningWest-2026-07-07",
+      "platform": "Philips.de",
+      "reviewer": "LenningWest",
+      "date": "2026-07-07",
+      "stars": 4,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [],
+      "negative": [
+        "No remote camera pan/tilt",
+        "High price"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Carry K-2026-07-07",
+      "platform": "Philips.de",
+      "reviewer": "Carry K",
+      "date": "2026-07-07",
+      "stars": 4,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality"
+      ],
+      "negative": [
+        "Monitor tips backwards",
+        "Time and temperature not continuously displayed"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Baschdi-2026-07-07",
+      "platform": "Philips.de",
+      "reviewer": "Baschdi",
+      "date": "2026-07-07",
+      "stars": 4,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality"
+      ],
+      "negative": [
+        "Reduced range through thick walls",
+        "Limited camera tilt range"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review.",
+      "qualifications": {
+        "Reduced range through thick walls": "Reviewer reports dropouts two rooms away and suggests thick walls as a possible cause."
+      }
+    },
+    {
+      "key": "philips-scd871-Domi1609-2026-07-07",
+      "platform": "Philips.de",
+      "reviewer": "Domi1609",
+      "date": "2026-07-07",
+      "stars": 4,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Long parent-unit battery"
+      ],
+      "negative": [
+        "Missing motion detection",
+        "Missing audible low-battery warning",
+        "Camera power switch awkward"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Elli93-2026-07-04",
+      "platform": "Philips.de",
+      "reviewer": "Elli93",
+      "date": "2026-07-04",
+      "stars": 4,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use"
+      ],
+      "negative": [
+        "Audio delay"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Shadowsgirl-2026-07-03",
+      "platform": "Philips.de",
+      "reviewer": "Shadowsgirl",
+      "date": "2026-07-03",
+      "stars": 4,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Long parent-unit battery"
+      ],
+      "negative": [
+        "Limited indoor range"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "philips-scd871-Jujani-2026-07-02",
+      "platform": "Philips.de",
+      "reviewer": "Jujani",
+      "date": "2026-07-02",
+      "stars": 4,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Long parent-unit battery"
+      ],
+      "negative": [
+        "No remote camera pan/tilt",
+        "Camera slips under cable pull",
+        "Temperature reading questioned"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review.",
+      "qualifications": {
+        "Temperature reading questioned": "Reviewer questions a 27°C reading; not an independently verified fault."
+      }
+    },
+    {
+      "key": "philips-scd871-Zebra 91-2026-07-02",
+      "platform": "Philips.de",
+      "reviewer": "Zebra 91",
+      "date": "2026-07-02",
+      "stars": 4,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "shared-scd871-pool",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Teil der Aktion",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality"
+      ],
+      "negative": [
+        "Missing carrying clip"
+      ],
+      "source_url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+      "access_backfill": true,
+      "first_seen_note": "July-dated review newly exposed in the live shared pool on 23 October; access backfill, not a newly posted daily review."
+    },
+    {
+      "key": "RKAKO39LXU7BN",
+      "platform": "Amazon.de",
+      "reviewer": "Tesvra",
+      "date": "2026-10-20",
+      "stars": 4,
+      "reviewed_sku": "SCD861/26",
+      "pool_id": "B0HBRLCWQ6",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Amazon Vine Customer Review of Free Product",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Works without Wi-Fi"
+      ],
+      "negative": [
+        "No remote camera pan/tilt",
+        "High price"
+      ],
+      "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/RKAKO39LXU7BN/",
+      "access_backfill": false
+    },
+    {
+      "key": "R1IK57WJB1ZC5Z",
+      "platform": "Amazon.de",
+      "reviewer": "FAMILY REVIEWER",
+      "date": "2026-10-21",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": "Amazon Vine Customer Review of Free Product",
+      "purchase_label": null,
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Works without Wi-Fi"
+      ],
+      "negative": [],
+      "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R1IK57WJB1ZC5Z/",
+      "access_backfill": false
+    },
+    {
+      "key": "R302K94BUZNSA3",
+      "platform": "Amazon.de",
+      "reviewer": "Sascm",
+      "date": "2026-10-21",
+      "stars": 5,
+      "reviewed_sku": "SCD871/26",
+      "pool_id": "B0HBRDDJWG",
+      "country": "Germany",
+      "original_language": "German",
+      "incentive": null,
+      "purchase_label": "Verified Purchase",
+      "first_seen": "2026-10-23",
+      "last_verified": "2026-10-23",
+      "text_last_verified": "2026-10-23",
+      "stars_last_verified": "2026-10-23",
+      "positive": [
+        "Satisfactory picture quality"
+      ],
+      "negative": [],
+      "source_url": "https://www.amazon.de/-/en/portal/customer-reviews/srp/-/R302K94BUZNSA3/",
+      "access_backfill": false,
+      "purchase_note": "Reviewer reports a 15% baby-wishlist discount; no Vine/free-product label."
     }
   ],
   "themes": [
@@ -3912,6 +4285,106 @@ const DATA = {
         "reviewer": "Apocope",
         "text": "la portée du signal se réduit nettement",
         "english": "Range drops significantly."
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Monitor tips backwards",
+      "label": "Monitor tips backwards",
+      "quote": {
+        "reviewer": "Carry K",
+        "text": "mehrfach nach hinten weggekippt",
+        "english": "Tipped backwards several times"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Time and temperature not continuously displayed",
+      "label": "Time and temperature not continuously displayed",
+      "quote": {
+        "reviewer": "Carry K",
+        "text": "Uhrzeit und Temperatur hätte ich gern dauerhaft auf dem Display",
+        "english": "I would like time and temperature permanently on the display"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Limited camera tilt range",
+      "label": "Limited camera tilt range",
+      "quote": {
+        "reviewer": "Baschdi",
+        "text": "Einstellbereich etwas begrenzt",
+        "english": "Adjustment range is somewhat limited"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Missing audible low-battery warning",
+      "label": "Missing audible low-battery warning",
+      "quote": {
+        "reviewer": "Domi1609",
+        "text": "Keine akustische Warnung",
+        "english": "No audible warning"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Camera power switch awkward",
+      "label": "Camera power switch awkward",
+      "quote": {
+        "reviewer": "Domi1609",
+        "text": "nicht intuitiv",
+        "english": "Not intuitive"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Audio delay",
+      "label": "Audio delay",
+      "quote": {
+        "reviewer": "Elli93",
+        "text": "etwas zeitversetzt",
+        "english": "Slightly delayed"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Limited indoor range",
+      "label": "Limited indoor range",
+      "quote": {
+        "reviewer": "Shadowsgirl",
+        "text": "Reichweite ist leider nicht ausreichend",
+        "english": "Unfortunately the range is insufficient"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Camera slips under cable pull",
+      "label": "Camera slips under cable pull",
+      "quote": {
+        "reviewer": "Jujani",
+        "text": "verrutscht schnell",
+        "english": "Slips easily"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Temperature reading questioned",
+      "label": "Temperature reading questioned",
+      "quote": {
+        "reviewer": "Jujani",
+        "text": "nicht einwandfrei",
+        "english": "Not working correctly"
+      }
+    },
+    {
+      "sentiment": "negative",
+      "key": "Missing carrying clip",
+      "label": "Missing carrying clip",
+      "quote": {
+        "reviewer": "Zebra 91",
+        "text": "noch einen Clip",
+        "english": "Add a clip"
       }
     }
   ],
@@ -4556,6 +5029,98 @@ const DATA = {
       "Works without Wi-Fi": "no Wi-Fi",
       "Limited parent-unit battery life": "4 to 5 hours",
       "Picture resolution below expectations": "Screen Resolution Could Be Sharper"
+    },
+    "philips-scd871-Ewi_LE-2026-07-06": {
+      "Satisfactory picture quality": "Large, clear display",
+      "Easy setup/use": "All functions can be accessed with the buttons"
+    },
+    "philips-scd871-GhostCovi-2026-07-05": {
+      "Satisfactory picture quality": "The picture is incredibly sharp",
+      "Easy setup/use": "Excellent operation and quality"
+    },
+    "philips-scd871-Anonymous (Herzensempfehlung!)-2026-07-05": {
+      "Satisfactory picture quality": "Good picture quality",
+      "Easy setup/use": "Very easy to set up",
+      "Long parent-unit battery": "Good battery performance"
+    },
+    "philips-scd871-Lena0705-2026-07-04": {
+      "Satisfactory picture quality": "Absolutely clear and distinct",
+      "Easy setup/use": "Very easy to operate"
+    },
+    "philips-scd871-Anonymous (Ich bin sehr begeistert)-2026-07-02": {
+      "Satisfactory picture quality": "Very good picture and sound quality",
+      "Easy setup/use": "Very simple operation",
+      "Long parent-unit battery": "Battery performance impressed us"
+    },
+    "philips-scd871-Vapeception-2026-07-02": {
+      "Satisfactory picture quality": "The picture is razor sharp",
+      "Easy setup/use": "Very simple",
+      "Long parent-unit battery": "The battery lasts very well",
+      "Works without Wi-Fi": "Secure connection without internet"
+    },
+    "philips-scd871-Familie van Wijk-2026-10-19": {
+      "Satisfactory picture quality": "Sharp picture",
+      "Easy setup/use": "Easy to use",
+      "Long parent-unit battery": "Long battery life",
+      "Works without Wi-Fi": "Does not use Wi-Fi",
+      "No remote camera pan/tilt": "Cannot be rotated remotely"
+    },
+    "philips-scd871-LenningWest-2026-07-07": {
+      "No remote camera pan/tilt": "No camera movement",
+      "High price": "Too expensive for that"
+    },
+    "philips-scd871-Carry K-2026-07-07": {
+      "Satisfactory picture quality": "The picture is razor sharp",
+      "Monitor tips backwards": "Tipped backwards several times",
+      "Time and temperature not continuously displayed": "I would like time and temperature permanently on the display"
+    },
+    "philips-scd871-Baschdi-2026-07-07": {
+      "Satisfactory picture quality": "Great picture quality",
+      "Reduced range through thick walls": "Occasional connection dropouts",
+      "Limited camera tilt range": "Adjustment range is somewhat limited"
+    },
+    "philips-scd871-Domi1609-2026-07-07": {
+      "Satisfactory picture quality": "The camera picture is clear",
+      "Easy setup/use": "Straightforward operation",
+      "Long parent-unit battery": "Strong battery life",
+      "Missing motion detection": "No automatic framing",
+      "Missing audible low-battery warning": "No audible warning",
+      "Camera power switch awkward": "Not intuitive"
+    },
+    "philips-scd871-Elli93-2026-07-04": {
+      "Satisfactory picture quality": "The picture is good",
+      "Easy setup/use": "Intuitive to set up",
+      "Audio delay": "Slightly delayed"
+    },
+    "philips-scd871-Shadowsgirl-2026-07-03": {
+      "Satisfactory picture quality": "Clear picture",
+      "Long parent-unit battery": "The parent-unit battery lasts a very long time",
+      "Limited indoor range": "Unfortunately the range is insufficient"
+    },
+    "philips-scd871-Jujani-2026-07-02": {
+      "Satisfactory picture quality": "Picture and sound are excellent",
+      "Easy setup/use": "Very intuitive",
+      "Long parent-unit battery": "Entirely satisfactory",
+      "No remote camera pan/tilt": "Only manually adjustable",
+      "Camera slips under cable pull": "Slips easily",
+      "Temperature reading questioned": "Not working correctly"
+    },
+    "philips-scd871-Zebra 91-2026-07-02": {
+      "Satisfactory picture quality": "Picture, sound, connection range and controls are excellent",
+      "Missing carrying clip": "Add a clip"
+    },
+    "RKAKO39LXU7BN": {
+      "Satisfactory picture quality": "The picture is nice and clear",
+      "Easy setup/use": "Makes setup straightforward",
+      "Works without Wi-Fi": "Without Wi-Fi",
+      "No remote camera pan/tilt": "Adjust by hand",
+      "High price": "A little too expensive"
+    },
+    "R1IK57WJB1ZC5Z": {
+      "Works without Wi-Fi": "Even without Wi-Fi"
+    },
+    "R302K94BUZNSA3": {
+      "Satisfactory picture quality": "Great camera quality"
     }
   },
   "ratingHistory": {
@@ -7904,6 +8469,655 @@ const DATA = {
         "last_verified_date": "2026-10-22",
         "note": "All records and stars verified in live browser."
       }
+    },
+    "2026-10-23": {
+      "Philips.de": {
+        "complete": true,
+        "scope": "shared-scd871-pool",
+        "histogram": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 20,
+          "5": 41
+        },
+        "records": [
+          {
+            "id": "philips-scd871-hhome-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Stef4n-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Naninour88-2026-09-26",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Blitz279-2026-09-26",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-bambaer-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Angix33-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Christoffel94-2026-10-03",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Anonymous (Babyfoon)-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Bilge21-2026-10-01",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Anoniem-A-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Maola-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-jacresp-2026-09-29",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Serlis-2026-09-28",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-MG08-2026-09-25",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Miirree1-2026-09-23",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Sunesune-2026-09-21",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Jack..E-2026-10-01",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Sandri81-2026-09-29",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Animalischer Tester-2026-09-27",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Adde_97-2026-10-04",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Oggie58-2026-10-03",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Fölunge2026-2026-10-03",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Hopperiks-2026-10-01",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Nicksje123-2026-09-29",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Frassesmorsa-2026-09-24",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Kattmjao-2026-09-21",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Mamma#2-2026-10-08",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Svampbob97-2026-10-08",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Lampnisse-2026-10-07",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Sissi95200-2026-10-04",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Lunamoon_2-2026-10-10",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Cooktest-2026-10-09",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Mammamu-2026-10-09",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-McPaddyh-2026-10-09",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-L3nkY-2026-10-11",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Sidog1984-2026-10-14",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Baby.1234-2026-10-11",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Audmimi08-2026-10-08",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-FrMMM-2026-10-17",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Hellkitty1522-2026-10-16",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Bolidas-2026-10-16",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Martinha91-2026-10-20",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Pedrotelmo-2026-10-18",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-veralet-2026-10-18",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Haervee29-2026-10-18",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Tester_JJ-2026-10-18",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Ewi_LE-2026-07-06",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-GhostCovi-2026-07-05",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Anonymous (Herzensempfehlung!)-2026-07-05",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Lena0705-2026-07-04",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Anonymous (Ich bin sehr begeistert)-2026-07-02",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Vapeception-2026-07-02",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-Familie van Wijk-2026-10-19",
+            "stars": 5
+          },
+          {
+            "id": "philips-scd871-LenningWest-2026-07-07",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Carry K-2026-07-07",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Baschdi-2026-07-07",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Domi1609-2026-07-07",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Elli93-2026-07-04",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Shadowsgirl-2026-07-03",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Jujani-2026-07-02",
+            "stars": 4
+          },
+          {
+            "id": "philips-scd871-Zebra 91-2026-07-02",
+            "stars": 4
+          }
+        ],
+        "rating_count": 61,
+        "displayed_average": 4.7,
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "last_verified_date": "2026-10-23",
+        "note": "All three live Philips pages show 4.7/5 and one shared pool of 61 SCD871 reviews. All texts and stars read: 41 five-star, 20 four-star. Increase of 15 includes 14 July-dated access backfills and one newly observed October review; not 15 newly posted daily reviews.",
+        "backfill_ids": [
+          "philips-scd871-Ewi_LE-2026-07-06",
+          "philips-scd871-GhostCovi-2026-07-05",
+          "philips-scd871-Anonymous (Herzensempfehlung!)-2026-07-05",
+          "philips-scd871-Lena0705-2026-07-04",
+          "philips-scd871-Anonymous (Ich bin sehr begeistert)-2026-07-02",
+          "philips-scd871-Vapeception-2026-07-02",
+          "philips-scd871-LenningWest-2026-07-07",
+          "philips-scd871-Carry K-2026-07-07",
+          "philips-scd871-Baschdi-2026-07-07",
+          "philips-scd871-Domi1609-2026-07-07",
+          "philips-scd871-Elli93-2026-07-04",
+          "philips-scd871-Shadowsgirl-2026-07-03",
+          "philips-scd871-Jujani-2026-07-02",
+          "philips-scd871-Zebra 91-2026-07-02"
+        ]
+      },
+      "Amazon.de": {
+        "complete": true,
+        "scope": "B0HBRDDJWG",
+        "histogram": {
+          "1": 0,
+          "2": 0,
+          "3": 1,
+          "4": 8,
+          "5": 31
+        },
+        "records": [
+          {
+            "id": "R22EVOPIT6VTMX",
+            "stars": 5
+          },
+          {
+            "id": "R13GK2DBW70V2K",
+            "stars": 5
+          },
+          {
+            "id": "R2DNDDQCG4O2G7",
+            "stars": 5
+          },
+          {
+            "id": "R16Y9LUAWSTVC5",
+            "stars": 5
+          },
+          {
+            "id": "R3SKEHRKNWLCHQ",
+            "stars": 5
+          },
+          {
+            "id": "R22CARJK56LEDC",
+            "stars": 5
+          },
+          {
+            "id": "RJ3NW8FSMAA6P",
+            "stars": 5
+          },
+          {
+            "id": "R2QBHMUEUY8W3W",
+            "stars": 5
+          },
+          {
+            "id": "RC1G8223KFVC2",
+            "stars": 5
+          },
+          {
+            "id": "R1NAB29KIA69FK",
+            "stars": 4
+          },
+          {
+            "id": "R2MDAW9G3Z687E",
+            "stars": 5
+          },
+          {
+            "id": "R1XHZ9CODQ1MW0",
+            "stars": 5
+          },
+          {
+            "id": "R2PVSI7NC5D3F2",
+            "stars": 4
+          },
+          {
+            "id": "R1PQY0GFFMTPB9",
+            "stars": 5
+          },
+          {
+            "id": "R30G8AZ84ITPNN",
+            "stars": 5
+          },
+          {
+            "id": "R1U2ZOG7VVSAB0",
+            "stars": 4
+          },
+          {
+            "id": "RXO84VR2NPDBL",
+            "stars": 4
+          },
+          {
+            "id": "R1CKG77ACIJF9C",
+            "stars": 5
+          },
+          {
+            "id": "R14JZ39TVCBME1",
+            "stars": 5
+          },
+          {
+            "id": "R2R7DPQUKIHWUL",
+            "stars": 5
+          },
+          {
+            "id": "RHBVWM1WVWKBB",
+            "stars": 5
+          },
+          {
+            "id": "R3JOTK8DO7YK1L",
+            "stars": 5
+          },
+          {
+            "id": "R276BVKUXQFDFN",
+            "stars": 4
+          },
+          {
+            "id": "R23U29MRFZ7H1I",
+            "stars": 4
+          },
+          {
+            "id": "R3QMUUM5QOG2A8",
+            "stars": 5
+          },
+          {
+            "id": "R181T32U6V7JUK",
+            "stars": 5
+          },
+          {
+            "id": "R328FL0EZ811W7",
+            "stars": 5
+          },
+          {
+            "id": "RAXK6D06J8D32",
+            "stars": 5
+          },
+          {
+            "id": "R2MEIYM49HU9V4",
+            "stars": 5
+          },
+          {
+            "id": "R1V01H1NOS6I2Y",
+            "stars": 3
+          },
+          {
+            "id": "R3MX6GD3DR69XI",
+            "stars": 5
+          },
+          {
+            "id": "R28ZCL08D0YPUZ",
+            "stars": 5
+          },
+          {
+            "id": "R3FZUYEB9BDKN8",
+            "stars": 4
+          },
+          {
+            "id": "RVAK30K9MPWTV",
+            "stars": 5
+          },
+          {
+            "id": "R1TF8WU2KID0WU",
+            "stars": 4
+          },
+          {
+            "id": "R2DH2DXVZEJGLP",
+            "stars": 5
+          },
+          {
+            "id": "R27QPCBDBUEVLA",
+            "stars": 5
+          },
+          {
+            "id": "RHRL638K938C7",
+            "stars": 5
+          },
+          {
+            "id": "R1IK57WJB1ZC5Z",
+            "stars": 5
+          },
+          {
+            "id": "R302K94BUZNSA3",
+            "stars": 5
+          }
+        ],
+        "rating_count": 40,
+        "listing_rating_count": 40,
+        "displayed_average": 4.8,
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "last_verified_date": "2026-10-23",
+        "note": "Amazon now displays one shared all-variant pool: 4.8/5, 72 ratings and written reviews. All 72 read: 40 labelled 60-hour/SCD871 and 32 labelled 48-hour/SCD861. Three matching cross-variant texts excluded: 69 unique. Three newly observed IDs; two five-star and one four-star. One Verified Purchase review, 68 unique Vine reviews.",
+        "backfill_ids": []
+      },
+      "Amazon.de:SCD861/26": {
+        "complete": true,
+        "scope": "B0HBRLCWQ6",
+        "histogram": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 3,
+          "5": 26
+        },
+        "records": [
+          {
+            "id": "R1TXD7A3OOE0NF",
+            "stars": 5
+          },
+          {
+            "id": "R1E2V59KHMVA2",
+            "stars": 5
+          },
+          {
+            "id": "R2L20TB8KWR7LO",
+            "stars": 5
+          },
+          {
+            "id": "R219ZB8QI76FC5",
+            "stars": 4
+          },
+          {
+            "id": "R23KE90JC3VOC9",
+            "stars": 5
+          },
+          {
+            "id": "RV57V2ZEJOC3T",
+            "stars": 5
+          },
+          {
+            "id": "R30Q0PTGR9KCOO",
+            "stars": 5
+          },
+          {
+            "id": "R1H46OX4K1MDFM",
+            "stars": 5
+          },
+          {
+            "id": "RV1PKOPLIU66W",
+            "stars": 5
+          },
+          {
+            "id": "RTJKLSOUSSKP0",
+            "stars": 5
+          },
+          {
+            "id": "R37FWO6XD58RP4",
+            "stars": 5
+          },
+          {
+            "id": "R3RDZZYMBYEKAU",
+            "stars": 5
+          },
+          {
+            "id": "R1ICBRVUVAY925",
+            "stars": 5
+          },
+          {
+            "id": "R2P8TY6VNU6WAF",
+            "stars": 4
+          },
+          {
+            "id": "R1QDXSMK8WLZKT",
+            "stars": 5
+          },
+          {
+            "id": "RTI41E0Z59OX9",
+            "stars": 5
+          },
+          {
+            "id": "R1EZFMHZ4WO2DN",
+            "stars": 5
+          },
+          {
+            "id": "RP6CSGHN4ZN0O",
+            "stars": 5
+          },
+          {
+            "id": "R35KMJKMWOPDBF",
+            "stars": 5
+          },
+          {
+            "id": "R3OH1JNSPPUJX1",
+            "stars": 5
+          },
+          {
+            "id": "R3CCOW7X18QB9F",
+            "stars": 5
+          },
+          {
+            "id": "R1NODPJ520GUR5",
+            "stars": 5
+          },
+          {
+            "id": "R386Y11A9E6LK0",
+            "stars": 5
+          },
+          {
+            "id": "RL3ZLAOTZURMM",
+            "stars": 5
+          },
+          {
+            "id": "R1YA1VH9ECKNKO",
+            "stars": 5
+          },
+          {
+            "id": "R225GV2NYAZWPE",
+            "stars": 5
+          },
+          {
+            "id": "R1SM4HQUBMVDAU",
+            "stars": 5
+          },
+          {
+            "id": "R3T3VO8810BLIF",
+            "stars": 5
+          },
+          {
+            "id": "RKAKO39LXU7BN",
+            "stars": 4
+          }
+        ],
+        "rating_count": 29,
+        "listing_rating_count": 32,
+        "displayed_average": 4.8,
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "last_verified_date": "2026-10-23",
+        "note": "Amazon now displays one shared all-variant pool: 4.8/5, 72 ratings and written reviews. All 72 read: 40 labelled 60-hour/SCD871 and 32 labelled 48-hour/SCD861. Three matching cross-variant texts excluded: 69 unique. Three newly observed IDs; two five-star and one four-star. One Verified Purchase review, 68 unique Vine reviews.",
+        "duplicate_records": [
+          {
+            "id": "R2IG7313QVV5JO",
+            "stars": 5
+          },
+          {
+            "id": "R2E242QL6BKTHT",
+            "stars": 5
+          },
+          {
+            "id": "RHPS2L0PRDIS7",
+            "stars": 5
+          }
+        ],
+        "deduplication": {
+          "R2IG7313QVV5JO": {
+            "duplicate_of": "RHBVWM1WVWKBB",
+            "reviewer": "Laura",
+            "date": "2026-10-08",
+            "reason": "Identical review body; same reviewer on both listings."
+          },
+          "RHPS2L0PRDIS7": {
+            "duplicate_of": "R3QMUUM5QOG2A8",
+            "reviewer": "super maman",
+            "date": "2026-10-09",
+            "reason": "Identical review body; same reviewer on both listings."
+          },
+          "R2E242QL6BKTHT": {
+            "duplicate_of": "R3JOTK8DO7YK1L",
+            "reviewer": "Smile ! 😊",
+            "date": "2026-10-08",
+            "reason": "Same review body apart from insertion of 'superbes'; same reviewer, copied across listings."
+          }
+        },
+        "backfill_ids": []
+      },
+      "bol.com": {
+        "complete": true,
+        "scope": "9300000318462240+9300000318462235",
+        "histogram": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        },
+        "records": [],
+        "rating_count": 0,
+        "listing_rating_count": 0,
+        "displayed_average": null,
+        "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+        "last_verified_date": "2026-10-23",
+        "note": "Both live SCD861 and SCD871 listings show Nog geen reviews, checked 23 October.",
+        "backfill_ids": []
+      }
     }
   },
   "check_history": {
@@ -10642,6 +11856,705 @@ const DATA = {
         "R225GV2NYAZWPE",
         "R1SM4HQUBMVDAU",
         "R3T3VO8810BLIF"
+      ],
+      "duplicate_review_ids": [
+        "R2IG7313QVV5JO",
+        "RHPS2L0PRDIS7",
+        "R2E242QL6BKTHT"
+      ],
+      "deduplication": {
+        "R2IG7313QVV5JO": {
+          "duplicate_of": "RHBVWM1WVWKBB",
+          "reviewer": "Laura",
+          "date": "2026-10-08",
+          "reason": "Identical review body; same reviewer on both listings."
+        },
+        "RHPS2L0PRDIS7": {
+          "duplicate_of": "R3QMUUM5QOG2A8",
+          "reviewer": "super maman",
+          "date": "2026-10-09",
+          "reason": "Identical review body; same reviewer on both listings."
+        },
+        "R2E242QL6BKTHT": {
+          "duplicate_of": "R3JOTK8DO7YK1L",
+          "reviewer": "Smile ! 😊",
+          "date": "2026-10-08",
+          "reason": "Same review body apart from insertion of 'superbes'; same reviewer, copied across listings."
+        }
+      }
+    },
+    "2026-10-23": {
+      "date": "2026-10-23",
+      "timezone": "Asia/Hong_Kong",
+      "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+      "last_attempt_at_hong_kong": "2026-10-23T09:54:00+08:00",
+      "status": "verified_all_seven_listings",
+      "last_complete_date": "2026-10-23",
+      "comparison_date": "2026-10-22",
+      "theme_comparison_date": "2026-10-22",
+      "comparison_available": true,
+      "platforms": {
+        "Philips.de": {
+          "rating": 4.7,
+          "rating_count": 61,
+          "written_count": 61,
+          "readable_today": 61,
+          "captured_review_count": 61,
+          "cached": false,
+          "last_verified": "2026-10-23",
+          "net_count_change": 15,
+          "last_successful_net_count_change": 15,
+          "note": "All three live Philips pages show 4.7/5 and one shared pool of 61 SCD871 reviews. All texts and stars read: 41 five-star, 20 four-star. Increase of 15 includes 14 July-dated access backfills and one newly observed October review; not 15 newly posted daily reviews."
+        },
+        "Amazon.de": {
+          "rating": 4.811594202898551,
+          "calculated": true,
+          "rating_count": 69,
+          "listing_rating_count": 72,
+          "written_count": 72,
+          "readable_today": 72,
+          "captured_review_count": 69,
+          "cached": false,
+          "last_verified": "2026-10-23",
+          "net_count_change": 3,
+          "last_successful_net_count_change": 3,
+          "note": "Amazon now displays one shared all-variant pool: 4.8/5, 72 ratings and written reviews. All 72 read: 40 labelled 60-hour/SCD871 and 32 labelled 48-hour/SCD861. Three matching cross-variant texts excluded: 69 unique. Three newly observed IDs; two five-star and one four-star. One Verified Purchase review, 68 unique Vine reviews."
+        },
+        "bol.com": {
+          "rating": null,
+          "rating_count": 0,
+          "written_count": 0,
+          "readable_today": 0,
+          "cached": false,
+          "last_verified": "2026-10-23",
+          "net_count_change": 0,
+          "last_successful_net_count_change": 0,
+          "note": "Both live SCD861 and SCD871 listings show Nog geen reviews, checked 23 October."
+        }
+      },
+      "overall": {
+        "current_available": true,
+        "rating": 4.746153846153846,
+        "rating_count": 130,
+        "coded_review_count": 130,
+        "known_star_count": 130,
+        "unknown_star_count": 0,
+        "estimated": false,
+        "last_verified": "2026-10-23",
+        "reason": "Exact arithmetic mean: 617 star points / 130 unique ratings (61 Philips + 69 Amazon). 133 listed records minus three matching Amazon entries. All current texts/stars verified 23 October; includes 14 newly recovered July reviews."
+      },
+      "new_review_ids": [
+        "philips-scd871-Familie van Wijk-2026-10-19",
+        "RKAKO39LXU7BN",
+        "R1IK57WJB1ZC5Z",
+        "R302K94BUZNSA3"
+      ],
+      "coverage_backfill_ids": [
+        "philips-scd871-Ewi_LE-2026-07-06",
+        "philips-scd871-GhostCovi-2026-07-05",
+        "philips-scd871-Anonymous (Herzensempfehlung!)-2026-07-05",
+        "philips-scd871-Lena0705-2026-07-04",
+        "philips-scd871-Anonymous (Ich bin sehr begeistert)-2026-07-02",
+        "philips-scd871-Vapeception-2026-07-02",
+        "philips-scd871-LenningWest-2026-07-07",
+        "philips-scd871-Carry K-2026-07-07",
+        "philips-scd871-Baschdi-2026-07-07",
+        "philips-scd871-Domi1609-2026-07-07",
+        "philips-scd871-Elli93-2026-07-04",
+        "philips-scd871-Shadowsgirl-2026-07-03",
+        "philips-scd871-Jujani-2026-07-02",
+        "philips-scd871-Zebra 91-2026-07-02"
+      ],
+      "new_mentions": {
+        "positive: Satisfactory picture quality": {
+          "total": 3,
+          "Philips": 1,
+          "Amazon": 2
+        },
+        "positive: Easy setup/use": {
+          "total": 2,
+          "Philips": 1,
+          "Amazon": 1
+        },
+        "positive: Works without Wi-Fi": {
+          "total": 3,
+          "Philips": 1,
+          "Amazon": 2
+        },
+        "positive: Long parent-unit battery": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Camera requires mains power": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: High price": {
+          "total": 1,
+          "Philips": 0,
+          "Amazon": 1
+        },
+        "negative: Missing mounting clamp": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: No remote camera pan/tilt": {
+          "total": 2,
+          "Philips": 1,
+          "Amazon": 1
+        },
+        "negative: Menu closes too quickly": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Recording expectation mismatch": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: No remote smartphone monitoring": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Limited parent-unit battery life": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing motion detection": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Limited lullaby choice": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Picture resolution below expectations": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Video lacks fluidity": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Video latency": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Limited settings": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing night light": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Slow screen startup": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing recording function": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing camera zoom claim": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Menu navigation difficult": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Parent-unit screen too small": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Bulky non-folding monitor stand": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Lullaby disliked": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Digital zoom reduces clarity": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Parent unit bulky to carry": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Camera cable too short": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Camera becomes warm": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Some functions take time to learn": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Metallic talk-back sound": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Reduced range through thick walls": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Monitor tips backwards": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Time and temperature not continuously displayed": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Limited camera tilt range": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing audible low-battery warning": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Camera power switch awkward": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Audio delay": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Limited indoor range": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Camera slips under cable pull": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Temperature reading questioned": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing carrying clip": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        }
+      },
+      "coverage_mentions": {
+        "positive: Satisfactory picture quality": {
+          "total": 13,
+          "Philips": 13,
+          "Amazon": 0
+        },
+        "positive: Easy setup/use": {
+          "total": 9,
+          "Philips": 9,
+          "Amazon": 0
+        },
+        "positive: Works without Wi-Fi": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "positive: Long parent-unit battery": {
+          "total": 6,
+          "Philips": 6,
+          "Amazon": 0
+        },
+        "negative: Camera requires mains power": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: High price": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Missing mounting clamp": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: No remote camera pan/tilt": {
+          "total": 2,
+          "Philips": 2,
+          "Amazon": 0
+        },
+        "negative: Menu closes too quickly": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Recording expectation mismatch": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: No remote smartphone monitoring": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Limited parent-unit battery life": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing motion detection": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Limited lullaby choice": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Picture resolution below expectations": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Video lacks fluidity": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Video latency": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Limited settings": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing night light": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Slow screen startup": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing recording function": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Missing camera zoom claim": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Menu navigation difficult": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Parent-unit screen too small": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Bulky non-folding monitor stand": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Lullaby disliked": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Digital zoom reduces clarity": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Parent unit bulky to carry": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Camera cable too short": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Camera becomes warm": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Some functions take time to learn": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Metallic talk-back sound": {
+          "total": 0,
+          "Philips": 0,
+          "Amazon": 0
+        },
+        "negative: Reduced range through thick walls": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Monitor tips backwards": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Time and temperature not continuously displayed": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Limited camera tilt range": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Missing audible low-battery warning": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Camera power switch awkward": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Audio delay": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Limited indoor range": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Camera slips under cable pull": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Temperature reading questioned": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        },
+        "negative: Missing carrying clip": {
+          "total": 1,
+          "Philips": 1,
+          "Amazon": 0
+        }
+      },
+      "freshness": "133 listed records, 130 unique reviews after three matched Amazon entries. Amazon shares a 72-review pool across two variants; Philips shared pool has 61. Four newly observed October reviews plus 14 recovered July reviews since 22 October. bol remains unrated.",
+      "theme_note": "130 unique texts: 61 Philips + 69 Amazon; all read today. 129 promotional/Vine, one Verified Purchase. Four newly observed October records and 14 July access backfills coded separately.",
+      "new_content": "Three additional Amazon IDs include the first captured Verified Purchase review, praising camera quality. Philips adds one October review and 14 July-dated backfills. Recovered reviews mention picture clarity and usability, plus range, camera adjustment and handling complaints.",
+      "coverage_gaps": [
+        "Amazon and bol SCD863 listings remain unverified.",
+        "Amazon SCD871 filter header shows 38, while the complete all-variant capture contains 40 explicitly labelled SCD871 records. Shared total is 72; variant counts use captured records.",
+        "Philips surfaced 14 July-dated reviews today. They are access backfills; historical snapshots are not rewritten."
+      ],
+      "comparison_scope": "23 vs 22 October: 112 to 130 unique reviews (+18 observed net). Four newly observed October records (+3 five-star, +1 four-star) and 14 recovered July records (+6 five-star, +8 four-star). No old IDs lost or stars changed. These are observation changes, not reviews posted today.",
+      "sources_checked": {
+        "philips861": {
+          "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
+          "rating": 4.7,
+          "count": 61,
+          "status": "Live page shows the shared 61-review pool at 4.7/5; all 61 texts and stars expanded on SCD871.",
+          "last_verified": "2026-10-23",
+          "cached": false,
+          "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+          "readable_today": 61
+        },
+        "philips871": {
+          "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+          "rating": 4.7,
+          "count": 61,
+          "status": "Live page shows the shared 61-review pool at 4.7/5; all 61 texts and stars expanded on SCD871.",
+          "last_verified": "2026-10-23",
+          "cached": false,
+          "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+          "readable_today": 61
+        },
+        "philips863": {
+          "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
+          "rating": 4.7,
+          "count": 61,
+          "status": "Live page shows the shared 61-review pool at 4.7/5; all 61 texts and stars expanded on SCD871.",
+          "last_verified": "2026-10-23",
+          "cached": false,
+          "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+          "readable_today": 61
+        },
+        "amazon": {
+          "url": "https://www.amazon.de/dp/B0HBRDDJWG",
+          "rating": 4.75,
+          "count": 40,
+          "status": "40 all-variant records explicitly labelled 60-hour/SCD871; calculated mean 4.75. Shared page displays 4.8/72. SKU filter count still shows 38; record-level capture includes two additional SCD871 IDs.",
+          "last_verified": "2026-10-23",
+          "cached": false,
+          "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+          "readable_today": 40,
+          "calculated": true,
+          "shared_rating": 4.8,
+          "shared_count": 72
+        },
+        "bol861": {
+          "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
+          "count": 0,
+          "rating": null,
+          "status": "Live listing states Nog geen reviews.",
+          "last_verified": "2026-10-23",
+          "cached": false,
+          "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+          "readable_today": 0
+        },
+        "bol871": {
+          "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+          "count": 0,
+          "rating": null,
+          "status": "Live listing states Nog geen reviews.",
+          "last_verified": "2026-10-23",
+          "cached": false,
+          "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+          "readable_today": 0
+        },
+        "amazonReviews": {
+          "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRDDJWG/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&sortBy=recent#reviews-filter-bar",
+          "status": "Shared all-variants page: all 72 review IDs, texts, stars and variant labels captured.",
+          "last_verified": "2026-10-23",
+          "count": 72,
+          "cached": false,
+          "rating": 4.8,
+          "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+          "readable_today": 72
+        },
+        "amazon861": {
+          "url": "https://www.amazon.de/dp/B0HBRLCWQ6",
+          "rating": 4.90625,
+          "count": 32,
+          "status": "32 all-variant records explicitly labelled 48-hour/SCD861; calculated mean 4.90625. Shared page displays 4.8/72. Three copied cross-variant texts excluded only in combined analysis.",
+          "last_verified": "2026-10-23",
+          "cached": false,
+          "checked_at_hong_kong": "2026-10-23T09:54:00+08:00",
+          "readable_today": 32,
+          "calculated": true,
+          "shared_rating": 4.8,
+          "shared_count": 72
+        }
+      },
+      "review_access": {
+        "Philips.de": {
+          "readable_today": 61,
+          "cached_reviews": 0,
+          "new_records_confirmed": 1,
+          "new_records_reference_date": "2026-10-22",
+          "coverage_backfill": 14,
+          "last_text_check": "2026-10-23",
+          "uncollected": 0
+        },
+        "Amazon.de": {
+          "readable_today": 72,
+          "unique_readable_today": 69,
+          "cached_reviews": 0,
+          "new_records_confirmed": 3,
+          "new_listing_ids": 3,
+          "duplicate_records": 3,
+          "new_records_reference_date": "2026-10-22",
+          "coverage_backfill": 0,
+          "last_text_check": "2026-10-23",
+          "uncollected": 0
+        },
+        "bol.com": {
+          "readable_today": 0,
+          "cached_reviews": 0,
+          "new_records_confirmed": 0,
+          "coverage_backfill": 0,
+          "last_text_check": "2026-10-23"
+        }
+      },
+      "last_complete_scope": "Seven verified listings; 133 raw records and 130 unique texts/stars. Amazon shared pool counted once and allocated by each review variant label.",
+      "reporting_pool_keys": [
+        "Philips.de",
+        "Amazon.de",
+        "Amazon.de:SCD861/26",
+        "bol.com"
+      ],
+      "identity_audit": {
+        "previous_date": "2026-10-22",
+        "previous_count": 112,
+        "retained_ids": 112,
+        "new_ids": 4,
+        "backfilled_ids": 14,
+        "new_listing_ids": 3,
+        "deleted_ids": [],
+        "changed_star_ids": [],
+        "audit_complete": true,
+        "amazon_audit_complete": true,
+        "philips_audit_complete": true,
+        "coverage_backfill": 14,
+        "text_edits": "All prior IDs/composite identities remain with unchanged stars. Three copied Amazon texts rechecked. Text edits were not exhaustively diffed."
+      },
+      "theme_comparison_available": true,
+      "last_successful_comparison_date": "2026-10-22",
+      "new_review_ids_reference_date": "2026-10-22",
+      "new_listing_ids": [
+        "RKAKO39LXU7BN",
+        "R1IK57WJB1ZC5Z",
+        "R302K94BUZNSA3"
       ],
       "duplicate_review_ids": [
         "R2IG7313QVV5JO",
