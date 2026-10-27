@@ -91,10 +91,11 @@ function renderPartialChanges(changes,selected){
  const total=nowKeys.reduce((n,k)=>n+Object.values(current[k].histogram).reduce((a,b)=>a+b,0),0);
  const currentLabel=nowKeys.length?total+' verified unique reviews':'Current stars unavailable';
  $('change-dates').textContent=fmtDate(day)+' vs '+fmtDate(prev)+' · Previous reporting weekday · Hong Kong dates';
- $('change-summary').innerHTML='<div class="change-total"><strong>'+currentLabel+'</strong><div>'+fresh.length+' newly observed · '+recovered.length+' recovered/newly accessible<small>Recovered evidence is not a daily addition. Coverage is described below.</small></div></div>';
+ $('change-summary').innerHTML='<div class="change-total"><strong>'+(nowKeys.length?total:'Unavailable')+'<small> verified unique reviews</small></strong><div>'+fresh.length+' newly observed · '+recovered.length+' recovered/newly accessible<small>Recovered evidence is not a daily addition.</small></div></div>';
  const rows=[5,4,3,2,1].map(star=>({star,now:nowKeys.length?nowKeys.reduce((n,k)=>n+current[k].histogram[star],0):null,previous:prevKeys.length?prevKeys.reduce((n,k)=>n+(before[k].histogram||before[k].captured_histogram)[star],0):null,fresh:fresh.filter(r=>r.stars===star).length,recovered:recovered.filter(r=>r.stars===star).length}));
  const value=n=>n===null?'Unavailable':n;
  $('daily-changes').innerHTML='<div class="table-scroll distribution-comparison"><table aria-label="Rating distribution and count changes"><thead><tr><th>Star</th><th>Today’s distribution</th><th>Previous weekday<br><small>Captured stars only*</small></th><th>Newly observed<br><small>Verified IDs*</small></th><th>Recovered /<br>newly accessible</th><th>Today total</th></tr></thead><tbody>'+rows.map(r=>'<tr><th>'+r.star+' ★</th><td>'+(r.now===null?'Unavailable':total?'<div class="distribution-cell"><div class="distribution-track"><i style="width:'+r.now/total*100+'%"></i></div><span>'+(r.now/total*100).toFixed(1)+'%</span></div>':'No ratings')+'</td><td>'+value(r.previous)+(r.previous!==null?'*':'')+'</td><td>'+(nowKeys.length?'<span class="delta-badge">'+signed(r.fresh)+'</span>':'Unavailable')+'</td><td>'+(nowKeys.length?signed(r.recovered):'Unavailable')+'</td><td class="today-count">'+value(r.now)+'</td></tr>').join('')+'</tbody></table></div>';
+ if(selected==='all'&&prevKeys.length&&prevKeys.every(k=>k.startsWith('Amazon.de'))) $('daily-changes').innerHTML=$('daily-changes').innerHTML.replace('Captured stars only*','Amazon sample only*');
  const scope=selected==='all'?'Today’s total covers Amazon + Philips; bol is unavailable and excluded. ':selected==='bol.com'?'bol current data unavailable. Last verified 23 October: no reviews. ':selected==='Philips.de'?'Philips: 67 current stars verified. Monday’s 63 reported reviews had no complete star snapshot. Six previously posted texts first accessible today are not confirmed daily additions. ':'Amazon: 76 unique reviews from 79 listed records; three matched copies excluded. Monday captured65 written-review stars against67 total ratings. Five first-observed IDs and six returning unique IDs. ';
  $('change-note').textContent=scope+(selected==='all'?DATA.check.partial_change_note:selected==='bol.com'?'No zero daily change is inferred.':' Previous weekday uses only captured stars, so subtraction is not a complete daily rating change. Newly observed means first captured, not necessarily posted today. Full text changes were not completely audited.');
 }
@@ -289,7 +290,7 @@ function render(){
  const changes=dailyChanges(DATA,$('platform').value);
  renderChanges(changes,selected);
  renderTrend();
- $('theme-base').textContent=`${n} coded reviews; ${freshness}`+(DATA.check.theme_comparison_available===false?' '+DATA.check.theme_note:'');
+ $('theme-base').textContent=`${n} coded reviews; ${freshness}`+(DATA.check.theme_comparison_available===false?'':'');
  for(const sentiment of ['positive','negative']){
   let themes=DATA.themes.filter(t=>t.sentiment===sentiment).map(t=>({...t,rows:rows.filter(r=>r[sentiment].includes(t.key))})).filter(t=>t.rows.length).sort((a,b)=>b.rows.length-a.rows.length);
   if(sentiment==='negative')themes=themes.filter((t,i)=>i<4||t.rows.length===themes[3]?.rows.length);
