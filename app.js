@@ -57,10 +57,6 @@ function renderChanges(changes,selected){
  if(partialRefresh){renderPartialChanges(changes,selected);return;}
  const expectedDate=changes.yesterday;
  let earlierDate=null;
- if(!changes.total){
-  const candidates=Object.keys(DATA.ratingHistory||{}).filter(d=>d<expectedDate&&isWeekday(d)).sort().reverse();
-  for(const date of candidates){const candidate=dailyChanges(DATA,selected,date);if(candidate.total?.complete&&candidate.groups.every(g=>g.comparable)){changes=candidate;earlierDate=date;break;}}
- }
  const signed=n=>n>0?'+'+n:String(n),value=n=>n===null?'&mdash;':n;
  const comparable=changes.groups.filter(g=>g.comparable),backfill=changes.groups.filter(g=>g.coverageBackfill),hasBackfill=backfill.length>0||changes.groups.some(g=>g.recoveredCount);
  const aggregate=(groups,pick)=>groups.length&&groups.every(g=>pick(g)!==null)?groups.reduce((n,g)=>n+pick(g),0):null;
@@ -97,7 +93,8 @@ function renderPartialChanges(changes,selected){
  const value=n=>known?n:'Unavailable';
  $('daily-changes').innerHTML='<div class="table-scroll distribution-comparison"><table aria-label="Rating distribution and count changes"><thead><tr><th>Star</th><th>Today’s distribution</th><th>Previous weekday</th><th>Newly observed</th><th>Absent today</th>'+(hasRecovered?'<th>Recovered older</th>':'')+'<th>Net change</th><th>Today total</th></tr></thead><tbody>'+rows.map(r=>'<tr><th>'+r.star+' ★</th><td>'+(!currentKnown?'Unavailable':!total?'No ratings':'<div class="distribution-cell"><div class="distribution-track"><i style="width:'+r.today/total*100+'%"></i></div><span>'+(r.today/total*100).toFixed(1)+'%</span></div>')+'</td><td>'+value(r.before)+'</td><td>'+value(signed(r.added))+'</td><td>'+value(r.absent?'-'+r.absent:0)+'</td>'+(hasRecovered?'<td>'+value(signed(r.recovered))+'</td>':'')+'<td>'+value(signed(r.net))+'</td><td class="today-count">'+(currentKnown?r.today:'Unavailable')+'</td></tr>').join('')+'</tbody></table></div>';
  const bol=DATA.check.platforms['bol.com'];
- $('change-note').textContent=(selected==='all'?'Comparable scope: Amazon + Philips'+(changes.groups.some(g=>g.name==='bol.com'&&g.comparable)?' + bol. ':'. ')+(bol.cached?'bol current data unavailable; excluded. ':changes.groups.some(g=>g.name==='bol.com'&&g.comparable)?'bol has no reviews on either compared weekday; change is zero. ':'bol currently has no reviews; its previous weekday comparison is unavailable. '):selected==='bol.com'?bol.note+' ':'Comparable scope: '+selected+'. ')+(known?'Newly observed means first captured since the previous weekday, not necessarily posted today. Absent records remain in historical evidence; absence does not prove deletion. Net change includes both. '+(DATA.check.identity_audit?.changed_star_ids?.length?'Star edits are recorded separately. ':'No continuing review changed stars. '):'No daily change is inferred from unavailable coverage. ')+'Monday compares with Friday.';
+ $('change-note').textContent=known?'Comparable pools: '+keys.join(', ')+'. Newly observed and absent records are compared only with '+fmtDate(changes.yesterday)+'. Absence does not prove deletion. Monday compares with Friday.':selected==='bol.com'?bol.note+' Daily comparison unavailable.':DATA.check.comparison_scope+' Today’s star totals include verified readable reviews only; one Amazon rating has unknown stars.';
+
 }
 
 // Daily snapshot history: no review-posting dates are used to reconstruct past totals.
@@ -256,7 +253,7 @@ function renderTrend(){
 function mentionNote(t){
  const selected=$('platform').value,name=t.sentiment+': '+t.key;
  const pick=x=>selected==='all'?x?.total:selected==='Philips.de'?x?.Philips:selected==='Amazon.de'?x?.Amazon:0;
- if(DATA.check.theme_comparison_available===false&&!completeCovered)return 'Complete mention comparison unavailable; '+(DATA.check.new_review_ids?.length||0)+' newly observed records captured in this check';
+ if(DATA.check.theme_comparison_available===false)return 'Mention changes versus '+fmtDate(DATA.check.theme_comparison_date)+' unavailable: no comparable previous-weekday review snapshot.';
  const fresh=pick(DATA.check.new_mentions[name])||0,recovered=pick(DATA.check.coverage_mentions?.[name])||0;
  return 'Verified newly observed since '+fmtDate(DATA.check.theme_comparison_date)+': +'+fresh+' mentions'+(recovered?'<br>Recovered older reviews: +'+recovered+' mentions':'')+((pick(DATA.check.missing_mentions?.[name])||0)?'<br>Absent today: '+pick(DATA.check.missing_mentions[name])+' previously coded mentions':'');
 }
@@ -325,7 +322,7 @@ $('platform-cards').innerHTML=[
 $('coverage-body').innerHTML=['SCD861/26','SCD863/26','SCD871/26'].map(sku=>{
  const a=sku==='SCD861/26'?DATA.check.sources_checked.amazon861:sku==='SCD871/26'?DATA.check.sources_checked.amazon:null;
  const p=DATA.check.sources_checked['philips'+sku.slice(3,6)];
- return '<tr><td>'+sku+'<small>Non-connected video monitor</small></td><td>'+(a?'<a href="'+a.url+'" target="_blank" rel="noopener">'+a.rating.toFixed(a.calculated?2:1)+' / 5'+(a.calculated?' calculated':'')+'</a><small>'+a.count+' captured written reviews · '+(a.cached?'last verified ':'checked ')+fmtDate(a.last_verified||DATA.date)+'</small>':'<span class="unverified">Not verified</span>')+'</td><td><a href="'+philips(sku)+'" target="_blank" rel="noopener">' + p.rating.toFixed(1) + ' / 5</a><small>'+p.count+' on this page ('+fmtDate(p.last_verified||DATA.date)+'); latest shared pool '+DATA.check.platforms['Philips.de'].rating_count+'. Counted once, reviewed SKU SCD871.</small></td><td>'+(sku==='SCD863/26'?'<span class="unverified">Not verified</span>':'<a href="'+(sku==='SCD861/26'?DATA.sources.bol861:DATA.sources.bol871)+'" target="_blank" rel="noopener">No reviews at last check</a><small>'+fmtDate(DATA.check.platforms['bol.com'].last_verified||DATA.date)+(DATA.check.platforms['bol.com'].cached?' · current status unavailable':'')+'</small>')+'</td></tr>';
+ return '<tr><td>'+sku+'<small>Non-connected video monitor</small></td><td>'+(a?'<a href="'+a.url+'" target="_blank" rel="noopener">'+a.rating.toFixed(a.calculated?2:1)+' / 5'+(a.calculated?' calculated':'')+'</a><small>'+a.count+' captured written reviews · '+(a.cached?'last verified ':'checked ')+fmtDate(a.last_verified||DATA.date)+'</small>':'<span class="unverified">Not verified</span>')+'</td><td><a href="'+philips(sku)+'" target="_blank" rel="noopener">' + p.rating.toFixed(1) + ' / 5</a><small>'+p.count+' on this page ('+fmtDate(p.last_verified||DATA.date)+'); latest shared pool '+DATA.check.platforms['Philips.de'].rating_count+'. Counted once, reviewed SKU SCD871.</small></td><td>'+(sku==='SCD863/26'?'<span class="unverified">Not verified</span>':'<a href="'+(sku==='SCD861/26'?DATA.sources.bol861:DATA.sources.bol871)+'" target="_blank" rel="noopener">No reviews at last check</a><small>'+fmtDate(DATA.check.sources_checked[sku==='SCD861/26'?'bol861':'bol871'].last_verified)+(DATA.check.sources_checked[sku==='SCD861/26'?'bol861':'bol871'].cached?' · current status unavailable':' · checked today')+'</small>')+'</td></tr>';
 }).join('');
 $('sources').innerHTML=[['Amazon · SCD871',DATA.sources.amazon],['Amazon · SCD861',DATA.sources.amazon861],...['SCD861/26','SCD863/26','SCD871/26'].map(s=>['Philips · '+s,philips(s)]),['bol · SCD861',DATA.sources.bol861],['bol · SCD871',DATA.sources.bol871]].map(([label,url])=>'<a href="'+url+'" target="_blank" rel="noopener">'+label+' ↗</a>').join('');
 $('platform').addEventListener('change',render);
