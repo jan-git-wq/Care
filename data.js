@@ -1,13 +1,13 @@
 const DATA = {
   "check": {
-    "date": "2026-11-19",
+    "date": "2026-11-20",
     "timezone": "Asia/Hong_Kong",
-    "checked_at_hong_kong": "2026-11-19T10:35:48+08:00",
-    "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
-    "status": "partial_background_refresh_philips_count_verified",
+    "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+    "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+    "status": "partial_background_refresh_philips_and_bol",
     "last_complete_date": "2026-11-09",
-    "comparison_date": "2026-11-18",
-    "theme_comparison_date": "2026-11-18",
+    "comparison_date": "2026-11-19",
+    "theme_comparison_date": "2026-11-19",
     "comparison_available": false,
     "platforms": {
       "Philips.de": {
@@ -17,10 +17,10 @@ const DATA = {
         "readable_today": 10,
         "captured_review_count": 72,
         "cached": false,
-        "last_verified": "2026-11-19",
-        "net_count_change": 1,
-        "note": "All three pages now show 4.7/5 and 73 shared reviews. Background count 72 → 73 versus 18 November (+1 net); yesterday's 73 browser observation is now corroborated. No new ID or star captured. Ten texts exposed today; 72 texts/stars retained from 13 November. Reviewed labels SCD871; pool counted once.",
-        "last_attempt": "2026-11-19",
+        "last_verified": "2026-11-20",
+        "net_count_change": 0,
+        "note": "All three pages show 4.7/5 and 73 shared reviews, unchanged versus 19 November. Ten existing texts readable today; 72 texts/stars retained from 13 November. Full current IDs/stars unavailable. Reviewed labels SCD871; pool counted once.",
+        "last_attempt": "2026-11-20",
         "observed": false,
         "count_verified": true,
         "web_reported_count": 73
@@ -37,62 +37,92 @@ const DATA = {
         "last_verified": "2026-11-13",
         "net_count_change": null,
         "note": "Unavailable through background requests today. Cached 13 November: shared 4.9/5 from 65 ratings, 64 written reviews (34 SCD871 + 30 SCD861). One rating had no readable text or known stars. Current counts and changes unverified.",
-        "last_attempt": "2026-11-19"
+        "last_attempt": "2026-11-20"
       },
       "bol.com": {
-        "rating": null,
-        "rating_count": 0,
-        "written_count": 0,
-        "readable_today": 0,
-        "cached": true,
-        "last_verified": "2026-11-12",
+        "rating": 5,
+        "rating_count": 3,
+        "written_count": 3,
+        "readable_today": 3,
+        "cached": false,
+        "last_verified": "2026-11-20",
         "net_count_change": null,
         "last_successful_net_count_change": null,
-        "note": "No fresh background verification. SCD861 returned a cached 13 November page with no reviews; SCD871 a cached 12 November page with no reviews. Today's count and daily change are unavailable.",
-        "captured_review_count": 0,
-        "last_attempt": "2026-11-19"
+        "note": "5.0/5 from 3 reviews shared across both listings, counted once; all reviewed-product labels SCD871. Three texts captured, individual stars not exposed. All purchase-labelled; two disclose Select points. Earlier postings recovered today; 19 November comparison unavailable.",
+        "captured_review_count": 3,
+        "last_attempt": "2026-11-20"
       }
     },
     "overall": {
       "current_available": false,
       "rating": 4.766423357664234,
       "rating_count": null,
-      "coded_review_count": 136,
+      "coded_review_count": 139,
       "known_star_count": 136,
       "unknown_star_count": null,
       "estimated": false,
       "last_verified": "2026-11-09",
-      "reason": "Current all-platform mean and rating total unavailable: Amazon and bol lack fresh verification, and Philips' 73-review pool has no complete current individual-star capture. Retain last fully verified 653/137 = 4.76642 from 9 November. The retained 136-review sample last fully verified 13 November has 648 known star points (4.76471); these are cached sample figures, not today's complete population. One additional Amazon rating had unknown stars on 13 November.",
+      "reason": "Current all-platform mean and rating total unavailable: Amazon lacks fresh verification and Philips' 73-review pool has no complete current individual-star capture. Retain last fully verified 653/137 = 4.76642 from 9 November. Analysis includes 136 retained reviews last fully verified 13 November plus 3 bol texts captured 20 November. Known retained stars: 648 points across 136 reviews (4.76471); 3 bol individual stars unexposed. The separate Amazon rating without text/stars was last verified 13 November.",
       "known_stars_cached": true,
-      "known_star_last_verified": "2026-11-13"
+      "known_star_last_verified": "2026-11-13",
+      "sample_unknown_star_count": 3
     },
     "new_review_ids": [],
-    "coverage_backfill_ids": [],
-    "new_mentions": {},
-    "coverage_mentions": {},
-    "freshness": "Background check on 19 November: all three Philips pages now agree on 4.7/5 and one shared pool of 73 reviews. Ten existing review texts are exposed without individual stars. Amazon product/review requests failed. bol returns cached pages (SCD861: 13 November; SCD871: 12 November). Full Amazon/Philips identities and stars were last verified 13 November.",
-    "theme_note": "136 retained unique readable reviews (72 Philips + 64 Amazon), last fully verified 13 November: 134 promotional/Vine and two Verified Purchase. Ten existing Philips texts remain readable today. Current additions, removals and theme mention changes versus 18 November are unavailable.",
-    "new_content": "The 10 exposed Philips texts belong to previously captured reviewers. The additional reported count has no captured new ID, text or individual star; it is not coded as an actual addition. Today's matching 73-review headers resolve the prior count discrepancy. Retained theme rankings have not been changed.",
-    "coverage_gaps": [
-      "Only 10 of Philips' 73 reported reviews are exposed by background extraction; current complete review identities and individual stars unavailable.",
-      "Amazon background requests failed; cached rating and review figures last verified 13 November.",
-      "bol pages are cached: SCD861 13 November, SCD871 12 November; current zero is not verified.",
-      "18 November and current captures are partial; complete star/review/theme comparisons unavailable.",
-      "Amazon and bol SCD863 listings remain unverified after focused search.",
-      "New IDs, edits, absences, deletions, incentives and star changes cannot be fully audited."
+    "coverage_backfill_ids": [
+      "bol-scd871-robinb99-2026-11-17",
+      "bol-scd871-sylwia-2026-11-15",
+      "bol-scd871-adk1306-2026-11-12"
     ],
-    "comparison_scope": "19 November vs 18 November: Philips background page count 72 → 73 (+1 net displayed count), resolving yesterday's 72 web / 73 browser discrepancy. No new review ID or individual star is established. Complete review, star and theme changes remain unavailable because both captures are partial; Amazon and bol lack fresh verification.",
+    "new_mentions": {},
+    "coverage_mentions": {
+      "positive: Satisfactory picture quality": {
+        "total": 3,
+        "Philips": 0,
+        "Amazon": 0,
+        "Bol": 3
+      },
+      "positive: Easy setup/use": {
+        "total": 2,
+        "Philips": 0,
+        "Amazon": 0,
+        "Bol": 2
+      },
+      "positive: Works without Wi-Fi": {
+        "total": 2,
+        "Philips": 0,
+        "Amazon": 0,
+        "Bol": 2
+      },
+      "positive: Long parent-unit battery": {
+        "total": 1,
+        "Philips": 0,
+        "Amazon": 0,
+        "Bol": 1
+      }
+    },
+    "freshness": "20 November background check: Philips remains 4.7/5 with 73 shared reviews; 10 existing texts exposed. bol now shows 5.0/5 with 3 shared reviews, all three texts captured and assigned SCD871 from reviewed-product labels. Amazon background retrieval failed; its figures remain cached from 13 November.",
+    "theme_note": "139 unique texts: 72 retained Philips + 64 retained Amazon (last complete sample 13 November), plus 3 bol texts captured today. 134 promotional/Vine; 5 purchase-labelled, including 2 bol Select-point rewards. Three earlier bol postings recovered; full daily mention changes versus 19 November unavailable.",
+    "new_content": "Recovered bol reviews: RobinB99 (17 November) praises clear picture, simple use, no Wi-Fi and temperature display; Sylwia (15 November, a Sunday) praises picture, connection, no Wi-Fi, temperature alerts and sound; Adk1306 (12 November) praises picture/sound, setup and parent-unit battery. No complaints expressed in these three texts. All labelled purchased; Sylwia and Adk1306 earned Select points. Individual stars unexposed; shared displayed score 5.0/5. First captured today, not verified daily additions.",
+    "coverage_gaps": [
+      "Philips exposes 10 of 73 reported texts; full current review IDs and stars unavailable.",
+      "Amazon retrieval unavailable; cached 13 November figures.",
+      "bol exposes all 3 texts, but platform review IDs and individual stars are not exposed. Shared pool deduplicated by reviewer/date/text.",
+      "19 November bol verification missing; daily bol count/theme changes unavailable. Overall star and theme comparisons remain partial.",
+      "Amazon and bol SCD863 listings unverified after focused search.",
+      "Current edits, deletions and full new-review totals cannot be audited."
+    ],
+    "comparison_scope": "20 November vs 19 November: Philips displayed pool unchanged at 73 and 4.7/5. bol's 3 earlier-dated texts are recovered access coverage, not 3 daily additions; yesterday's bol count was unavailable. Amazon changes unavailable. No complete current star or theme comparison.",
     "sources_checked": {
       "philips861": {
         "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
         "rating": 4.7,
         "count": 73,
-        "status": "19 November background page shows 4.7/5 and 73 shared reviews. Ten existing texts exposed without individual stars. All three page headers agree; yesterday's discrepancy is resolved. Shared pool counted once. Current complete IDs/stars unavailable.",
-        "last_verified": "2026-11-19",
+        "status": "Fresh background header: 4.7/5, 73 shared reviews; unchanged versus 19 November. Ten existing texts exposed without individual stars. Shared pool counted once.",
+        "last_verified": "2026-11-20",
         "cached": false,
-        "checked_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "readable_today": 10,
-        "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "rating_count": 73,
         "written_count": 73
       },
@@ -100,12 +130,12 @@ const DATA = {
         "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
         "rating": 4.7,
         "count": 73,
-        "status": "19 November background page shows 4.7/5 and 73 shared reviews. Ten existing texts exposed without individual stars. All three page headers agree; yesterday's discrepancy is resolved. Shared pool counted once. Current complete IDs/stars unavailable.",
-        "last_verified": "2026-11-19",
+        "status": "Fresh background header: 4.7/5, 73 shared reviews; unchanged versus 19 November. Ten existing texts exposed without individual stars. Shared pool counted once.",
+        "last_verified": "2026-11-20",
         "cached": false,
-        "checked_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "readable_today": 10,
-        "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "rating_count": 73,
         "written_count": 73
       },
@@ -113,12 +143,12 @@ const DATA = {
         "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
         "rating": 4.7,
         "count": 73,
-        "status": "19 November background page shows 4.7/5 and 73 shared reviews. Ten existing texts exposed without individual stars. All three page headers agree; yesterday's discrepancy is resolved. Shared pool counted once. Current complete IDs/stars unavailable.",
-        "last_verified": "2026-11-19",
+        "status": "Fresh background header: 4.7/5, 73 shared reviews; unchanged versus 19 November. Ten existing texts exposed without individual stars. Shared pool counted once.",
+        "last_verified": "2026-11-20",
         "cached": false,
-        "checked_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "readable_today": 10,
-        "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "rating_count": 73,
         "written_count": 73
       },
@@ -134,35 +164,39 @@ const DATA = {
         "calculated": true,
         "shared_rating": 4.9,
         "shared_count": 65,
-        "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "rating_count": 34,
         "written_count": 34
       },
       "bol861": {
         "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
-        "count": 0,
-        "rating": null,
-        "status": "Background request returned a cached page showing no reviews; current zero is not verified.",
-        "last_verified": "2026-11-13",
-        "cached": true,
-        "checked_at_hong_kong": "2026-11-13T09:07:20+08:00",
-        "readable_today": 0,
-        "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
-        "rating_count": 0,
-        "written_count": 0
+        "count": 3,
+        "rating": 5,
+        "status": "5.0/5 from 3 reviews shared across both listings, counted once; all reviewed-product labels SCD871. Three texts captured, individual stars not exposed. All purchase-labelled; two disclose Select points. Earlier postings recovered today; 19 November comparison unavailable.",
+        "last_verified": "2026-11-20",
+        "cached": false,
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+        "readable_today": 3,
+        "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+        "rating_count": 3,
+        "written_count": 3,
+        "shared_pool": "bol-shared-scd871",
+        "reviewed_sku": "SCD871/26"
       },
       "bol871": {
         "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
-        "count": 0,
-        "rating": null,
-        "status": "Background request returned a cached page showing no reviews; current zero is not verified.",
-        "last_verified": "2026-11-12",
-        "cached": true,
-        "checked_at_hong_kong": "2026-11-13T09:07:20+08:00",
-        "readable_today": 0,
-        "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
-        "rating_count": 0,
-        "written_count": 0
+        "count": 3,
+        "rating": 5,
+        "status": "5.0/5 from 3 reviews shared across both listings, counted once; all reviewed-product labels SCD871. Three texts captured, individual stars not exposed. All purchase-labelled; two disclose Select points. Earlier postings recovered today; 19 November comparison unavailable.",
+        "last_verified": "2026-11-20",
+        "cached": false,
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+        "readable_today": 3,
+        "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+        "rating_count": 3,
+        "written_count": 3,
+        "shared_pool": "bol-shared-scd871",
+        "reviewed_sku": "SCD871/26"
       },
       "amazonReviews": {
         "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRLCWQ6/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
@@ -173,7 +207,7 @@ const DATA = {
         "rating": 4.9,
         "checked_at_hong_kong": "2026-11-13T09:07:20+08:00",
         "readable_today": 0,
-        "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "rating_count": 65,
         "written_count": 64
       },
@@ -189,7 +223,7 @@ const DATA = {
         "calculated": true,
         "shared_rating": 4.9,
         "shared_count": 65,
-        "last_attempt_at_hong_kong": "2026-11-19T10:35:48+08:00",
+        "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
         "rating_count": 30,
         "written_count": 30
       }
@@ -202,7 +236,7 @@ const DATA = {
         "new_records_confirmed": null,
         "coverage_backfill": null,
         "last_text_check": "2026-11-13",
-        "last_attempt": "2026-11-19",
+        "last_attempt": "2026-11-20",
         "rating_only_unknown_stars_last_verified": 1
       },
       "Philips.de": {
@@ -210,16 +244,20 @@ const DATA = {
         "cached_reviews": 72,
         "new_records_confirmed": null,
         "coverage_backfill": null,
-        "last_text_check": "2026-11-19",
+        "last_text_check": "2026-11-20",
         "last_complete_text_check": "2026-11-13",
         "uncollected": null,
-        "last_attempt": "2026-11-19"
+        "last_attempt": "2026-11-20"
       },
       "bol.com": {
-        "readable_today": 0,
+        "readable_today": 3,
         "new_records_confirmed": null,
-        "last_text_check": "2026-11-12",
-        "last_attempt": "2026-11-19"
+        "last_text_check": "2026-11-20",
+        "last_attempt": "2026-11-20",
+        "unique_readable_today": 3,
+        "cached_reviews": 0,
+        "coverage_backfill": 3,
+        "individual_stars_unavailable": 3
       }
     },
     "last_complete_scope": "All seven verified listings: Amazon + Philips + both bol listings.",
@@ -230,7 +268,7 @@ const DATA = {
       "bol.com"
     ],
     "identity_audit": {
-      "previous_date": "2026-11-18",
+      "previous_date": "2026-11-19",
       "reference_date": "2026-11-13",
       "audit_complete": false,
       "amazon_audit_complete": false,
@@ -240,11 +278,12 @@ const DATA = {
       "missing_philips_ids": [],
       "changed_star_ids": [],
       "returned_amazon_ids": [],
-      "text_edits": "Only ten existing Philips texts were exposed. Current additions, absences, deletions and star/text edits cannot be established from this partial capture. Missing evidence is not a zero change."
+      "text_edits": "Ten existing Philips texts and all three bol texts exposed today. New bol local identities use reviewer/date/text matching; platform IDs unexposed. The 19 November bol source was unavailable, so no daily additions/deletions established.",
+      "bol_text_audit_complete": true
     },
     "theme_comparison_available": false,
     "last_successful_comparison_date": "2026-11-12",
-    "new_review_ids_reference_date": "2026-11-18",
+    "new_review_ids_reference_date": "2026-11-19",
     "new_listing_ids": [],
     "duplicate_review_ids": [
       "R2IG7313QVV5JO",
@@ -271,19 +310,19 @@ const DATA = {
         "reason": "Same review body apart from insertion of 'superbes'; same reviewer, copied across listings."
       }
     },
-    "partial_coverage_note": "Retained 13 November analysis: 136 listed written reviews = 136 unique readable reviews (64 Amazon + 72 Philips). Today Philips reports 73 reviews, with 10 texts exposed; its full current review identities are unverified. Amazon and bol are cached, so today's all-platform listed and unique totals remain unavailable. Three historical matched Amazon pairs remain documented, with no duplicate copies subtracted again from the retained sample.",
-    "partial_change_note": "19 November vs 18 November: Philips background page count 72 → 73 (+1 net displayed count), resolving yesterday's 72 web / 73 browser discrepancy. No new review ID or individual star is established. Complete review, star and theme changes remain unavailable because both captures are partial; Amazon and bol lack fresh verification.",
+    "partial_coverage_note": "139 unique texts analysed: 136 retained from the 13 November complete text sample plus 3 bol reviews recovered 20 November. bol shows the same 3 reviews on both SKU pages; count that pool once, not six. All three reviewed-product labels are SCD871. Today's overall listed/unique totals remain unavailable because Amazon is cached and Philips' full current identities are not captured. The three historical matched Amazon pairs remain documented; no duplicate copies are subtracted again from the retained sample.",
+    "partial_change_note": "20 November vs 19 November: Philips displayed pool unchanged at 73 and 4.7/5. bol's 3 earlier-dated texts are recovered access coverage, not 3 daily additions; yesterday's bol count was unavailable. Amazon changes unavailable. No complete current star or theme comparison.",
     "covered_sources_complete": false,
     "missing_mentions": {},
     "current_duplicate_review_ids": [],
     "local_sync": {
       "status": "synchronized",
-      "last_synchronized_date": "2026-11-19"
+      "last_synchronized_date": "2026-11-20"
     },
     "collection_mode": "background_web_only",
     "last_verified_review_sample_date": "2026-11-13",
     "background_observation": {
-      "date": "2026-11-19",
+      "date": "2026-11-20",
       "philips_web_count": 73,
       "philips_count_reconciled": true,
       "philips_readable_reviewers": [
@@ -299,21 +338,21 @@ const DATA = {
         "Anonymous (Herzensempfehlung!)"
       ],
       "amazon": "inaccessible",
-      "bol861": "cached_2026-11-13",
-      "bol871": "cached_2026-11-12",
+      "bol861": "fresh_shared_3_reviews",
+      "bol871": "fresh_shared_3_reviews",
       "browser_control": false,
       "prior_browser_observation_date": "2026-11-18"
     },
     "reported_count_change": {
       "platform": "Philips.de",
-      "previous_date": "2026-11-18",
-      "current_date": "2026-11-19",
-      "previous_web_count": 72,
+      "previous_date": "2026-11-19",
+      "current_date": "2026-11-20",
+      "previous_web_count": 73,
       "current_web_count": 73,
-      "net": 1,
-      "scope": "shared Philips pool; comparable background SCD861/SCD863 headers",
+      "net": 0,
+      "scope": "shared Philips pool",
       "new_ids_confirmed": false,
-      "note": "Reported count change only. Earlier 18 November browser observation already showed 73."
+      "note": "Unchanged aggregate only; full individual review identities and star changes unverified."
     },
     "discrepancy_resolution": {
       "date": "2026-11-19",
@@ -323,9 +362,10 @@ const DATA = {
       "current_web_count": 73,
       "status": "all_three_philips_background_page_headers_agree",
       "new_review_identity": null
-    }
+    },
+    "mixed_verification_sample": true
   },
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "timezone": "Asia/Hong_Kong",
   "reviews": [
     {
@@ -4516,6 +4556,136 @@ const DATA = {
       "last_observed": "2026-11-13",
       "stars_last_verified": "2026-11-13",
       "current_observation_status": "retained_from_2026-11-13"
+    },
+    {
+      "key": "bol-scd871-robinb99-2026-11-17",
+      "platform": "bol.com",
+      "reviewer": "RobinB99",
+      "date": "2026-11-17",
+      "reviewed_sku": "SCD871/26",
+      "listing_sku": "SCD861/26 and SCD871/26 (shared pool)",
+      "stars": null,
+      "source_id": null,
+      "identity_method": "matching reviewer, posting date and text across both listing pages; platform review ID not exposed",
+      "incentive": null,
+      "reward_label": null,
+      "purchase_label": "Verified Purchase",
+      "purchase_label_original": "Heeft dit artikel gekocht",
+      "incentive_note": "No review reward or free-product label exposed.",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Works without Wi-Fi"
+      ],
+      "negative": [],
+      "original_excerpts": {
+        "Satisfactory picture quality": "Het beeld is helder",
+        "Easy setup/use": "makkelijk in gebruik",
+        "Works without Wi-Fi": "camera geen wifi heeft"
+      },
+      "original_language": "Dutch",
+      "source_url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+      "source_urls": [
+        "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
+        "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/"
+      ],
+      "pool_id": "bol-shared-scd871",
+      "text_last_verified": "2026-11-20",
+      "stars_last_verified": null,
+      "last_verified": "2026-11-20",
+      "first_seen": "2026-11-20",
+      "last_observed": "2026-11-20",
+      "currently_observed": true,
+      "current_observation_status": "captured_today",
+      "coverage_backfill": true,
+      "coverage_backfill_date": "2026-11-20",
+      "backfill_reason": "Earlier posting date; previous weekday bol source inaccessible/stale. Recovery is not a verified daily addition."
+    },
+    {
+      "key": "bol-scd871-sylwia-2026-11-15",
+      "platform": "bol.com",
+      "reviewer": "Sylwia",
+      "date": "2026-11-15",
+      "reviewed_sku": "SCD871/26",
+      "listing_sku": "SCD861/26 and SCD871/26 (shared pool)",
+      "stars": null,
+      "source_id": null,
+      "identity_method": "matching reviewer, posting date and text across both listing pages; platform review ID not exposed",
+      "incentive": null,
+      "reward_label": "Select points earned for this review",
+      "purchase_label": "Verified Purchase",
+      "purchase_label_original": "Heeft dit artikel gekocht",
+      "incentive_note": "Review reward disclosed; no free-product/Vine label exposed.",
+      "positive": [
+        "Satisfactory picture quality",
+        "Works without Wi-Fi"
+      ],
+      "negative": [],
+      "original_excerpts": {
+        "Satisfactory picture quality": "beeldkwaliteit heel goed",
+        "Works without Wi-Fi": "niet aangesloten op wifi"
+      },
+      "original_language": "Dutch",
+      "source_url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+      "source_urls": [
+        "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
+        "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/"
+      ],
+      "pool_id": "bol-shared-scd871",
+      "text_last_verified": "2026-11-20",
+      "stars_last_verified": null,
+      "last_verified": "2026-11-20",
+      "first_seen": "2026-11-20",
+      "last_observed": "2026-11-20",
+      "currently_observed": true,
+      "current_observation_status": "captured_today",
+      "coverage_backfill": true,
+      "coverage_backfill_date": "2026-11-20",
+      "backfill_reason": "Earlier posting date; previous weekday bol source inaccessible/stale. Recovery is not a verified daily addition."
+    },
+    {
+      "key": "bol-scd871-adk1306-2026-11-12",
+      "platform": "bol.com",
+      "reviewer": "Adk1306",
+      "date": "2026-11-12",
+      "reviewed_sku": "SCD871/26",
+      "listing_sku": "SCD861/26 and SCD871/26 (shared pool)",
+      "stars": null,
+      "source_id": null,
+      "identity_method": "matching reviewer, posting date and text across both listing pages; platform review ID not exposed",
+      "incentive": null,
+      "reward_label": "Select points earned for this review",
+      "purchase_label": "Verified Purchase",
+      "purchase_label_original": "Heeft dit artikel gekocht",
+      "incentive_note": "Review reward disclosed; no free-product/Vine label exposed.",
+      "positive": [
+        "Satisfactory picture quality",
+        "Easy setup/use",
+        "Long parent-unit battery"
+      ],
+      "negative": [],
+      "original_excerpts": {
+        "Satisfactory picture quality": "beeldscherm",
+        "Easy setup/use": "snel aan te sluiten",
+        "Long parent-unit battery": "erg lang"
+      },
+      "original_language": "Dutch",
+      "source_url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+      "source_urls": [
+        "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
+        "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/"
+      ],
+      "pool_id": "bol-shared-scd871",
+      "text_last_verified": "2026-11-20",
+      "stars_last_verified": null,
+      "last_verified": "2026-11-20",
+      "first_seen": "2026-11-20",
+      "last_observed": "2026-11-20",
+      "currently_observed": true,
+      "current_observation_status": "captured_today",
+      "coverage_backfill": true,
+      "coverage_backfill_date": "2026-11-20",
+      "backfill_reason": "Earlier posting date; previous weekday bol source inaccessible/stale. Recovery is not a verified daily addition."
     }
   ],
   "themes": [
@@ -5835,6 +6005,20 @@ const DATA = {
       "Satisfactory picture quality": "Praises the image quality.",
       "Easy setup/use": "Easy installation.",
       "Long parent-unit battery": "Very good battery life."
+    },
+    "bol-scd871-robinb99-2026-11-17": {
+      "Satisfactory picture quality": "The picture is clear.",
+      "Easy setup/use": "Easy to use.",
+      "Works without Wi-Fi": "The camera has no Wi-Fi."
+    },
+    "bol-scd871-sylwia-2026-11-15": {
+      "Satisfactory picture quality": "Very good image quality.",
+      "Works without Wi-Fi": "Not connected to Wi-Fi."
+    },
+    "bol-scd871-adk1306-2026-11-12": {
+      "Satisfactory picture quality": "Clear screen (in the review's description).",
+      "Easy setup/use": "Quick to connect.",
+      "Long parent-unit battery": "A very long time (parent-unit battery)."
     }
   },
   "ratingHistory": {
@@ -18753,6 +18937,126 @@ const DATA = {
         "last_verified_date": "2026-11-12",
         "note": "19 November vs 18 November: Philips background page count 72 → 73 (+1 net displayed count), resolving yesterday's 72 web / 73 browser discrepancy. No new review ID or individual star is established. Complete review, star and theme changes remain unavailable because both captures are partial; Amazon and bol lack fresh verification."
       }
+    },
+    "2026-11-20": {
+      "Philips.de": {
+        "scope": "shared-scd871-pool",
+        "complete": false,
+        "histogram": null,
+        "records": [],
+        "rating_count": 73,
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+        "backfill_ids": [],
+        "duplicate_records": [],
+        "cached": true,
+        "last_verified_date": "2026-11-13",
+        "note": "20 November vs 19 November: Philips displayed pool unchanged at 73 and 4.7/5. bol's 3 earlier-dated texts are recovered access coverage, not 3 daily additions; yesterday's bol count was unavailable. Amazon changes unavailable. No complete current star or theme comparison.",
+        "cached_star_breakdown": {
+          "scope": "shared-scd871-pool",
+          "histogram": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 21,
+            "5": 51
+          },
+          "last_verified_date": "2026-11-13"
+        },
+        "displayed_average": 4.7,
+        "web_reported_count": 73,
+        "count_reconciled": true,
+        "aggregate_last_verified_date": "2026-11-20",
+        "reported_count_change": 0
+      },
+      "Amazon.de": {
+        "scope": "B0HBRDDJWG",
+        "complete": false,
+        "histogram": null,
+        "records": [],
+        "rating_count": null,
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+        "backfill_ids": [],
+        "duplicate_records": [],
+        "cached": true,
+        "last_verified_date": "2026-11-13",
+        "note": "20 November vs 19 November: Philips displayed pool unchanged at 73 and 4.7/5. bol's 3 earlier-dated texts are recovered access coverage, not 3 daily additions; yesterday's bol count was unavailable. Amazon changes unavailable. No complete current star or theme comparison.",
+        "cached_star_breakdown": {
+          "scope": "B0HBRDDJWG",
+          "histogram": {
+            "1": 0,
+            "2": 0,
+            "3": 1,
+            "4": 6,
+            "5": 27
+          },
+          "last_verified_date": "2026-11-13"
+        }
+      },
+      "Amazon.de:SCD861/26": {
+        "scope": "B0HBRLCWQ6",
+        "complete": false,
+        "histogram": null,
+        "records": [],
+        "rating_count": null,
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+        "backfill_ids": [],
+        "duplicate_records": [],
+        "cached": true,
+        "last_verified_date": "2026-11-13",
+        "note": "20 November vs 19 November: Philips displayed pool unchanged at 73 and 4.7/5. bol's 3 earlier-dated texts are recovered access coverage, not 3 daily additions; yesterday's bol count was unavailable. Amazon changes unavailable. No complete current star or theme comparison.",
+        "cached_star_breakdown": {
+          "scope": "B0HBRLCWQ6",
+          "histogram": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 3,
+            "5": 27
+          },
+          "last_verified_date": "2026-11-13"
+        }
+      },
+      "bol.com": {
+        "scope": "bol-shared-scd871",
+        "complete": false,
+        "text_complete": true,
+        "histogram": null,
+        "records": [
+          {
+            "id": "bol-scd871-robinb99-2026-11-17",
+            "stars": null,
+            "date": "2026-11-17",
+            "identity_type": "reviewer_date_text_composite"
+          },
+          {
+            "id": "bol-scd871-sylwia-2026-11-15",
+            "stars": null,
+            "date": "2026-11-15",
+            "identity_type": "reviewer_date_text_composite"
+          },
+          {
+            "id": "bol-scd871-adk1306-2026-11-12",
+            "stars": null,
+            "date": "2026-11-12",
+            "identity_type": "reviewer_date_text_composite"
+          }
+        ],
+        "rating_count": 3,
+        "written_count": 3,
+        "displayed_average": 5,
+        "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+        "backfill_ids": [
+          "bol-scd871-robinb99-2026-11-17",
+          "bol-scd871-sylwia-2026-11-15",
+          "bol-scd871-adk1306-2026-11-12"
+        ],
+        "duplicate_records": [],
+        "shared_listing_copies": 3,
+        "cached": false,
+        "last_verified_date": "2026-11-20",
+        "unknown_star_count": 3,
+        "note": "5.0/5 from 3 reviews shared across both listings, counted once; all reviewed-product labels SCD871. Three texts captured, individual stars not exposed. All purchase-labelled; two disclose Select points. Earlier postings recovered today; 19 November comparison unavailable."
+      }
     }
   },
   "check_history": {
@@ -27750,6 +28054,372 @@ const DATA = {
         "status": "all_three_philips_background_page_headers_agree",
         "new_review_identity": null
       }
+    },
+    "2026-11-20": {
+      "date": "2026-11-20",
+      "timezone": "Asia/Hong_Kong",
+      "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+      "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+      "status": "partial_background_refresh_philips_and_bol",
+      "last_complete_date": "2026-11-09",
+      "comparison_date": "2026-11-19",
+      "theme_comparison_date": "2026-11-19",
+      "comparison_available": false,
+      "platforms": {
+        "Philips.de": {
+          "rating": 4.7,
+          "rating_count": 73,
+          "written_count": 73,
+          "readable_today": 10,
+          "captured_review_count": 72,
+          "cached": false,
+          "last_verified": "2026-11-20",
+          "net_count_change": 0,
+          "note": "All three pages show 4.7/5 and 73 shared reviews, unchanged versus 19 November. Ten existing texts readable today; 72 texts/stars retained from 13 November. Full current IDs/stars unavailable. Reviewed labels SCD871; pool counted once.",
+          "last_attempt": "2026-11-20",
+          "observed": false,
+          "count_verified": true,
+          "web_reported_count": 73
+        },
+        "Amazon.de": {
+          "rating": 4.9,
+          "calculated": false,
+          "rating_count": 65,
+          "listing_rating_count": 65,
+          "written_count": 64,
+          "readable_today": 0,
+          "captured_review_count": 64,
+          "cached": true,
+          "last_verified": "2026-11-13",
+          "net_count_change": null,
+          "note": "Unavailable through background requests today. Cached 13 November: shared 4.9/5 from 65 ratings, 64 written reviews (34 SCD871 + 30 SCD861). One rating had no readable text or known stars. Current counts and changes unverified.",
+          "last_attempt": "2026-11-20"
+        },
+        "bol.com": {
+          "rating": 5,
+          "rating_count": 3,
+          "written_count": 3,
+          "readable_today": 3,
+          "cached": false,
+          "last_verified": "2026-11-20",
+          "net_count_change": null,
+          "last_successful_net_count_change": null,
+          "note": "5.0/5 from 3 reviews shared across both listings, counted once; all reviewed-product labels SCD871. Three texts captured, individual stars not exposed. All purchase-labelled; two disclose Select points. Earlier postings recovered today; 19 November comparison unavailable.",
+          "captured_review_count": 3,
+          "last_attempt": "2026-11-20"
+        }
+      },
+      "overall": {
+        "current_available": false,
+        "rating": 4.766423357664234,
+        "rating_count": null,
+        "coded_review_count": 139,
+        "known_star_count": 136,
+        "unknown_star_count": null,
+        "estimated": false,
+        "last_verified": "2026-11-09",
+        "reason": "Current all-platform mean and rating total unavailable: Amazon lacks fresh verification and Philips' 73-review pool has no complete current individual-star capture. Retain last fully verified 653/137 = 4.76642 from 9 November. Analysis includes 136 retained reviews last fully verified 13 November plus 3 bol texts captured 20 November. Known retained stars: 648 points across 136 reviews (4.76471); 3 bol individual stars unexposed. The separate Amazon rating without text/stars was last verified 13 November.",
+        "known_stars_cached": true,
+        "known_star_last_verified": "2026-11-13",
+        "sample_unknown_star_count": 3
+      },
+      "new_review_ids": [],
+      "coverage_backfill_ids": [
+        "bol-scd871-robinb99-2026-11-17",
+        "bol-scd871-sylwia-2026-11-15",
+        "bol-scd871-adk1306-2026-11-12"
+      ],
+      "new_mentions": {},
+      "coverage_mentions": {
+        "positive: Satisfactory picture quality": {
+          "total": 3,
+          "Philips": 0,
+          "Amazon": 0,
+          "Bol": 3
+        },
+        "positive: Easy setup/use": {
+          "total": 2,
+          "Philips": 0,
+          "Amazon": 0,
+          "Bol": 2
+        },
+        "positive: Works without Wi-Fi": {
+          "total": 2,
+          "Philips": 0,
+          "Amazon": 0,
+          "Bol": 2
+        },
+        "positive: Long parent-unit battery": {
+          "total": 1,
+          "Philips": 0,
+          "Amazon": 0,
+          "Bol": 1
+        }
+      },
+      "freshness": "20 November background check: Philips remains 4.7/5 with 73 shared reviews; 10 existing texts exposed. bol now shows 5.0/5 with 3 shared reviews, all three texts captured and assigned SCD871 from reviewed-product labels. Amazon background retrieval failed; its figures remain cached from 13 November.",
+      "theme_note": "139 unique texts: 72 retained Philips + 64 retained Amazon (last complete sample 13 November), plus 3 bol texts captured today. 134 promotional/Vine; 5 purchase-labelled, including 2 bol Select-point rewards. Three earlier bol postings recovered; full daily mention changes versus 19 November unavailable.",
+      "new_content": "Recovered bol reviews: RobinB99 (17 November) praises clear picture, simple use, no Wi-Fi and temperature display; Sylwia (15 November, a Sunday) praises picture, connection, no Wi-Fi, temperature alerts and sound; Adk1306 (12 November) praises picture/sound, setup and parent-unit battery. No complaints expressed in these three texts. All labelled purchased; Sylwia and Adk1306 earned Select points. Individual stars unexposed; shared displayed score 5.0/5. First captured today, not verified daily additions.",
+      "coverage_gaps": [
+        "Philips exposes 10 of 73 reported texts; full current review IDs and stars unavailable.",
+        "Amazon retrieval unavailable; cached 13 November figures.",
+        "bol exposes all 3 texts, but platform review IDs and individual stars are not exposed. Shared pool deduplicated by reviewer/date/text.",
+        "19 November bol verification missing; daily bol count/theme changes unavailable. Overall star and theme comparisons remain partial.",
+        "Amazon and bol SCD863 listings unverified after focused search.",
+        "Current edits, deletions and full new-review totals cannot be audited."
+      ],
+      "comparison_scope": "20 November vs 19 November: Philips displayed pool unchanged at 73 and 4.7/5. bol's 3 earlier-dated texts are recovered access coverage, not 3 daily additions; yesterday's bol count was unavailable. Amazon changes unavailable. No complete current star or theme comparison.",
+      "sources_checked": {
+        "philips861": {
+          "url": "https://www.philips.de/c-p/SCD861_26/video-babyphone-premium",
+          "rating": 4.7,
+          "count": 73,
+          "status": "Fresh background header: 4.7/5, 73 shared reviews; unchanged versus 19 November. Ten existing texts exposed without individual stars. Shared pool counted once.",
+          "last_verified": "2026-11-20",
+          "cached": false,
+          "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "readable_today": 10,
+          "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "rating_count": 73,
+          "written_count": 73
+        },
+        "philips871": {
+          "url": "https://www.philips.de/c-p/SCD871_26/video-babyphone-premium#reviews",
+          "rating": 4.7,
+          "count": 73,
+          "status": "Fresh background header: 4.7/5, 73 shared reviews; unchanged versus 19 November. Ten existing texts exposed without individual stars. Shared pool counted once.",
+          "last_verified": "2026-11-20",
+          "cached": false,
+          "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "readable_today": 10,
+          "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "rating_count": 73,
+          "written_count": 73
+        },
+        "philips863": {
+          "url": "https://www.philips.de/c-p/SCD863_26/video-babyphone-premium",
+          "rating": 4.7,
+          "count": 73,
+          "status": "Fresh background header: 4.7/5, 73 shared reviews; unchanged versus 19 November. Ten existing texts exposed without individual stars. Shared pool counted once.",
+          "last_verified": "2026-11-20",
+          "cached": false,
+          "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "readable_today": 10,
+          "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "rating_count": 73,
+          "written_count": 73
+        },
+        "amazon": {
+          "url": "https://www.amazon.de/dp/B0HBRDDJWG",
+          "rating": 4.764705882352941,
+          "count": 34,
+          "status": "Background retrieval unavailable. Cached 13 November score/count and variant-labelled sample; current review identities, individual stars and changes unverified.",
+          "last_verified": "2026-11-13",
+          "cached": true,
+          "checked_at_hong_kong": "2026-11-13T09:07:20+08:00",
+          "readable_today": 0,
+          "calculated": true,
+          "shared_rating": 4.9,
+          "shared_count": 65,
+          "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "rating_count": 34,
+          "written_count": 34
+        },
+        "bol861": {
+          "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-nachtzicht-tot-48-uur-batterijduur-dekra-gecertificeerd-zonder-wifi-scd861-26/9300000318462240/",
+          "count": 3,
+          "rating": 5,
+          "status": "5.0/5 from 3 reviews shared across both listings, counted once; all reviewed-product labels SCD871. Three texts captured, individual stars not exposed. All purchase-labelled; two disclose Select points. Earlier postings recovered today; 19 November comparison unavailable.",
+          "last_verified": "2026-11-20",
+          "cached": false,
+          "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "readable_today": 3,
+          "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "rating_count": 3,
+          "written_count": 3,
+          "shared_pool": "bol-shared-scd871",
+          "reviewed_sku": "SCD871/26"
+        },
+        "bol871": {
+          "url": "https://www.bol.com/nl/nl/p/philips-avent-videobabyfoon-4-5-inch-kleurenscherm-hd-camera-met-4x-zoom-400-m-berei-tot-60-uur-batterijduur-witte-ruis-zonder-wifi-scd871-26/9300000318462235/",
+          "count": 3,
+          "rating": 5,
+          "status": "5.0/5 from 3 reviews shared across both listings, counted once; all reviewed-product labels SCD871. Three texts captured, individual stars not exposed. All purchase-labelled; two disclose Select points. Earlier postings recovered today; 19 November comparison unavailable.",
+          "last_verified": "2026-11-20",
+          "cached": false,
+          "checked_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "readable_today": 3,
+          "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "rating_count": 3,
+          "written_count": 3,
+          "shared_pool": "bol-shared-scd871",
+          "reviewed_sku": "SCD871/26"
+        },
+        "amazonReviews": {
+          "url": "https://www.amazon.de/-/en/portal/customer-reviews/B0HBRLCWQ6/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+          "status": "Background retrieval unavailable. Cached 13 November score/count and variant-labelled sample; current review identities, individual stars and changes unverified.",
+          "last_verified": "2026-11-13",
+          "count": 65,
+          "cached": true,
+          "rating": 4.9,
+          "checked_at_hong_kong": "2026-11-13T09:07:20+08:00",
+          "readable_today": 0,
+          "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "rating_count": 65,
+          "written_count": 64
+        },
+        "amazon861": {
+          "url": "https://www.amazon.de/dp/B0HBRLCWQ6",
+          "rating": 4.9,
+          "count": 30,
+          "status": "Background retrieval unavailable. Cached 13 November score/count and variant-labelled sample; current review identities, individual stars and changes unverified.",
+          "last_verified": "2026-11-13",
+          "cached": true,
+          "checked_at_hong_kong": "2026-11-13T09:07:20+08:00",
+          "readable_today": 0,
+          "calculated": true,
+          "shared_rating": 4.9,
+          "shared_count": 65,
+          "last_attempt_at_hong_kong": "2026-11-20T11:14:31+08:00",
+          "rating_count": 30,
+          "written_count": 30
+        }
+      },
+      "review_access": {
+        "Amazon.de": {
+          "readable_today": 0,
+          "unique_readable_today": 0,
+          "cached_reviews": 64,
+          "new_records_confirmed": null,
+          "coverage_backfill": null,
+          "last_text_check": "2026-11-13",
+          "last_attempt": "2026-11-20",
+          "rating_only_unknown_stars_last_verified": 1
+        },
+        "Philips.de": {
+          "readable_today": 10,
+          "cached_reviews": 72,
+          "new_records_confirmed": null,
+          "coverage_backfill": null,
+          "last_text_check": "2026-11-20",
+          "last_complete_text_check": "2026-11-13",
+          "uncollected": null,
+          "last_attempt": "2026-11-20"
+        },
+        "bol.com": {
+          "readable_today": 3,
+          "new_records_confirmed": null,
+          "last_text_check": "2026-11-20",
+          "last_attempt": "2026-11-20",
+          "unique_readable_today": 3,
+          "cached_reviews": 0,
+          "coverage_backfill": 3,
+          "individual_stars_unavailable": 3
+        }
+      },
+      "last_complete_scope": "All seven verified listings: Amazon + Philips + both bol listings.",
+      "reporting_pool_keys": [
+        "Philips.de",
+        "Amazon.de",
+        "Amazon.de:SCD861/26",
+        "bol.com"
+      ],
+      "identity_audit": {
+        "previous_date": "2026-11-19",
+        "reference_date": "2026-11-13",
+        "audit_complete": false,
+        "amazon_audit_complete": false,
+        "philips_audit_complete": false,
+        "deleted_ids": [],
+        "missing_amazon_ids": [],
+        "missing_philips_ids": [],
+        "changed_star_ids": [],
+        "returned_amazon_ids": [],
+        "text_edits": "Ten existing Philips texts and all three bol texts exposed today. New bol local identities use reviewer/date/text matching; platform IDs unexposed. The 19 November bol source was unavailable, so no daily additions/deletions established.",
+        "bol_text_audit_complete": true
+      },
+      "theme_comparison_available": false,
+      "last_successful_comparison_date": "2026-11-12",
+      "new_review_ids_reference_date": "2026-11-19",
+      "new_listing_ids": [],
+      "duplicate_review_ids": [
+        "R2IG7313QVV5JO",
+        "RHPS2L0PRDIS7",
+        "R2E242QL6BKTHT"
+      ],
+      "deduplication": {
+        "R2IG7313QVV5JO": {
+          "duplicate_of": "RHBVWM1WVWKBB",
+          "reviewer": "Laura",
+          "date": "2026-10-08",
+          "reason": "Identical review body; same reviewer on both listings."
+        },
+        "RHPS2L0PRDIS7": {
+          "duplicate_of": "R3QMUUM5QOG2A8",
+          "reviewer": "super maman",
+          "date": "2026-10-09",
+          "reason": "Identical review body; same reviewer on both listings."
+        },
+        "R2E242QL6BKTHT": {
+          "duplicate_of": "R3JOTK8DO7YK1L",
+          "reviewer": "Smile ! 😊",
+          "date": "2026-10-08",
+          "reason": "Same review body apart from insertion of 'superbes'; same reviewer, copied across listings."
+        }
+      },
+      "partial_coverage_note": "139 unique texts analysed: 136 retained from the 13 November complete text sample plus 3 bol reviews recovered 20 November. bol shows the same 3 reviews on both SKU pages; count that pool once, not six. All three reviewed-product labels are SCD871. Today's overall listed/unique totals remain unavailable because Amazon is cached and Philips' full current identities are not captured. The three historical matched Amazon pairs remain documented; no duplicate copies are subtracted again from the retained sample.",
+      "partial_change_note": "20 November vs 19 November: Philips displayed pool unchanged at 73 and 4.7/5. bol's 3 earlier-dated texts are recovered access coverage, not 3 daily additions; yesterday's bol count was unavailable. Amazon changes unavailable. No complete current star or theme comparison.",
+      "covered_sources_complete": false,
+      "missing_mentions": {},
+      "current_duplicate_review_ids": [],
+      "local_sync": {
+        "status": "synchronized",
+        "last_synchronized_date": "2026-11-20"
+      },
+      "collection_mode": "background_web_only",
+      "last_verified_review_sample_date": "2026-11-13",
+      "background_observation": {
+        "date": "2026-11-20",
+        "philips_web_count": 73,
+        "philips_count_reconciled": true,
+        "philips_readable_reviewers": [
+          "L3nkY",
+          "hhome",
+          "Stef4n",
+          "Naninour88",
+          "Blitz279",
+          "bambaer",
+          "Angix33",
+          "Ewi_LE",
+          "GhostCovi",
+          "Anonymous (Herzensempfehlung!)"
+        ],
+        "amazon": "inaccessible",
+        "bol861": "fresh_shared_3_reviews",
+        "bol871": "fresh_shared_3_reviews",
+        "browser_control": false,
+        "prior_browser_observation_date": "2026-11-18"
+      },
+      "reported_count_change": {
+        "platform": "Philips.de",
+        "previous_date": "2026-11-19",
+        "current_date": "2026-11-20",
+        "previous_web_count": 73,
+        "current_web_count": 73,
+        "net": 0,
+        "scope": "shared Philips pool",
+        "new_ids_confirmed": false,
+        "note": "Unchanged aggregate only; full individual review identities and star changes unverified."
+      },
+      "discrepancy_resolution": {
+        "date": "2026-11-19",
+        "prior_date": "2026-11-18",
+        "prior_web_count": 72,
+        "prior_browser_observed_count": 73,
+        "current_web_count": 73,
+        "status": "all_three_philips_background_page_headers_agree",
+        "new_review_identity": null
+      },
+      "mixed_verification_sample": true
     }
   },
   "reporting_schedule": {
