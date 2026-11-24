@@ -138,6 +138,11 @@ function ratingTrend(data,platform,range='week'){
   const estimated=!available&&platform==='all'&&active.length>0&&reported.length===active.length&&reported.reduce((n,r)=>n+r.count,0)>0;
   const estimateCount=estimated?reported.reduce((n,r)=>n+r.count,0):null;
   const average=estimated?Math.round(reported.reduce((n,r)=>n+r.average*r.count,0)/estimateCount*100)/100:total?Math.round(stars.reduce((n,s)=>n+s*histogram[s],0)*100/total)/100:null;
+  const screenshot=data.check_history?.[date]?.amazon_screenshot;
+  if(screenshot&&(platform==='Amazon.de'||platform==='all')){
+    reported.push({platform:'Amazon.de (screenshot)',average:screenshot.rating,count:screenshot.rating_count});
+    if(platform==='Amazon.de'){points.push({date,stars:histogram,knownStarCount:stars.reduce((n,s)=>n+histogram[s],0),retainedOnly:true,partialStars:true,total:null,average:null,unknownStarCount:null,cached,starCached:cached,reported,estimated:false,coverageChanged,scope:active});continue;}
+  }
   const aggregatePools=data.check_history?.[date]?.aggregate_rating_pools;
   if(aggregatePools&&(platform==='all'||platform==='Amazon.de')){
    const pools=aggregatePools.filter(p=>platform==='all'||p.platform===platform),count=pools.reduce((n,p)=>n+p.count,0);
@@ -291,8 +296,9 @@ function render(){
  const freshness=DATA.check.theme_note;
  const observedMean=rated.length?(Math.round(rated.reduce((sum,r)=>sum+r.stars,0)*100/rated.length)/100).toFixed(2):'Unavailable';
  const p=DATA.check.platforms[selected];
- const displayMean=total?DATA.check.overall.rating.toFixed(2):p?.rating===null?'Unavailable':p?.rating?.toFixed(p.calculated?2:1)||'Unavailable';
- const metrics=[[total?(DATA.check.overall.current_available?(DATA.check.overall.estimated?'Estimated combined rating':'Combined rating') :DATA.check.overall.estimated?'Last verified combined estimate':'Last verified combined rating'):p?.cached?'Last verified platform rating':p?.calculated?'Calculated platform average':'Platform rating',displayMean,displayMean==='Unavailable'?'':' / 5',total?DATA.check.overall.reason:p?.rating===null?(p?.cached?'Last verified '+fmtDate(p.last_verified)+': no ratings. Current status unavailable.':'No ratings at last verified check'):p?.calculated?'Calculated from '+p.rating_count+' unique individual stars; '+(p.cached?'last verified ':'checked ')+fmtDate(p.last_verified||DATA.date)+'.':'Displayed score '+(p?.cached?'last verified ':'checked ')+fmtDate(p?.last_verified||DATA.date)],
+ const screenshot=selected==='Amazon.de'?DATA.check.amazon_screenshot:null;
+ const displayMean=screenshot?screenshot.rating.toFixed(1):total?DATA.check.overall.rating.toFixed(2):p?.rating===null?'Unavailable':p?.rating?.toFixed(p.calculated?2:1)||'Unavailable';
+ const metrics=[[total?(DATA.check.overall.current_available?(DATA.check.overall.estimated?'Estimated combined rating':'Combined rating') :DATA.check.overall.estimated?'Last verified combined estimate':'Last verified combined rating'):screenshot?'Amazon screenshot rating':p?.cached?'Last verified platform rating':p?.calculated?'Calculated platform average':'Platform rating',displayMean,displayMean==='Unavailable'?'':' / 5',total?DATA.check.overall.reason:screenshot?screenshot.rating_count+' global ratings · supplied '+fmtDate(DATA.date)+' · listing ID not visible':p?.rating===null?(p?.cached?'Last verified '+fmtDate(p.last_verified)+': no ratings. Current status unavailable.':'No ratings at last verified check'):p?.calculated?'Calculated from '+p.rating_count+' unique individual stars; '+(p.cached?'last verified ':'checked ')+fmtDate(p.last_verified||DATA.date)+'.':'Displayed score '+(p?.cached?'last verified ':'checked ')+fmtDate(p?.last_verified||DATA.date)],
  ['Unique reviews analysed',n,'',(total&&DATA.check.overall.written_count?DATA.check.overall.written_count+' source-listed written reviews; '+n+' captured unique texts':listed+' captured written reviews')+(matchCount?' · '+matchCount+' matching entries counted once':'')+(partialRefresh&&!completeCovered?' · retained sample; additional current reviews not fully accessible.':' · captured texts and stars verified')],
  ['Known ratings of 4–5 stars',rated.length?Math.round(high/rated.length*100)+'%':'Unavailable','',rated.length?high+' of '+rated.length+' known ratings'+(partialRefresh&&!completeCovered?' · verification dates vary; incomplete current coverage':' · verified '+fmtDate(DATA.date)):'No ratings'],
  ['Promotion / Vine',n?Math.round(incentivized/n*100)+'%':'Unavailable','',n?incentivized+' of '+n+' captured texts labelled; '+rewarded+' separate review-reward disclosures':'No written reviews']];
@@ -331,6 +337,11 @@ $('platform-cards').innerHTML=[
  const rating=p.rating?.toFixed(p.calculated?2:1)||'Unrated';
  return '<article class="platform-card"'+(sku?' data-sku="'+sku+'"':'')+'><div class="platform-top"><div><h3>'+name+'</h3>'+(sku?'<div class="platform-sku">'+sku+'</div>':'')+'</div><span class="badge">'+(p.observed?'OBSERVED ':p.cached?'CACHED ':'CHECKED ')+esc(fmtDate(p.last_verified||DATA.date))+'</span></div><div class="platform-score">'+rating+(p.rating?'<small> / 5'+(p.calculated?' · calculated':'')+'</small>':'')+'</div><p>'+(sku?p.written_count+' known review stars; total ratings by SKU unavailable':(p.rating_count??'Unavailable')+(p.count_verified===false?' observed ratings (unreconciled)':' ratings'))+' · '+(p.written_count??'Unavailable')+' written reviews · '+p.readable_today+(p.cached&&p.readable_today?' read from cached page':' read today')+'</p><div class="platform-bottom"><span>'+esc(p.note)+'</span><a href="'+url+'" target="_blank" rel="noopener" aria-label="View '+name+(sku?' '+sku:'')+' source">View source</a></div></article>';
 }).join('');
+if(DATA.check.amazon_screenshot){
+ const observation=DATA.check.amazon_screenshot;
+ const shares=[5,4,3,2,1].map(s=>s+'★ '+observation.percent_by_star[s]+'%').join(' · ');
+ $('platform-cards').insertAdjacentHTML('beforebegin','<aside class="notice"><div><strong>Amazon.de · '+observation.rating.toFixed(1)+'/5 from '+observation.rating_count+' global ratings</strong><p>'+shares+'</p><p>User screenshot received '+fmtDate(DATA.date)+'. The listing ID and written-review count are outside the crop. The two SKU cards use written reviews last verified on 20 November.</p></div></aside>');
+}
 $('coverage-body').innerHTML=['SCD861/26','SCD863/26','SCD871/26'].map(sku=>{
  const a=sku==='SCD861/26'?DATA.check.sources_checked.amazon861:sku==='SCD871/26'?DATA.check.sources_checked.amazon:null;
  const p=DATA.check.sources_checked['philips'+sku.slice(3,6)];
@@ -353,6 +364,7 @@ $('method-freshness').innerHTML='<b>Freshness.</b> Collected '+esc(DATA.check.ch
 
 document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));
 render();
+
 
 
 
