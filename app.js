@@ -307,7 +307,7 @@ function render(){
   $(sentiment).innerHTML=themes.length?themes.map(t=>{
    const count=t.rows.length,p=t.rows.filter(r=>r.platform==='Philips.de').length,a=t.rows.filter(r=>r.platform==='Amazon.de').length,b=t.rows.filter(r=>r.platform==='bol.com').length;
    const q=t.quote,qr=q&&t.rows.find(r=>r.reviewer===q.reviewer);
-   return `<article class="theme ${sentiment}"><button data-theme="${esc(t.key)}" data-sentiment="${sentiment}" aria-label="See ${count} reviews mentioning ${esc(t.label)}"><div class="theme-title"><span>${esc(t.label)}</span><span class="theme-count">${count}<small> / ${n} ↗</small></span></div><div class="bar"><i style="width:${count/n*100}%"></i></div><div class="breakdown">${p} Philips · ${a} Amazon · ${b} bol · ${Math.round(count/n*100)}% of selected reviews<br>${mentionNote(t)}</div></button>${qr?`<div class="quote"><blockquote>“${esc(q.text)}”</blockquote><div class="translation">English: ${esc(q.english)}</div><div class="attribution">${esc(qr.reviewer)} · ${starLabel(qr)} · ${fmtDate(qr.date)} · ${qr.reviewed_sku}<br>${esc(qr.incentive)} · <a href="${source(qr)}" target="_blank" rel="noopener">${qr.platform} source ↗</a></div></div>`:`<div class="quote"><div class="translation">See the coded review list and original source.</div></div>`}</article>`;
+   return `<article class="theme ${sentiment}"><button data-theme="${esc(t.key)}" data-sentiment="${sentiment}" aria-label="See ${count} reviews mentioning ${esc(t.label)}"><div class="theme-title"><span>${esc(t.label)}</span><span class="theme-count">${count}<small> / ${n} ↗</small></span></div><div class="bar"><i style="width:${count/n*100}%"></i></div><div class="breakdown">${p} Philips · ${a} Amazon · ${b} bol · ${Math.round(count/n*100)}% of selected reviews<br>${mentionNote(t)}</div></button>${qr?`<div class="quote"><blockquote>“${esc(q.text)}”</blockquote><div class="translation">English: ${esc(q.english)}</div><div class="attribution">${esc(qr.reviewer)} · ${starLabel(qr)} · ${fmtDate(qr.date)} · ${qr.reviewed_sku}<br>${esc([qr.incentive,qr.purchase_label,qr.reward_label].filter(Boolean).join(' · ')||'Incentive not labelled')} · <a href="${source(qr)}" target="_blank" rel="noopener">${qr.platform} source ↗</a></div></div>`:`<div class="quote"><div class="translation">See the coded review list and original source.</div></div>`}</article>`;
   }).join(''):'<div class="empty">No written reviews available for theme analysis.</div>';
  }
 
@@ -353,6 +353,7 @@ $('method-freshness').innerHTML='<b>Freshness.</b> Collected '+esc(DATA.check.ch
 
 document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));
 render();
+
 
 
 
